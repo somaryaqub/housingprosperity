@@ -1,0 +1,2792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Housing Prosperity Fund · IslamicFamily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script async src="https://tally.so/widgets/embed.js"></script>
+<!-- Fundraise Up: the new standard for online giving -->
+<script>(function(w,d,s,n,a){if(!w[n]){var l='call,catch,on,once,set,then,track,openCheckout'
+.split(','),i,o=function(n){return'function'==typeof n?o.l.push([arguments])&&o
+:function(){return o.l.push([n,arguments])&&o}},t=d.getElementsByTagName(s)[0],
+j=d.createElement(s);j.async=!0;j.src='https://cdn.fundraiseup.com/widget/'+a+'';
+t.parentNode.insertBefore(j,t);o.s=Date.now();o.v=5;o.h=w.location.href;o.l=[];
+for(i=0;i<8;i++)o[l[i]]=o(l[i]);w[n]=o}
+})(window,document,'script','FundraiseUp','ACVHFTCR');</script>
+<!-- End Fundraise Up -->
+<style>
+
+/* ─────────────────────────────────────────
+   BRAND TOKENS — IslamicFamily
+   ───────────────────────────────────────── */
+:root {
+  /* Primary */
+  --nabawi:       #275D43;
+  --nabawi-dark:  #1C4433;
+  --nabawi-mid:   #326B50;
+  --pinecone:     #E09964;
+  --moon-mist:    #FAFAF2;
+  --kiswah:       #353535;
+
+  /* Secondary */
+  --sun:          #F7AF29;
+  --warm-sand:    #EECBAF;
+  --arabica:      #DCD9B8;
+
+  /* Surfaces */
+  --bg-light:     #FAFAF2;   /* New Moon Mist — hero + CTA */
+  --bg-green:     #275D43;   /* Nabawi Green — most sections */
+  --bg-green-card:#2E6B4E;   /* Slightly lighter for cards on green */
+
+  /* Light-surface text */
+  --text-primary: #353535;
+  --text-muted:   #6B6B5E;
+  --border:       #E2DDD3;
+
+  /* Green-surface text */
+  --on-green-heading: #FAFAF2;
+  --on-green-body:    rgba(250,250,242,0.72);
+  --on-green-muted:   rgba(250,250,242,0.45);
+  --on-green-border:  rgba(255,255,255,0.1);
+  --on-green-card-bg: rgba(255,255,255,0.06);
+  --on-green-card-hover: rgba(255,255,255,0.1);
+
+  /* Functional */
+  --accent:       #E09964;
+  --accent-warm:  #EECBAF;
+}
+
+/* ─────────────────────────────────────────
+   RESET + BASE
+   ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-primary);
+  background: var(--bg-light);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ─────────────────────────────────────────
+   LAYOUT
+   ───────────────────────────────────────── */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.section      { padding: 96px 0; }
+.section--sm  { padding: 64px 0; }
+.section--xs  { padding: 48px 0; }
+
+/* ─────────────────────────────────────────
+   NAV
+   ───────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(250,250,242,0.786);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 1px 16px rgba(39,93,67,0.08); }
+
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Pine-cone octagon logomark in SVG inline */
+.nav-logo-text {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--kiswah);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.nav-logo-sub {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-muted);
+  display: block;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Construction badge */
+.construction-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nabawi);
+  background: rgba(39,93,67,0.07);
+  border: 1px solid rgba(39,93,67,0.2);
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+.construction-emoji {
+  font-size: 13px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Hamburger button */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--kiswah);
+  transition: all 0.25s;
+}
+.nav-hamburger:hover span { background: var(--nabawi); }
+
+/* Drawer overlay */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28,68,48,0.4);
+  z-index: 290;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  backdrop-filter: blur(2px);
+}
+.nav-overlay.open { opacity: 1; pointer-events: all; }
+
+/* Slide-out drawer */
+.nav-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  width: 320px;
+  height: 100vh;
+  background: var(--bg-light);
+  border-left: 1px solid var(--border);
+  z-index: 300;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: -4px 0 24px rgba(39,93,67,0.08);
+}
+.nav-drawer.open { transform: translateX(0); }
+
+.nav-drawer-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+}
+
+/* Drawer header — matches nav height exactly */
+.nav-drawer-header {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.nav-drawer-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.nav-drawer-close {
+  background: none;
+  border: 1px solid var(--border);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  transition: all 0.2s;
+  font-family: 'Alegreya Sans', sans-serif;
+}
+.nav-drawer-close:hover {
+  border-color: var(--nabawi);
+  color: var(--nabawi);
+}
+
+/* Links */
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+.drawer-link {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+  padding: 9px 32px;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.01em;
+  display: block;
+}
+.drawer-link:hover {
+  color: var(--nabawi);
+  background: rgba(39,93,67,0.04);
+}
+.drawer-link--cta {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: white;
+  background: var(--nabawi);
+  margin: 16px 32px 0;
+  padding: 11px 32px;
+  text-align: center;
+  transition: background 0.2s;
+  display: block;
+  box-sizing: border-box;
+}
+.drawer-link--cta:hover {
+  background: var(--nabawi-dark);
+  color: white;
+}
+.drawer-link--donate {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--kiswah);
+  background: var(--pinecone);
+  margin: 8px 32px 0;
+  padding: 11px 32px;
+  text-align: center;
+  transition: background 0.2s;
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  width: calc(100% - 64px);
+}
+.drawer-link--donate:hover {
+  background: #c8834a;
+  color: var(--kiswah);
+}
+
+/* Contact footer */
+.drawer-contact {
+  padding: 20px 32px;
+  flex-shrink: 0;
+}
+.drawer-contact-line {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+.nav-cta {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: white !important;
+  background: var(--nabawi);
+  padding: 10px 22px;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #1e4a34 !important; }
+
+.nav-donate {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--kiswah) !important;
+  background: var(--pinecone);
+  padding: 10px 22px;
+  transition: background 0.2s;
+}
+.nav-donate:hover { background: #c8834a !important; }
+
+/* ─────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────── */
+.hero {
+  padding-top: 68px;
+  position: relative;
+  background: var(--nabawi-dark);
+  overflow: hidden;
+}
+
+/* Full-bleed background image */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  display: block;
+}
+/* Two-layer overlay: darken overall + heavier on left where text sits */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right,
+      rgba(20,52,34,0.82) 0%,
+      rgba(20,52,34,0.55) 55%,
+      rgba(20,52,34,0.25) 100%),
+    linear-gradient(to top,
+      rgba(20,52,34,0.6) 0%,
+      transparent 50%);
+}
+
+.hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 88px 48px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pinecone);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 14px;
+  margin-bottom: 32px;
+  width: fit-content;
+  opacity: 0;
+  animation: fadeUp 0.5s 0.1s forwards, tag-pulse 3s ease-in-out 1.8s infinite;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  background: var(--pinecone);
+  border-radius: 50%;
+  animation: pulse 2.5s infinite;
+}
+/* ─────────────────────────────────────────
+   HERO DEADLINE BADGE
+   ───────────────────────────────────────── */
+.hero-deadline {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(224,153,100,0.18);
+  border: 1px solid rgba(224,153,100,0.45);
+  border-left: 3px solid var(--pinecone);
+  padding: 10px 16px;
+  margin-bottom: 28px;
+  max-width: 560px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  color: rgba(250,250,242,0.85);
+  line-height: 1.5;
+  opacity: 0;
+  animation:
+    milestoneEntrance 0.75s cubic-bezier(0.34, 1.2, 0.64, 1) 0.15s forwards,
+    milestonePulse 4s ease-in-out 1.5s infinite;
+}
+.hero-deadline strong {
+  font-weight: 600;
+  color: var(--warm-sand);
+}
+.deadline-icon {
+  color: var(--pinecone);
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.35; transform:scale(1.5); }
+}
+
+@keyframes milestoneEntrance {
+  0%   { opacity: 0; transform: translateY(10px) scale(0.98); }
+  60%  { opacity: 1; transform: translateY(-2px) scale(1.005); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes milestonePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(224,153,100,0);
+    border-left-color: var(--pinecone);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(224,153,100,0.15), 0 0 18px rgba(224,153,100,0.12);
+    border-left-color: #f0b07a;
+  }
+}
+
+.hero-headline {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: white;
+  max-width: 720px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.2s forwards;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--pinecone);
+}
+
+.hero-sub {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(250,250,242,0.78);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.35s forwards;
+}
+.hero-sub strong { color: rgba(250,250,242,0.95); font-weight: 500; }
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.5s forwards;
+}
+
+.btn-primary {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--kiswah);
+  background: var(--pinecone);
+  padding: 14px 28px;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover { background: white; transform: translateY(-1px); }
+
+/* ─────────────────────────────────────────
+   BTN-SECONDARY — border draw on load
+   ───────────────────────────────────────── */
+.btn-secondary {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(250,250,242,0.7);
+  padding: 14px 24px;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  border: none;
+  background: none;
+}
+.btn-secondary:hover { color: white; }
+/* SVG border drawn via stroke-dashoffset */
+.btn-secondary svg.btn-border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.btn-secondary svg.btn-border rect {
+  fill: none;
+  stroke: rgba(250,250,242,0.35);
+  stroke-width: 1;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+  x: 0.5px;
+  y: 0.5px;
+  stroke-dasharray: var(--perimeter, 999);
+  stroke-dashoffset: var(--perimeter, 999);
+  animation: draw-border 1.2s cubic-bezier(0.4,0,0.2,1) 1s forwards;
+}
+.btn-secondary:hover svg.btn-border rect {
+  stroke: rgba(250,250,242,0.75);
+}
+
+
+/* ─────────────────────────────────────────
+   STAT BANNER  (single green strip, hero base)
+   ───────────────────────────────────────── */
+.stat-banner {
+  width: 100%;
+  background: var(--nabawi);
+  opacity: 0;
+  animation: fadeUp 0.7s 0.65s forwards;
+}
+.stat-banner-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+}
+.s-stat {
+  flex: 1;
+  padding: 40px 0 40px 40px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.s-stat:first-child { padding-left: 0; }
+.s-stat:last-child  { border-right: none; }
+.s-stat-num {
+  font-family: 'Alegreya', serif;
+  font-size: 52px;
+  font-weight: 400;
+  color: white;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.s-stat-num span { font-size: 28px; color: var(--pinecone); }
+.s-stat-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  max-width: 160px;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────
+   SHARED SECTION TYPOGRAPHY
+   ───────────────────────────────────────── */
+.eyebrow {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+/* On green backgrounds the eyebrow uses warm-sand */
+.on-green .eyebrow,
+.on-green.eyebrow { color: var(--pinecone); opacity: 0.85; }
+
+.section-headline {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--kiswah);
+  margin-bottom: 20px;
+}
+.section-headline em { font-style: italic; color: var(--nabawi); }
+.on-green .section-headline { color: var(--on-green-heading); }
+.on-green .section-headline em { color: var(--pinecone); }
+
+.body-text {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.body-text + .body-text { margin-top: 16px; }
+.body-text strong { color: var(--text-primary); font-weight: 500; }
+.on-green .body-text { color: var(--on-green-body); }
+.on-green .body-text strong { color: var(--on-green-heading); }
+
+/* ─────────────────────────────────────────
+   SECTION: WHAT WE DO  — green
+   ───────────────────────────────────────── */
+.section-intro {
+  background: var(--bg-green);
+  border-top: none;
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ─────────────────────────────────────────
+   SECTION: PILLARS  — green
+   ───────────────────────────────────────── */
+.section-pillars {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+}
+.pillars-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 52px;
+}
+.pillars-header-right {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  line-height: 1.8;
+  padding-top: 16px;
+}
+.pillars-header-right strong { color: var(--on-green-heading); font-weight: 500; }
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--on-green-border);
+}
+.pillar-card {
+  background: var(--on-green-card-bg);
+  padding: 44px 36px;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.25s, background 0.2s;
+}
+.pillar-card:hover {
+  border-color: var(--pinecone);
+  background: var(--on-green-card-hover);
+}
+.pillar-num {
+  font-family: 'Alegreya', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--pinecone);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+.pillar-title {
+  font-family: 'Alegreya', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--on-green-heading);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.pillar-body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  line-height: 1.75;
+}
+
+/* ─────────────────────────────────────────
+   SECTION: THE NEED  — green
+   ───────────────────────────────────────── */
+.section-need {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+}
+.need-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.need-quote {
+  margin-top: 32px;
+  padding: 24px 28px;
+  border-left: 3px solid var(--pinecone);
+  background: rgba(0,0,0,0.12);
+}
+.need-quote p {
+  font-family: 'Alegreya', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(250,250,242,0.8);
+  line-height: 1.65;
+}
+
+.stats-stack { display: flex; flex-direction: column; gap: 1px; }
+.stat-row {
+  background: var(--on-green-card-bg);
+  border: 1px solid var(--on-green-border);
+  border-left: 3px solid var(--pinecone);
+  padding: 26px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  transition: background 0.2s;
+}
+.stat-row:hover { background: var(--on-green-card-hover); }
+.stat-row-num {
+  font-family: 'Alegreya', serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--pinecone);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 90px;
+  letter-spacing: -0.02em;
+}
+.stat-row-desc {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  line-height: 1.65;
+  padding-top: 4px;
+}
+.stat-row-desc strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--on-green-heading);
+  margin-bottom: 2px;
+}
+
+/* Prominent gap callout — family-sized supply/demand gap */
+.section-family-stat {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+}
+.section-family-stat .family-stat-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.section-family-stat .family-stat-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+.section-family-stat .family-stat-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 52, 34, 0.72);
+}
+.section-family-stat .container {
+  position: relative;
+  z-index: 1;
+}
+.gap-callout {
+  padding: 0;
+}
+.gap-callout-headline {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 700;
+  color: var(--on-green-heading);
+  line-height: 1.28;
+  margin-bottom: 32px;
+  max-width: 820px;
+}
+.gap-callout-headline strong { color: var(--sun); }
+.gap-callout-compare {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.gap-callout-stat { flex: 1; min-width: 220px; }
+.gap-callout-num {
+  font-family: 'Alegreya', serif;
+  font-weight: 900;
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--on-green-heading);
+  line-height: 1;
+}
+.gap-callout-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--on-green-heading);
+  opacity: 0.8;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.gap-callout-label em { font-style: italic; opacity: 0.8; }
+.gap-callout-vs {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250,250,242,0.5);
+}
+@media (max-width: 700px) {
+  .gap-callout { padding: 0; }
+  .gap-callout-compare { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .gap-callout-vs { display: none; }
+}
+
+/* Compact province rollout list */
+.province-list {
+  margin-top: 1px;
+}
+.province-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  background: var(--on-green-card-bg);
+  border-left: 2px solid transparent;
+}
+.province-row + .province-row { margin-top: 1px; }
+.province-name {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--on-green-heading);
+}
+.province-sub {
+  font-weight: 300;
+  color: var(--on-green-body);
+}
+.province-status {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-green-body);
+  white-space: nowrap;
+}
+.province-status--underway {
+  color: var(--pinecone);
+}
+
+/* ─────────────────────────────────────────
+   SECTION: FUND STRUCTURE  — green
+   ───────────────────────────────────────── */
+.section-structure {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+}
+.structure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--on-green-border);
+  margin-top: 52px;
+}
+.struct-card {
+  background: var(--on-green-card-bg);
+  padding: 44px 40px;
+  transition: background 0.2s;
+}
+.struct-card:hover { background: var(--on-green-card-hover); }
+.struct-tag {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pinecone);
+  opacity: 0.8;
+  margin-bottom: 14px;
+}
+.struct-title {
+  font-family: 'Alegreya', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--on-green-heading);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.struct-body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  line-height: 1.8;
+}
+.struct-body strong { color: var(--on-green-heading); font-weight: 500; }
+
+/* ─────────────────────────────────────────
+   SECTION: RECOGNITION  — green
+   ───────────────────────────────────────── */
+.section-recognition {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+  position: relative;
+  overflow: hidden;
+}
+/* Background image */
+.section-recognition .rec-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.section-recognition .rec-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+.section-recognition .rec-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 52, 34, 0.82);
+}
+/* Push content above the bg */
+.section-recognition .container {
+  position: relative;
+  z-index: 1;
+}
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--on-green-border);
+  margin-top: 48px;
+}
+.rec-card {
+  background: var(--on-green-card-bg);
+  padding: 36px 32px;
+}
+.rec-year {
+  font-family: 'Alegreya', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--pinecone);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.rec-title {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--on-green-heading);
+  margin-bottom: 8px;
+}
+.rec-body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────
+   SECTION: MAJOR PARTNERS  — green
+   ───────────────────────────────────────── */
+.section-major-partners {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+  padding: 96px 0;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+.partners-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Alegreya', serif;
+  font-weight: 900;
+  font-size: clamp(320px, min(52vw, 58vh), 950px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,0.06);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+.section-major-partners .container {
+  position: relative;
+  z-index: 1;
+}
+.major-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--on-green-border);
+  margin-top: 52px;
+}
+.mp-card {
+  background: var(--on-green-card-bg);
+  padding: 44px 36px;
+  transition: background 0.2s;
+}
+.mp-card:hover { background: var(--on-green-card-hover); }
+.mp-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pinecone);
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+.mp-name {
+  font-family: 'Alegreya', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--on-green-heading);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.mp-body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  line-height: 1.8;
+}
+.mp-body strong { color: var(--on-green-heading); font-weight: 500; }
+.mp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--pinecone);
+  border-bottom: 1px solid rgba(238,203,175,0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.mp-link:hover { color: white; border-color: white; }
+
+/* ─────────────────────────────────────────
+   PARTNERS STRIP  — green
+   ───────────────────────────────────────── */
+.section-partners {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+  padding: 60px 0;
+}
+.partners-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--on-green-muted);
+  text-align: center;
+  margin-bottom: 36px;
+}
+.partners-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.partner-chip {
+  font-family: 'Alegreya', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--on-green-body);
+  padding: 10px 22px;
+  border: 1px solid var(--on-green-border);
+  border-radius: 999px;
+  background: var(--on-green-card-bg);
+  transition: all 0.2s;
+}
+.partner-chip:hover { background: var(--on-green-card-hover); color: var(--on-green-heading); border-color: rgba(255,255,255,0.3); }
+
+/* ─────────────────────────────────────────
+   CTA — light (Moon Mist), contrasts green above
+   ───────────────────────────────────────── */
+.section-cta {
+  background: var(--bg-light);
+  padding: 104px 0;
+  text-align: center;
+}
+.cta-eyebrow {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.cta-headline {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 400;
+  color: var(--kiswah);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+.cta-headline em { font-style: italic; color: var(--nabawi); }
+.cta-body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 44px;
+  line-height: 1.75;
+}
+.cta-btn-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn-warm {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: white;
+  background: var(--nabawi);
+  padding: 15px 36px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-warm:hover { background: var(--nabawi-dark); transform: translateY(-2px); }
+.btn-ghost-white {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--pinecone);
+  background: transparent;
+  border: 1.5px solid var(--pinecone);
+  padding: 15px 32px;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s ease;
+  z-index: 0;
+}
+/* The fill layer — hidden until triggered */
+.btn-ghost-white::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pinecone);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: none;
+  z-index: -1;
+}
+/* Scroll-triggered: fill sweeps in */
+.btn-ghost-white.border-draw-ready {
+  color: white;
+  transition: color 0s 0.3s;
+}
+.btn-ghost-white.border-draw-ready::before {
+  transform: scaleX(1);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+.btn-ghost-white.border-draw-reverse {
+  color: var(--pinecone);
+  transition: color 0s 0.1s;
+}
+.btn-ghost-white.border-draw-reverse::before {
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+.btn-ghost-white:hover {
+  color: white;
+  background: transparent;
+}
+.btn-ghost-white:hover::before {
+  background: #c8834e;
+  transform: scaleX(1);
+  transition: background 0.2s;
+}
+.cta-footnote {
+  margin-top: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0.5;
+  letter-spacing: 0.04em;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────── */
+footer {
+  background: var(--nabawi-dark);
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.footer-name {
+  font-family: 'Alegreya', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+}
+.footer-contact {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-tagline {
+  font-family: 'Alegreya', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(224,153,100,0.55);
+}
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────── */
+/* ─────────────────────────────────────────
+   THREE-PROBLEM SECTION
+   ───────────────────────────────────────── */
+.section-problem {
+  background: var(--bg-light);
+  border-top: 1px solid var(--border);
+  padding: 96px 0;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 52px;
+}
+.problem-grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) {
+  .problem-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+.problem-card {
+  background: var(--bg-light);
+  padding: 40px 36px;
+  border-top: 3px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+.problem-card:hover { background: #F0EDE5; }
+.problem-card--1 { border-color: var(--nabawi); }
+.problem-card--2 { border-color: var(--pinecone); }
+.problem-card--3 { border-color: #8B5E7A; }
+.problem-card--4 { border-color: var(--sun); }
+.problem-card-title {
+  font-family: 'Alegreya', serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--kiswah);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.problem-card-body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* Inline glossary tooltip */
+.glossary-term {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #8B5E7A;
+  cursor: help;
+}
+.glossary-term--on-green {
+  border-bottom-color: rgba(250,250,242,0.55);
+}
+.glossary-term .glossary-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: 240px;
+  max-width: 78vw;
+  background: var(--kiswah);
+  color: var(--moon-mist);
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 14px 16px;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 20;
+  pointer-events: none;
+}
+.glossary-term .glossary-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--kiswah);
+}
+.glossary-term:hover .glossary-tooltip,
+.glossary-term:focus .glossary-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+/* Right-aligned variant — for terms sitting in the right-hand columns of a
+   narrow grid, so the tooltip extends leftward instead of off the edge */
+.glossary-term--align-right .glossary-tooltip {
+  left: auto;
+  right: -12px;
+  transform: translateY(4px);
+}
+.glossary-term--align-right .glossary-tooltip::after {
+  left: auto;
+  right: 20px;
+  transform: none;
+}
+.glossary-term--align-right:hover .glossary-tooltip,
+.glossary-term--align-right:focus .glossary-tooltip {
+  transform: translateY(0);
+}
+@media (max-width: 480px) {
+  .glossary-term .glossary-tooltip { width: 220px; }
+}
+
+/* ─────────────────────────────────────────
+   FUND MECHANICS SECTION
+   ───────────────────────────────────────── */
+.section-mechanics {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+  padding: 96px 0;
+}
+.mechanics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 52px;
+}
+.mechanics-grid--single {
+  display: block;
+  max-width: 640px;
+}
+.mechanics-left {}
+.fund-terms-table {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--on-green-border);
+}
+.fund-term-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  background: var(--on-green-card-bg);
+  padding: 14px 20px;
+  transition: background 0.2s;
+}
+.fund-term-row:hover { background: var(--on-green-card-hover); }
+.fund-term-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--on-green-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.fund-term-value {
+  font-family: 'Alegreya', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--on-green-heading);
+  text-align: right;
+}
+.fund-term-value em {
+  font-style: normal;
+  color: var(--warm-sand);
+}
+.class-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--on-green-border);
+  margin-top: 32px;
+}
+.class-cards--row {
+  flex-direction: row;
+}
+.class-cards--row .class-card { flex: 1; }
+@media (max-width: 860px) {
+  .class-cards--row { flex-direction: column; }
+}
+.class-card {
+  background: var(--on-green-card-bg);
+  padding: 24px 28px;
+  border-left: 3px solid transparent;
+  transition: background 0.2s;
+}
+.class-card:hover { background: var(--on-green-card-hover); }
+.class-card--0 { border-left-color: rgba(238,203,175,0.5); }
+.class-card--1 { border-left-color: var(--pinecone); }
+.class-card--2 { border-left-color: var(--sun); }
+.class-card-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--warm-sand);
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+.class-card-title {
+  font-family: 'Alegreya', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--on-green-heading);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.class-card-body {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  line-height: 1.7;
+}
+.residual-note {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--on-green-muted);
+  margin-top: 20px;
+  padding: 16px 20px;
+  border: 1px solid var(--on-green-border);
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   DIAMOND AT DUNLUCE SUBSECTION
+   ───────────────────────────────────────── */
+.dunluce-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--on-green-border);
+  margin-top: 52px;
+}
+.dunluce-card {
+  background: var(--on-green-card-bg);
+  padding: 40px 36px;
+}
+.dunluce-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.dunluce-highlight-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--on-green-border);
+}
+.dunluce-highlight-row:last-child { border-bottom: none; }
+.dh-label {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--on-green-muted);
+}
+.dh-value {
+  font-family: 'Alegreya', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--on-green-heading);
+  text-align: right;
+}
+.dunluce-bullets {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dunluce-bullets li {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--on-green-body);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.6;
+}
+.dunluce-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--pinecone);
+}
+.dunluce-bullets li strong { color: var(--on-green-heading); font-weight: 500; }
+
+@media (max-width: 860px) {
+  .problem-grid, .mechanics-grid, .dunluce-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ─────────────────────────────────────────
+   CTA CONTACTS
+   ───────────────────────────────────────── */
+.cta-contacts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.cta-contact {
+  text-align: center;
+}
+.cta-contact-name {
+  font-family: 'Alegreya', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--kiswah);
+  margin-bottom: 3px;
+}
+.cta-contact-title {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.cta-contact-email {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--nabawi);
+  border-bottom: 1px solid rgba(39,93,67,0.25);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.cta-contact-email:hover { color: var(--nabawi-dark); border-color: var(--nabawi); }
+.cta-contact-divider {
+  width: 1px;
+  height: 60px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+@media (max-width: 860px) {
+  .cta-contacts { flex-direction: column; gap: 24px; }
+  .cta-contact-divider { width: 60px; height: 1px; }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────── */
+@media (max-width: 860px) {
+  .container          { padding: 0 24px; }
+  .nav-inner          { padding: 0 24px; }
+  .hero-inner         { padding: 64px 24px 56px; }
+  .construction-badge { display: none; }
+  .nav-cta            { display: none; }
+  .nav-donate         { display: none; }
+  .stat-banner-inner  { padding: 0 24px; flex-wrap: wrap; }
+  .s-stat             { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .intro-grid,
+  .pillars-header,
+  .need-grid          { grid-template-columns: 1fr; gap: 40px; }
+  .pillars-grid,
+  .structure-grid,
+  .rec-grid,
+  .major-partners-grid { grid-template-columns: 1fr; }
+  .section, .section-cta, .section-major-partners { padding: 64px 0; }
+  footer .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* ─────────────────────────────────────────
+   HERO TAG PULSE
+   ───────────────────────────────────────── */
+@keyframes tag-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  50%       { box-shadow: 0 0 0 7px rgba(255,255,255,0.12); }
+}
+/* ─────────────────────────────────────────
+   STORIES SECTION
+   ───────────────────────────────────────── */
+.section-stories {
+  background: var(--bg-light);
+  border-top: 1px solid var(--border);
+  padding: 96px 0;
+}
+
+/* ─── Testimonial with portrait, matched to portrait bg ─── */
+.section-testimonial {
+  background: var(--pinecone);
+  overflow: hidden;
+}
+.testimonial-inner {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  align-items: end;
+  gap: 0;
+}
+.testimonial-portrait {
+  align-self: end;
+  line-height: 0;
+}
+.testimonial-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.testimonial-quote {
+  padding: 56px 8px 56px 48px;
+}
+.testimonial-quote .story-quote-mark {
+  color: var(--kiswah);
+  opacity: 0.35;
+}
+.testimonial-quote .story-text {
+  color: var(--kiswah);
+}
+.testimonial-quote .story-name {
+  color: var(--kiswah);
+  opacity: 0.75;
+}
+@media (max-width: 860px) {
+  .testimonial-inner { grid-template-columns: 1fr; }
+  .testimonial-portrait { max-width: 220px; margin: 0 auto; }
+  .testimonial-quote { padding: 8px 24px 48px; text-align: center; }
+}
+
+.stories-header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 64px;
+}
+.stories-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+.story-card {
+  background: var(--bg-light);
+  padding: 52px 48px;
+  position: relative;
+}
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--nabawi);
+}
+.story-quote-mark {
+  font-family: 'Alegreya', serif;
+  font-size: 88px;
+  line-height: 0.65;
+  color: var(--arabica);
+  display: block;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+.story-text {
+  font-family: 'Alegreya', serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--kiswah);
+  line-height: 1.68;
+  margin-bottom: 28px;
+}
+.story-text strong {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--nabawi);
+}
+.story-name {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.story-footnote {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 28px;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────
+   FAMILY IMAGE — near CTA
+   ───────────────────────────────────────── */
+.family-image-section {
+  width: 100%;
+  aspect-ratio: 21 / 7;
+  overflow: hidden;
+  position: relative;
+}
+.family-image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+.family-image-section .family-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(27,68,48,0.6) 0%,
+    rgba(27,68,48,0.1) 50%,
+    transparent 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 72px;
+}
+.family-img-text {
+  max-width: 420px;
+}
+.family-img-text h3 {
+  font-family: 'Alegreya', serif;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 400;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.family-img-text h3 em {
+  font-style: italic;
+  color: var(--pinecone);
+}
+.family-img-text p {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+@media (max-width: 860px) {
+  .stories-grid { grid-template-columns: 1fr; }
+  .story-card   { padding: 40px 28px; }
+  .family-image-section { aspect-ratio: 4/3; }
+  .family-image-section .family-img-overlay { padding: 0 24px; }
+}
+/* ─────────────────────────────────────────
+   HALAL FINANCE SECTION
+   ───────────────────────────────────────── */
+.section-halal-finance {
+  background: var(--bg-green);
+  border-top: 1px solid var(--on-green-border);
+  padding: 96px 0;
+}
+.halal-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: var(--pinecone);
+  font-family: 'Alegreya', serif;
+  font-size: 14px;
+  opacity: 0.8;
+}
+.hf-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.hf-inner--single {
+  display: block;
+}
+.hf-principles--row {
+  flex-direction: row;
+}
+.hf-principles--row .hf-principle {
+  flex: 1;
+}
+@media (max-width: 700px) {
+  .hf-principles--row { flex-direction: column; }
+}
+.hf-left {}
+.hf-principles {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  margin-top: 40px;
+}
+.hf-principle {
+  background: var(--bg-light);
+  padding: 24px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: background 0.2s;
+}
+.hf-principle:hover { background: #F0EDE5; }
+.hf-principle-num {
+  font-family: 'Alegreya', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #E09964;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+}
+.hf-principle-text {}
+.hf-principle-title {
+  font-family: 'Alegreya', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--kiswah);
+  margin-bottom: 4px;
+}
+.hf-principle-sub {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.hf-right {
+  padding-top: 8px;
+}
+.hf-callout {
+  background: var(--nabawi);
+  padding: 36px 36px;
+  margin-top: 32px;
+}
+.hf-callout p {
+  font-family: 'Alegreya', serif;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(250,250,242,0.9);
+  line-height: 1.65;
+}
+.hf-callout p strong {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--pinecone);
+}
+.hf-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.hf-tag {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-green-heading);
+  border: 1px solid var(--on-green-border);
+  background: var(--on-green-card-bg);
+  padding: 5px 12px;
+}
+@media (max-width: 860px) {
+  .hf-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@keyframes draw-border {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Prevent Tally's initialisation container from adding scroll height.
+   The popup iframe is position:fixed inside it and is unaffected. */
+body > div[id^="tally-"]:not([style*="display: block"]) {
+  height: 0 !important;
+  overflow: hidden !important;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <!-- IslamicFamily pinecone-star logomark (SVG inline) -->
+      <img src="islamicfamily.png" width="34" height="34" viewBox="0 0 34 34">
+              <div>
+        <div class="nav-logo-text">Housing Prosperity Fund</div>
+        <span class="nav-logo-sub">IslamicFamily: Prosperity Starts at Home</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="construction-badge">
+        <span class="construction-emoji">🏗️</span>
+        Construction Underway
+      </div>
+
+      <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="nav-cta">Sign-on →</a>
+
+      <!-- Donate -->
+      <a href="#XMQRJPQY" class="nav-donate">Donate</a>
+
+      <!-- Hamburger -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Slide-out navigation drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-inner">
+    <div class="nav-drawer-header">
+      <span class="nav-drawer-label">Navigation</span>
+      <button class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="drawer-links">
+      <a href="#problem" class="drawer-link">The Problem</a>
+      <a href="#need" class="drawer-link">The Need</a>
+      <a href="#partners" class="drawer-link">Partners</a>
+      <a href="#recognition" class="drawer-link">Recognition</a>
+      <a href="#edmonton" class="drawer-link">Edmonton & Canada</a>
+      <a href="#halal-finance" class="drawer-link">A New Capital Model</a>
+      <a href="#mechanics" class="drawer-link">Fund Mechanics</a>
+      <a href="#participate" class="drawer-link">Ways to Participate</a>
+      <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="drawer-link drawer-link--cta">Sign-on →</a>
+      <button onclick="FundraiseUp.openCheckout({campaignId:'XMQRJPQY'})" class="drawer-link drawer-link--donate">Donate →</button>
+    </nav>
+    <div class="drawer-contact">
+      <div class="drawer-contact-line">omary@islamicfamily.ca</div>
+      <div class="drawer-contact-line">adam.spence@svx.ca</div>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="navOverlay"></div>
+
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+
+  <!-- Background image -->
+  <div class="hero-bg">
+    <img src="fam1.png" alt="A multi-generational family moving into their new home together">
+  </div>
+
+  <div class="hero-inner">
+
+    <div class="hero-deadline">
+      <span class="deadline-icon">⚑</span>
+      <span>Key milestone: secure an initial <strong>$400K commitment</strong> by August 15, 2026, or lose the option to purchase</span>
+    </div>
+
+    <h1 class="hero-headline">A new fund for<br><em><span class="hero-headline" style="font-style: normal;">housing&nbsp;</span>families.</em>
+    </h1>
+
+    <p class="hero-sub">
+      The <b>Housing Prosperity Fund</b> is a values-aligned finance vehicle purpose-built to serve <strong>Canada's most underserved families</strong>. It funds both the building and long-term sustainability of affordable housing. We're currently building our first project and seeking <strong>philanthropic &amp; impact investment capital</strong>.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="btn-primary">Share Your Perspective · 2 min survey →</a>
+      <a href="mailto:omary@islamicfamily.ca" class="btn-secondary">
+        <svg class="btn-border" aria-hidden="true"><rect/></svg>
+        Request a Conversation
+      </a>
+    </div>
+
+  </div>
+
+  <!-- STAT BANNER — Nabawi Green, flush to hero base -->
+  <div class="stat-banner">
+    <div class="stat-banner-inner">
+      <div class="s-stat">
+        <div class="s-stat-num">264<span> beds</span></div>
+        <div class="s-stat-label">New bedrooms under construction</div>
+      </div>
+      <div class="s-stat">
+        <div class="s-stat-num">$37.6<span>m</span></div>
+        <div class="s-stat-label">Total project cost • $100m fund target</div>
+      </div>
+      <div class="s-stat">
+        <div class="s-stat-num">30<span>%</span></div>
+        <div class="s-stat-label"><div><span style="letter-spacing: 0.07em;">Funded • $11M secured toward $37.6M total</span><br></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ THE PROBLEM ══════════════ -->
+<section class="section section-problem" id="problem">
+  <div class="container">
+    <div class="eyebrow reveal">The Problem We're Solving</div>
+    <h2 class="section-headline reveal">
+      Four structural barriers.<br><em>One fund to address them all.</em>
+    </h2>
+
+    <div class="problem-grid problem-grid--4">
+      <div class="problem-card problem-card--1 reveal">
+        <div class="problem-card-title">Housing Scarcity</div>
+        <p class="problem-card-body">Affordable 2+ bedroom units are chronically undersupplied across Canada, leaving extended and multi-generational families overcrowded, priced out, or scattered across multiple units when they need to be together. <strong>This fund prioritizes housing for larger+extended families, by emphasizing bedroom count over unit count.</strong></p>
+      </div>
+      <div class="problem-card problem-card--2 reveal reveal-d1">
+        <div class="problem-card-title">Financial Exclusion</div>
+        <p class="problem-card-body">Interest-based debt is the default financing structure for affordable housing in Canada, cutting off values-driven organizations, co-ops, and faith communities that can't take on interest-bearing debt, including from federal grant programs that condition support on it. <strong>This fund fixes that through an equity approach that shares profit and risk with investors; letting more communities participate in finding housing solutions.</strong></p>
+      </div>
+      <div class="problem-card problem-card--3 reveal reveal-d2">
+        <div class="problem-card-title">Investment Gap</div>
+        <p class="problem-card-body">Values-aligned investors have very few institutional-quality, stable, semi-liquid investment options in Canada. <span class="glossary-term glossary-term--align-right" tabindex="0">Halal<span class="glossary-tooltip">Halal finance is based on shared reward and risk. It avoids societal harms and focuses heavily on real assets. Like halal food, halal finance isn't just for Muslims.</span></span> options are especially scarce despite the segment representing a significant and growing pool of  capital seeking real-asset exposure. <strong>This fund offers impact investors stable returns and semi-liquidity while tackling SDG priorities.</strong></p>
+      </div>
+      <div class="problem-card problem-card--4 reveal reveal-d2">
+        <div class="problem-card-title">Ongoing Maintenance</div>
+        <p class="problem-card-body">Most affordable housing financing covers construction only, leaving no dedicated source of revenue for long-term operations. Restricted philanthropic giving, like the roughly half a billion dollars in <span class="glossary-term glossary-term--align-right" tabindex="0">zakat<span class="glossary-tooltip">Zakat is a direct wealth transfer to those in need. In Canada it's estimated at ½B per year.</span></span> Canadian Muslim communities distribute each year, has never been channeled toward solving that gap. <strong>This fund fixes that with an unprecedented, ongoing rent-supplement model.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ THE NEED ══════════════ -->
+<section class="section section-need on-green" id="need">
+  <div class="container">
+    <div class="need-grid">
+      <div>
+        <div class="eyebrow reveal">The Gap We're Closing</div>
+        <h2 class="section-headline reveal">
+          Canada's housing crisis<br>hits <em>larger and underserved families</em> the hardest of all.
+        </h2>
+      </div>
+
+      <div class="stats-stack reveal">
+        <div class="stat-row">
+          <div class="stat-row-num">1.7M</div>
+          <div class="stat-row-desc">
+            <strong>Canadian households are in core housing need</strong>
+            Nearly 1 in 10 households live in housing that is unaffordable, inadequate, or unsuitable for the people in it, and the number keeps climbing.</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-row-num">4 yrs</div>
+          <div class="stat-row-desc">
+            <strong>Average wait for larger and extended families</strong><div>Households of 4 or more wait longer for affordable housing than any other group in Canada. Purpose-built housing for them barely exists.</div></div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-row-num">10k</div>
+          <div class="stat-row-desc">
+            <strong>People on the affordable housing waitlist in Edmonton</strong>
+            10,000 people are presently waiting for affordable housing in Edmonton alone.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ FAMILY STAT ══════════════ -->
+<section class="section-family-stat">
+  <div class="family-stat-bg">
+    <img src="/fam3.png" alt="A family in their new home">
+  </div>
+  <div class="container">
+    <div class="gap-callout reveal">
+      <div class="gap-callout-headline">Family-sized housing need is <strong>2–3× larger</strong> than family-sized apartment supply.</div>
+      <div class="gap-callout-compare">
+        <div class="gap-callout-stat">
+          <div class="gap-callout-num">23%</div>
+          <div class="gap-callout-label">Projected renter households in core housing need requiring 3+ bedrooms<br><em>Edmonton, 2031</em></div>
+        </div>
+        <div class="gap-callout-vs">vs</div>
+        <div class="gap-callout-stat">
+          <div class="gap-callout-num">8–12%</div>
+          <div class="gap-callout-label">New apartment homes built with 3+ bedrooms<br><em>Canada, CMHC</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ STORIES ══════════════ -->
+<section class="section-stories">
+  <div class="container">
+    <div class="stories-header">
+      <div class="eyebrow reveal">The Human Reality</div>
+      <h2 class="section-headline reveal">
+        Behind every number<br>is a <em>family waiting.</em>
+      </h2>
+    </div>
+
+    <div class="stories-grid">
+      <div class="story-card reveal">
+        <span class="story-quote-mark">“</span>
+        <p class="story-text">
+          Imagine <strong>Sarah</strong>, a mother living in an abusive situation who cares for both her kids and her parents. She wants to leave. But shelters won't accept her whole family. The choice she's given is to leave her parents, abandon her kids, or stay in an abusive situation.
+          <br><br>
+          This is not a choice.
+        </p>
+      </div>
+
+      <div class="story-card reveal reveal-d1">
+        <span class="story-quote-mark">“</span>
+        <p class="story-text">
+          Because of the war, <strong>Adam</strong> now cares for his nephews, nieces, and his own kids, a family of 12. There's no apartment big enough, so they end up scattered across multiple units.
+          <br><br>
+          He wishes that after all this time and hardship, they could be together under one roof.
+        </p>
+      </div>
+    </div>
+    <p class="story-footnote">Names changed. Stories represent lived experiences of families IslamicFamily serves.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════ FAMILY IMAGE ══════════════ -->
+<div class="family-image-section">
+  <img src="fam2.png" alt="Family moving into their new affordable home">
+  <div class="family-img-overlay">
+    <div class="family-img-text">
+      <h3><em style="font-size: clamp(26px, 3vw, 40px); letter-spacing: -0.01em;"><span style="margin-bottom: 16px; font-size: clamp(26px, 3vw, 40px); color: white; line-height: 1.15; letter-spacing: -0.01em; font-style: normal;">Housing <br>underpins<br><span style="margin-bottom: 16px; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.01em;"><em><b>everything</b>.</em></span></span></em></h3>
+      <p>Made for generations &amp; dignity.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ══════════════ MAJOR PARTNERS ══════════════ -->
+<section class="section-major-partners on-green" id="partners">
+  <div class="partners-bg-text" aria-hidden="true">4P</div>
+  <div class="container">
+    <div class="eyebrow reveal" style="color: rgba(238,203,175,0.75);">Built By</div>
+    <h2 class="section-headline reveal" style="color: var(--on-green-heading);">
+      Three organizations.<br><em>One integrated team.</em>
+    </h2>
+    <p class="body-text reveal" style="color: var(--on-green-body); max-width: 720px; margin-top: 20px;">
+      This fund is structured as a <strong style="color: var(--on-green-heading);">4P partnership</strong>: Public capital from the City of Edmonton and other levels of government, Private capital from impact investors, Philanthropic capital from <span class="glossary-term glossary-term--on-green" tabindex="0">zakat<span class="glossary-tooltip">Zakat is a direct wealth transfer to those in need. In Canada it's estimated at ½B per year.</span></span> and charitable giving, and People, the communities this housing serves. Four distinct kinds of capital, working through one integrated structure.
+    </p>
+
+    <div class="major-partners-grid">
+
+      <div class="mp-card reveal">
+        <div class="mp-label">Lead · Strategy & Community</div>
+        <div class="mp-name">IslamicFamily</div>
+        <p class="mp-body">
+          IslamicFamily is a <strong>registered Canadian charity</strong>, <strong>Imagine Canada accredited</strong>. For more than 40 years it has provided award winning social services to communities in need. IslamicFamily led the two-year <strong>CMHC-funded Halal Housing Lab</strong>, Canada's first national research initiative on halal affordable housing, and is the originating force behind this fund.
+        </p>
+        <a href="https://www.islamicfamily.ca" target="_blank" class="mp-link">islamicfamily.ca →</a>
+      </div>
+
+      <div class="mp-card reveal reveal-d1">
+        <div class="mp-label">Fund Development & Management</div>
+        <div class="mp-name">SVX</div>
+        <p class="mp-body">
+          SVX is Canada's foremost impact investment institution, connecting purpose-driven organizations with values-aligned capital. SVX is responsible for <strong>structuring, developing, and managing</strong> the Housing Prosperity Fund, bringing the legal architecture, investor testing, and institutional relationships needed to bring this vehicle to market. The Fund has been selected for the SVX Impact Index+ for its commitment to impact, governance, and financial excellence.
+        </p>
+        <a href="https://svx.ca" target="_blank" class="mp-link">svx.ca →</a>
+      </div>
+
+      <div class="mp-card reveal reveal-d2">
+        <div class="mp-label">Construction & Development</div>
+        <div class="mp-name">Build Edmonton Homes</div>
+        <p class="mp-body">
+          Build Edmonton Homes (BEH) is the development and construction partner bringing the Dunluce project to life on the ground in Edmonton. Build Edmonton Homes brings the on-ground expertise to deliver housing that is designed specifically for larger and extended families, with construction already underway. BEH is part of the Vivid Group of Companies.
+        </p>
+        <a href="https://buildedmontonhomes.ca" target="_blank" class="mp-link">buildedmontonhomes.ca →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ RECOGNITION ══════════════ -->
+<section class="section--sm section-recognition on-green" id="recognition">
+  <div class="rec-bg">
+    <img src="fam3.png" alt="Families celebrating at Diamond of Dunluce">
+  </div>
+  <div class="container">
+    <div class="eyebrow reveal" style="text-align:center; margin-bottom: 6px;">Recognition & Research</div>
+    <h2 class="section-headline reveal" style="text-align:center; max-width: 460px; margin: 0 auto;">
+      <em>Award-winning</em> research.<br>National credibility.
+    </h2>
+    <div class="rec-grid">
+      <div class="rec-card reveal">
+        <div class="rec-year">CIP: Planning Excellence</div>
+        <div class="rec-title">Canadian Institute of Planners (2025)&nbsp;</div>
+        <p class="rec-body">National recognition for the Halal Housing Lab research initiative, producing Canada's first open-source guide to halal affordable housing development.</p>
+      </div>
+      <div class="rec-card reveal reveal-d1">
+        <div class="rec-year">APPI: Merit Award</div>
+        <div class="rec-title">Alberta Professional Planners Institute (2024)</div>
+        <p class="rec-body">Alberta Professional Planners Institute recognized the Halal Housing Lab as the province's outstanding planning project.</p>
+      </div>
+      <div class="rec-card reveal reveal-d2">
+        <div class="rec-year">CMHC: Innovation Lab</div>
+        <div class="rec-title">Innovation Lab  Funded Initiative</div>
+        <p class="rec-body">The Halal Housing Lab was funded by CMHC as a national innovation project, resulting in a published open-source guide and presentations to the CMHC Board of Directors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ SUPPORTING PARTNERS ══════════════ -->
+<section class="section-partners on-green">
+  <div class="container">
+    <div class="partners-label">Supporting Partners & Funders</div>
+    <div class="partners-wrap">
+      <div class="partner-chip">Alberta EcoTrust</div>
+      <div class="partner-chip">Alberta Real Estate Foundation</div>
+      <div class="partner-chip">AnotherWay</div>
+      <div class="partner-chip">CHTC</div>
+      <div class="partner-chip">City of Edmonton</div>
+      <div class="partner-chip">CMHC</div>
+      <div class="partner-chip">Definity Foundation</div>
+      <div class="partner-chip">Edmonton Community Foundation</div>
+      <div class="partner-chip">FCM</div>
+      <div class="partner-chip">Government of Alberta</div>
+      <div class="partner-chip">Green Municipal Fund</div>
+      <div class="partner-chip">McConnell Foundation</div>
+      <div class="partner-chip">Radius / SFU · Vancouver</div>
+      <div class="partner-chip">Social Enterprise Fund</div>
+      <div class="partner-chip">Ummah Society · Nova Scotia</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ WHAT THIS MEANS FOR EDMONTON & CANADA ══════════════ -->
+<section class="section section-need on-green" id="edmonton" style="padding: 56px 0;">
+  <div class="container">
+    <div class="need-grid" style="align-items: center; gap: 56px;">
+      <div>
+        <div class="eyebrow reveal">A Scaleable Approach</div>
+        <h2 class="section-headline reveal" style="margin-bottom: 0;">
+          Born in Edmonton.<br><em>Made for Canada.</em>
+        </h2>
+      </div>
+
+      <div class="stats-stack reveal">
+        <div class="stat-row" style="border-left-color: var(--nabawi); background: rgba(255,255,255,0.1); padding: 12px 18px;">
+          <div class="stat-row-num" style="font-size:26px;">$100M</div>
+          <div class="stat-row-desc"><strong>National fund target</strong>Edmonton is Phase 1 of a structure built to travel.</div>
+        </div>
+        <div class="province-list reveal">
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">Alberta <span class="province-sub">· Diamond at Dunluce</span></span>
+            <span class="province-status province-status--underway">Underway</span>
+          </div>
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">Nova Scotia</span>
+            <span class="province-status">Confirmed partner</span>
+          </div>
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">British Columbia</span>
+            <span class="province-status">Confirmed partner</span>
+          </div>
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">Ontario</span>
+            <span class="province-status">Confirmed partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ TESTIMONIAL ══════════════ -->
+<section class="section-testimonial">
+  <div class="container">
+    <div class="testimonial-inner">
+      <div class="testimonial-quote reveal">
+        <span class="story-quote-mark">“</span>
+        <p class="story-text">
+          I came to this country with nothing and found a city that invested in me. Now it's time for community, impact investors and government to invest in the families waiting the longest for affordable housing. IslamicFamily &amp; Vivid Homes are leading that charge, innovating on how we build while never losing sight of the community we build for.
+        </p>
+        <div class="story-name">— Amarjeet Sohi, Former Mayor of Edmonton</div>
+      </div>
+      <div class="testimonial-portrait reveal">
+        <img src="/amarjeet.png" alt="Amarjeet Sohi, Former Mayor of Edmonton">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ A NEW CAPITAL MODEL ══════════════ -->
+<section class="section-halal-finance on-green" id="halal-finance">
+  <div class="container">
+    <div class="hf-inner hf-inner--single">
+
+      <div class="hf-left">
+        <div class="eyebrow reveal">A New Capital Model</div>
+        <div class="reveal" style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+          <h2 class="section-headline" style="margin-bottom:0;">
+            A source of capital<br><em>no one else has unlocked.</em>
+          </h2>
+          <span class="halal-badge" title="Halal">حلال</span>
+        </div>
+        <p class="body-text reveal">
+          Most affordable housing financing in Canada runs on interest-bearing debt, a structure that quietly locks out some of the most motivated capital in the country. Institutions and communities that collectively hold hundreds of millions in restricted, values-driven capital have been structurally excluded from building the housing they care about most.
+        </p>
+
+        <p class="body-text reveal" style="margin-top: 24px;">
+          This is also an invitation. Institutions locked out of Canada's debt-based housing system can do two things at once here: help build affordable housing today, and help fund an ongoing, community-based rent supplement, a source of operating capital that doesn't exist elsewhere in Canada.
+        </p>
+
+        <div class="hf-tags reveal">
+          <span class="hf-tag">Certified Shariah-compliant · Mufti Zain Baig</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ FUND MECHANICS ══════════════ -->
+<section class="section-mechanics on-green" id="mechanics">
+  <div class="container">
+
+    <div class="eyebrow reveal" style="color:rgba(238,203,175,0.75);">Fund Mechanics</div>
+    <h2 class="section-headline reveal" style="color:var(--on-green-heading);">
+      Structured for <em>institutional rigour.</em><br>Designed for values.
+    </h2>
+
+    <div class="mechanics-grid">
+      <div class="mechanics-left">
+        <p class="body-text reveal" style="color:var(--on-green-body);">
+          <strong style="color:var(--on-green-heading);">For Impact Investors:</strong> investment shares are structured for high stability and predictable modest returns, backed by real assets and long-term operational revenue, and designed for institutional and accredited investors with a values-aligned mandate. Stable, semi-liquid, and Halal-compliant.
+        </p>
+
+        <p class="body-text reveal" style="color:var(--on-green-body); margin-top: 16px;">
+          The Fund is structured as a <strong style="color:var(--on-green-heading);">GP/LP vehicle</strong>: General Partner jointly owned by IslamicFamily (60%) and SVX (40%). Investors subscribe as Limited Partners. Capital is deployed on an equity basis, with returns tied to real asset performance rather than interest or debt.
+        </p>
+      </div>
+
+      <div class="mechanics-right">
+        <div class="fund-terms-table reveal" style="margin-top: 0;">
+          <div class="fund-term-row">
+            <span class="fund-term-label">LP Offering Target</span>
+            <span class="fund-term-value"><em>$25M</em></span>
+          </div>
+          <div class="fund-term-row">
+            <span class="fund-term-label">Minimum Investment</span>
+            <span class="fund-term-value">$50,000</span>
+          </div>
+          <div class="fund-term-row">
+            <span class="fund-term-label">Annual Management Fee</span>
+            <span class="fund-term-value">1.75%</span>
+          </div>
+          <div class="fund-term-row">
+            <span class="fund-term-label">GP Structure</span>
+            <span class="fund-term-value">IslamicFamily 60% · SVX 40%</span>
+          </div>
+          <div class="fund-term-row">
+            <span class="fund-term-label">Shariah Advisor</span>
+            <span class="fund-term-value">Mufti Zain Baig</span>
+          </div>
+          <div class="fund-term-row">
+            <span class="fund-term-label">Legal Counsel</span>
+            <span class="fund-term-value">Pallett Valo LLP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <div class="eyebrow reveal" style="color:rgba(238,203,175,0.75);">Overview</div>
+    <img src="prospertityfund.png">
+
+    <!-- Diamond at Dunluce -->
+    <div style="margin-top:80px; border-top:1px solid var(--on-green-border); padding-top:64px;">
+      <div class="eyebrow reveal" style="color:rgba(238,203,175,0.75);">Pilot Project</div>
+      <h2 class="section-headline reveal" style="color:var(--on-green-heading);">
+        Diamond at Dunluce.<br><em>Shovel-ready. Already underway.</em>
+      </h2>
+
+      <div class="dunluce-grid">
+        <div class="dunluce-card reveal">
+          <div class="struct-tag" style="margin-bottom:16px;">Project Overview</div>
+          <ul class="dunluce-bullets">
+            <li><strong>264 bedrooms</strong> across 170,000+ sq ft over 4 buildings</li>
+            <li><strong>92%</strong> of units have 2 or more bedrooms</li>
+            <li><strong>30%</strong> of units have 4–5 bedrooms for extended families</li>
+            <li>Affordability at <strong>50–100% of market rents</strong>, depending on grant outcomes</li>
+            <li>Developer: <strong>Build Edmonton Homes</strong> · Owner: <strong>IslamicFamily</strong></li>
+            <li>Land secured through the <strong>City of Edmonton</strong></li>
+            <li>Targeting <strong>Build Green Platinum</strong> certification</li>
+          </ul>
+        </div>
+
+        <div class="dunluce-card reveal reveal-d1">
+          <div class="struct-tag" style="margin-bottom:16px;">Project Highlights</div>
+          <div class="dunluce-highlights">
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Est. Capital Cost</span>
+              <span class="dh-value">~$37.6M</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Capital Raised</span>
+              <span class="dh-value">$11M (30%)</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Annual Gross Revenue</span>
+              <span class="dh-value">~$1.47M (stabilized)</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Cash Surplus</span>
+              <span class="dh-value">~19% of revenue</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Bedrooms</span>
+              <span class="dh-value">264</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Buildings</span>
+              <span class="dh-value">170,000+ sq ft over 4 buildings</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Shariah Advisor</span>
+              <span class="dh-value">Mufti Zain Baig</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Legal Counsel</span>
+              <span class="dh-value">Pallett Valo LLP</span>
+            </div>
+            <div class="dunluce-highlight-row">
+              <span class="dh-label">Impact Platform</span>
+              <span class="dh-value">SVX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════ WAYS TO PARTICIPATE ══════════════ -->
+<section class="section-mechanics on-green" id="participate">
+  <div class="container">
+    <div class="eyebrow reveal" style="color:rgba(238,203,175,0.75);">Ways to Participate</div>
+    <h2 class="section-headline reveal" style="color:var(--on-green-heading);">
+      Three ways to help build.<br><em>Choose what fits.</em>
+    </h2>
+
+    <div class="class-cards class-cards--row reveal">
+      <div class="class-card class-card--2">
+        <div class="class-card-label">Philanthropic Capital · Donation</div>
+        <div class="class-card-title">Tax-Receipted Giving</div>
+        <p class="class-card-body">A direct donation to IslamicFamily with a full tax receipt · No return of capital expected · Maximizes affordability and multiplies the fund's impact.</p>
+      </div>
+      <div class="class-card class-card--0">
+        <div class="class-card-label">Class 0 · Catalytic Capital</div>
+        <div class="class-card-title">Principal Return</div>
+        <p class="class-card-body">Return of capital only · 5-year horizon · For concessional or mission-first investors who prioritise social impact over financial return.</p>
+      </div>
+      <div class="class-card class-card--1">
+        <div class="class-card-label">Class 1 · Return-Seeking Capital</div>
+        <div class="class-card-title">~3% Target Annual Return</div>
+        <p class="class-card-body">Above return of capital · 10-year horizon · For accredited investors seeking modest, stable, impact-aligned returns backed by real assets.</p>
+      </div>
+    </div>
+    <p class="residual-note reveal">Residual proceeds, after all LP investor distributions, flow entirely back to IslamicFamily for charitable purposes. SVX does not participate in residual profits beyond management fees.</p>
+  </div>
+</section>
+
+
+
+<!-- ══════════════ CTA ══════════════ -->
+<section class="section-cta">
+  <div class="container">
+    <div class="cta-eyebrow">Help us build</div>
+    <h2 class="cta-headline">
+      Break barriers<br><em>Uplift communities.</em>
+    </h2>
+    <p class="cta-body">
+      We want to speak with funders and social impact investors to understand how this fund fits your portfolio. Your input directly shapes how we structure investment opportunities.
+    </p>
+    <div class="cta-btn-row">
+      <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="btn-warm">Take the 2-Minute Survey →</a>
+      <a href="mailto:omary@islamicfamily.ca" class="btn-ghost-white">Request a Conversation</a>
+    </div>
+    <p class="cta-footnote">Open to accredited investors and philanthropic funders · Approximately 2 minutes</p>
+
+    <div class="cta-contacts">
+      <div class="cta-contact">
+        <div class="cta-contact-name">Omar Yaqub</div>
+        <div class="cta-contact-title">Servant of Servants, IslamicFamily</div>
+        <a href="mailto:omary@islamicfamily.ca" class="cta-contact-email">omary@islamicfamily.ca</a>
+      </div>
+      <div class="cta-contact-divider"></div>
+      <div class="cta-contact">
+        <div class="cta-contact-name">Adam Spence</div>
+        <div class="cta-contact-title">CEO, SVX</div>
+        <a href="mailto:adam.spence@svx.ca" class="cta-contact-email">adam.spence@svx.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Housing Prosperity Fund</div>
+        <div class="footer-contact">IslamicFamily · islamicfamily.ca &nbsp;·&nbsp; SVX · svx.ca</div>
+      </div>
+      <div class="footer-tagline">✸</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+  }, { threshold: 0.1, rootMargin: "0px 0px -24px 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // ── btn-secondary: border draw, reverses and replays every 7s ──
+  function setBorderPerimeters() {
+    document.querySelectorAll(".btn-secondary").forEach(btn => {
+      const w = btn.offsetWidth;
+      const h = btn.offsetHeight;
+      const perimeter = (w + h) * 2;
+      btn.style.setProperty("--perimeter", perimeter);
+      const rect = btn.querySelector("svg.btn-border rect");
+      if (rect) {
+        rect.setAttribute("width", w - 1);
+        rect.setAttribute("height", h - 1);
+      }
+    });
+  }
+  setBorderPerimeters();
+  window.addEventListener("resize", setBorderPerimeters);
+
+  function cycleBorderDraw(btn) {
+    const rect = btn.querySelector("svg.btn-border rect");
+    if (!rect) return;
+    const perimeter = parseFloat(btn.style.getPropertyValue("--perimeter")) || 999;
+    // Step 1: erase (forward dashoffset back to perimeter)
+    rect.animate(
+      [{ strokeDashoffset: 0 }, { strokeDashoffset: perimeter }],
+      { duration: 900, easing: "cubic-bezier(0.4,0,0.2,1)", fill: "forwards" }
+    ).finished.then(() => {
+      // Step 2: brief pause, then redraw
+      setTimeout(() => {
+        rect.animate(
+          [{ strokeDashoffset: perimeter }, { strokeDashoffset: 0 }],
+          { duration: 1200, easing: "cubic-bezier(0.4,0,0.2,1)", fill: "forwards" }
+        );
+      }, 300);
+    });
+  }
+
+  // Initial draw fires via CSS animation; start cycling after first cycle completes
+  document.querySelectorAll(".btn-secondary").forEach(btn => {
+    // First cycle starts after the initial CSS animation (1s delay + 1.2s draw = ~2.5s)
+    setTimeout(() => {
+      setInterval(() => cycleBorderDraw(btn), 7000);
+    }, 2500);
+  });
+
+  // ── btn-ghost-white: fill sweep, reverses and replays every 7s ──
+  function cycleFillSweep(btn) {
+    // Step 1: retract right-to-left
+    btn.classList.remove("border-draw-ready");
+    btn.classList.add("border-draw-reverse");
+    // Step 2: after retract completes (~500ms), reset origin and sweep in again
+    setTimeout(() => {
+      btn.classList.remove("border-draw-reverse");
+      // tiny pause so ::before resets transform-origin to left
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          btn.classList.add("border-draw-ready");
+        });
+      });
+    }, 550);
+  }
+
+  const btnObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // First trigger on scroll
+        e.target.classList.add("border-draw-ready");
+        btnObserver.unobserve(e.target);
+        // Then cycle every 7s
+        setTimeout(() => {
+          setInterval(() => cycleFillSweep(e.target), 7000);
+        }, 800);
+      }
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll(".btn-ghost-white").forEach(btn => btnObserver.observe(btn));
+
+  // Nav scroll shadow
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 40);
+  });
+
+  // ── Hamburger drawer ──
+  function initDrawer() {
+    const hamburger = document.getElementById("navHamburger");
+    const drawer    = document.getElementById("navDrawer");
+    const overlay   = document.getElementById("navOverlay");
+    const closeBtn  = document.getElementById("navDrawerClose");
+
+    if (!hamburger || !drawer || !overlay || !closeBtn) return;
+
+    function openDrawer() {
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    hamburger.addEventListener("click", openDrawer);
+    closeBtn.addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
+
+    // Close drawer on any drawer link click
+    drawer.querySelectorAll(".drawer-link").forEach(link => {
+      link.addEventListener("click", closeDrawer);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDrawer);
+  } else {
+    initDrawer();
+  }
+</script>
+</body>
+</html>
