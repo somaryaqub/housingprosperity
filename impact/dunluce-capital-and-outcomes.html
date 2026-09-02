@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Housing Community: The Impact of Investors, Lenders and Givers</title>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800;900&family=Alegreya:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --field:#2E5340; --field-deep:#22402F; --panel:#294B39;
+    --cream:#F3EDE1; --dim:rgba(243,237,225,.6); --dimmer:rgba(243,237,225,.4);
+    --terra:#E4A877; --terra-mid:#C98650; --terra-deep:#A85F34;
+    --urgent:#C7402F; --mission:#E8C266; --rule:rgba(243,237,225,.16);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--field);color:var(--cream);font-family:'Alegreya Sans',system-ui,sans-serif;font-size:16.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:44px 26px 80px}
+  html{scroll-behavior:smooth}
+  [id]{scroll-margin-top:78px}
+  .navbtn{position:fixed;top:18px;right:18px;z-index:30;width:44px;height:44px;display:flex;
+    flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;
+    background:var(--field-deep);border:1px solid var(--rule);border-radius:6px}
+  .navbtn span{display:block;width:19px;height:2px;background:var(--cream);border-radius:1px;transition:transform .2s,opacity .2s}
+  .navbtn[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .navbtn[aria-expanded=true] span:nth-child(2){opacity:0}
+  .navbtn[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .navbtn:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+  .navpanel{position:fixed;top:70px;right:18px;z-index:29;display:flex;flex-direction:column;
+    min-width:236px;padding:8px;background:var(--field-deep);border:1px solid var(--rule);
+    border-radius:6px;box-shadow:0 12px 32px rgba(0,0,0,.34)}
+  .navpanel[hidden]{display:none}
+  .navpanel a{padding:9px 12px;font-size:14.5px;font-weight:700;color:var(--dim);
+    text-decoration:none;border-radius:4px}
+  .navpanel a:hover,.navpanel a:focus-visible{background:var(--panel);color:var(--cream);outline:none}
+  @media(max-width:560px){.navpanel{left:18px;right:18px;min-width:0}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.navbtn span{transition:none}}
+  h1{font-weight:900;font-size:clamp(27px,3.9vw,42px);line-height:1.06;letter-spacing:-.016em;margin:0 0 12px;max-width:26ch}
+  .sub{font-family:'Alegreya',Georgia,serif;font-size:18px;line-height:1.58;color:var(--dim);max-width:70ch;margin:0 0 38px}
+  h2{font-weight:800;font-size:22px;letter-spacing:-.01em;margin:56px 0 6px}
+  h2 + .lede{font-size:15px;color:var(--dim);margin:0 0 22px;max-width:74ch}
+  .sub + h2{margin-top:0}
+  h2 + .hero,h2 + .stack{margin-top:16px}
+
+  /* hero impact */
+  .hero{margin:0 0 40px}
+  .hzrow{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+  .hzlab{font-size:15px;font-weight:700;color:var(--dim)}
+  .hz{display:flex;gap:6px}
+  .hz button{padding:7px 15px;font:inherit;font-size:14px;font-weight:700;background:none;color:var(--dim);border:1px solid var(--rule);border-radius:4px;cursor:pointer}
+  .hz button[aria-pressed=true]{background:var(--terra);color:var(--field-deep);border-color:var(--terra)}
+  .hz button:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+  .heronums{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 40px;padding:32px 34px;background:var(--field-deep);border-radius:6px}
+  .hn .hnn{font-weight:900;font-size:clamp(30px,4.2vw,46px);letter-spacing:-.025em;line-height:1;color:var(--terra);transition:color .2s}
+  .hn .hnn.gold{color:var(--mission)}
+  .hn .hnl{font-size:14.5px;color:var(--dim);margin-top:9px;line-height:1.35;max-width:26ch}
+  .rwread{font-family:'Alegreya',Georgia,serif;font-size:17px;line-height:1.62;color:var(--dim);max-width:76ch;margin:20px 0 0}
+  .heronote{font-family:'Alegreya',Georgia,serif;font-size:16.5px;line-height:1.6;color:var(--dim);margin:18px 0 0;max-width:76ch}
+  @media(max-width:900px){.heronums{grid-template-columns:1fr 1fr;gap:24px;padding:24px}}
+  @media(max-width:560px){.heronums{grid-template-columns:1fr}}
+
+  /* stack */
+  .stack{display:flex;height:78px;border-radius:5px;overflow:hidden;background:rgba(0,0,0,.16)}
+  .seg{display:flex;flex-direction:column;justify-content:center;padding:0 11px;min-width:0;overflow:hidden;transition:width .4s cubic-bezier(.32,.72,.28,1)}
+  .seg b{font-weight:800;font-size:13px;white-space:nowrap}
+  .seg span{font-weight:700;font-size:16px;white-space:nowrap}
+  .seg.hide b,.seg.hide span{display:none}
+  .s-g{background:var(--terra-mid);color:#fff}.s-b{background:var(--terra-deep);color:#fff}
+  .s-p{background:var(--urgent);color:#fff}.s-q{background:var(--mission);color:var(--field-deep)}
+  .s-i{background:transparent;color:var(--cream);border:2px dashed rgba(228,168,119,.8)}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin:12px 0 34px;font-size:13.5px;color:var(--dim)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+
+  /* controls */
+  .ctls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px 40px;padding:26px 28px;background:var(--field-deep);border-radius:6px}
+  .ctl label{display:block;font-weight:700;font-size:14px;margin-bottom:3px}
+  .ctl .v{font-weight:900;font-size:24px;letter-spacing:-.012em;line-height:1.1}
+  .ctl .h{font-size:13px;color:var(--dimmer);margin-top:5px}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;margin:13px 0 0;background:rgba(243,237,225,.24);border-radius:2px;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--terra);border:3px solid var(--field-deep)}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--terra);border:3px solid var(--field-deep)}
+  input[type=range]:focus-visible{outline:2px solid var(--terra);outline-offset:5px}
+  #flag{margin-top:14px;padding:11px 14px;border-radius:4px;font-size:14px;background:rgba(232,194,102,.12);border-left:3px solid var(--mission)}
+  #flag.warn{background:rgba(199,64,47,.16);border-left-color:var(--urgent)}
+
+  /* dollar match */
+  .match{margin-top:20px;padding:24px 26px;background:var(--field-deep);border-radius:6px}
+  .matchhead{font-size:17px;font-weight:800;margin:0 0 4px}
+  .matchsub{font-size:14px;color:var(--dim);margin:0 0 20px;max-width:76ch}
+  .matchtier{display:grid;grid-template-columns:210px 1fr;gap:22px;align-items:center;
+    padding:16px 0;border-top:1px solid var(--rule)}
+  .tierlabel{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--dim);line-height:1.4}
+  .tierlabel b{color:var(--cream);font-size:14.5px}
+  .tiernum{flex:none;width:24px;height:24px;border-radius:50%;background:var(--terra);color:var(--field-deep);
+    font-weight:900;font-size:13.5px;display:flex;align-items:center;justify-content:center}
+  .matchrow{display:flex;flex-wrap:wrap;gap:14px 26px}
+  .mi .min{font-weight:900;font-size:clamp(19px,2.2vw,25px);letter-spacing:-.02em;line-height:1;color:var(--terra)}
+  .mi .min.gold{color:var(--mission)}
+  .mi .mil{font-size:12.5px;color:var(--dim);margin-top:5px;max-width:16ch;line-height:1.3}
+  .matchnote{font-family:'Alegreya',Georgia,serif;font-size:15.5px;line-height:1.6;color:var(--dim);
+    margin:16px 0 0;max-width:78ch;padding-top:14px;border-top:1px solid var(--rule)}
+  @media(max-width:760px){.matchtier{grid-template-columns:1fr;gap:14px}}
+
+  /* investor pools */
+  .pools{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .pool{background:var(--panel);border-radius:6px;padding:22px 24px}
+  .pool .poolsize{font-weight:900;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.025em;line-height:1;color:var(--terra)}
+  .pool h3{font-size:17px;font-weight:800;margin:9px 0 9px}
+  .pool p{font-size:14.5px;color:var(--dim);margin:0 0 9px;line-height:1.5}
+  .pool .poolref{font-size:12.5px;color:var(--dimmer);margin:0;line-height:1.45}
+  @media(max-width:900px){.pools{grid-template-columns:1fr}}
+
+  /* three ledgers */
+  .ledgers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .led{background:var(--panel);border-radius:6px;padding:22px 22px 20px;border-top:4px solid}
+  .led.inv{border-color:var(--terra)}.led.lend{border-color:var(--mission)}.led.give{border-color:var(--urgent)}
+  .led h3{font-weight:900;font-size:19px;margin:0 0 2px}
+  .led .who{font-size:13.5px;color:var(--dimmer);margin:0 0 16px}
+  .led dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:9px 12px;font-size:14.5px}
+  .led dt{color:var(--dim)}
+  .led dd{margin:0;font-weight:800;text-align:right;white-space:nowrap}
+  .led dd.big{font-size:19px}
+  .led .rank{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim)}
+
+  /* math blocks */
+  .maths{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .m{background:var(--panel);border-radius:5px;padding:18px 20px}
+  .m h4{font-size:15.5px;font-weight:800;margin:0 0 10px}
+  .eq{font-family:'Alegreya Sans',sans-serif;font-size:14.5px;line-height:1.85;color:var(--cream)}
+  .eq .op{color:var(--dimmer)}
+  .eq .r{font-weight:800;color:var(--terra)}
+  .eq .rm{font-weight:800;color:var(--mission)}
+  .src{font-size:12.5px;color:var(--dimmer);margin:12px 0 0;line-height:1.5}
+  .src a{color:var(--dim)}
+  .tier{display:inline-block;font-size:11.5px;font-weight:800;padding:2px 7px;border-radius:3px;margin-bottom:9px;letter-spacing:.02em}
+  .t1{background:rgba(228,168,119,.9);color:var(--field-deep)}
+  .t2{background:rgba(232,194,102,.85);color:var(--field-deep)}
+  .t3{background:rgba(243,237,225,.2);color:var(--cream)}
+
+  /* assumption inputs */
+  .assume{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px 22px;padding:22px 24px;background:var(--field-deep);border-radius:6px;margin-top:16px}
+  .a label{display:block;font-size:13.5px;color:var(--dim);margin-bottom:3px}
+  .a .av{font-weight:800;font-size:18px}
+  .a select{width:100%;margin-top:6px;padding:8px 10px;font:inherit;font-size:14px;font-weight:700;background:var(--panel);color:var(--cream);border:1px solid var(--rule);border-radius:4px;cursor:pointer}
+  .a select:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+
+  table.res{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
+  table.res th{text-align:left;font-weight:700;color:var(--dim);font-size:13.5px;padding:0 12px 9px 0;border-bottom:1px solid var(--rule)}
+  table.res td{padding:11px 12px 11px 0;border-bottom:1px solid var(--rule)}
+  table.res td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+  table.res td.eqcell{font-size:13.5px;color:var(--dimmer)}
+
+  .runway{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:18px;padding:24px 26px;background:var(--field-deep);border-radius:6px}
+  .rw .rwn{font-weight:900;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;line-height:1;color:var(--terra)}
+  .rw.big .rwn{color:var(--cream)}
+  .rw .rwl{font-size:13.5px;color:var(--dim);margin-top:7px;line-height:1.35}
+  .tl{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+  .tlrow{display:grid;grid-template-columns:76px 190px 1fr;align-items:center;gap:16px}
+  .tld{font-size:13.5px;font-weight:800;color:var(--dim)}
+  .tlb{height:12px;border-radius:6px;display:block}
+  .tlb.urgent{background:var(--urgent)}.tlb.mission{background:var(--mission)}.tlb.terra{background:var(--terra)}
+  .tlt{font-size:14.5px;color:var(--dim);line-height:1.45}
+  .tlt b{color:var(--cream)}
+  @media(max-width:900px){.runway{grid-template-columns:1fr 1fr}.tlrow{grid-template-columns:60px 90px 1fr;gap:10px}}
+
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--dimmer);max-width:80ch;line-height:1.6}
+  @media(max-width:900px){
+    .maths,.ctls{grid-template-columns:1fr}
+    .stack{height:66px}
+    /* keep the three ledgers side by side, just tighter */
+    .ledgers{gap:12px}
+    .led{padding:18px 16px 16px}
+    .led h3{font-size:17px}
+    .led .who{font-size:12.5px;margin-bottom:13px}
+    .led dl{font-size:13.5px;gap:8px 10px}
+    .led dd{white-space:normal}
+    .led dd.big{font-size:17px}
+    .led .rank{font-size:12.5px;margin-top:13px;padding-top:11px}
+  }
+  @media(max-width:700px){
+    .led dl{grid-template-columns:1fr;gap:2px 0}
+    .led dt{font-size:13px}
+    .led dd{text-align:left;margin-bottom:7px}
+  }
+  /* only stack on genuinely narrow screens */
+  @media(max-width:620px){.ledgers{grid-template-columns:1fr}.led dl{grid-template-columns:1fr auto;gap:9px 12px}.led dd{text-align:right;margin-bottom:0}}
+</style>
+</head>
+<body>
+<button class="navbtn" id="navbtn" aria-expanded="false" aria-controls="navpanel" aria-label="Jump to a section">
+  <span></span><span></span><span></span>
+</button>
+<nav class="navpanel" id="navpanel" hidden aria-label="Sections">
+  <a href="#impact">Impact highlights</a>
+  <a href="#capitalstack">Capital stack</a>
+  <a href="#ledgers">Investors, lenders, givers</a>
+  <a href="#timing">Time period to raise capital</a>
+  <a href="#investors">Who the investors are</a>
+  <a href="#payout">The payout plan</a>
+  <a href="#outcomes">Impact in depth</a>
+  <a href="#equations">The equations</a>
+</nav>
+<div class="wrap">
+
+<h1>Housing Community: the impact of investors, lenders and givers</h1>
+<p class="sub">A $37,644,270 development at 365 Dunluce Road NW: 96 townhomes, 296 bedrooms, 72 units at below-market rent. The project is funded by grants, philanthropy, interest-free loans and investment. Each of those four sources is priced differently and repaid differently. This page shows what each one receives, and what the building produces, with the arithmetic for every figure.</p>
+
+<h2 id="impact">Impact</h2>
+<div class="hero">
+  <div class="hzrow">
+    <span class="hzlab">Impact over</span>
+    <div class="hz" role="group" aria-label="Time horizon">
+      <button data-hz="20" aria-pressed="false">20 years</button>
+      <button data-hz="30" aria-pressed="true">30 years</button>
+      <button data-hz="50" aria-pressed="false">50 years</button>
+    </div>
+  </div>
+  <div class="heronums">
+    <div class="hn"><div class="hnn" id="h1"></div><div class="hnl">people housed</div></div>
+    <div class="hn"><div class="hnn" id="h2"></div><div class="hnl">years of stable housing provided</div></div>
+    <div class="hn"><div class="hnn" id="h3"></div><div class="hnl">children housed, <span id="h3a"></span> of them in below-market homes</div></div>
+    <div class="hn"><div class="hnn" id="h4"></div><div class="hnl">more youth finishing Grade 12</div></div>
+    <div class="hn"><div class="hnn" id="h5"></div><div class="hnl">added lifetime earnings for those children</div></div>
+    <div class="hn"><div class="hnn gold" id="h6"></div><div class="hnl">surplus returned to charitable programming</div></div>
+  </div>
+  <p class="heronote" id="heronote"></p>
+</div>
+
+<h2 id="capitalstack">Capital stack</h2>
+<div class="stack" id="capital" role="img" aria-label="Capital stack"></div>
+<div class="legend">
+  <span><i style="background:#C98650"></i>City and Province grants</span>
+  <span><i style="background:#A85F34"></i>Build Canada Homes (application pending)</span>
+  <span><i style="background:#C7402F"></i>Philanthropy</span>
+  <span><i style="background:#E8C266"></i>Qard hasan</span>
+  <span><i style="border:2px dashed rgba(228,168,119,.8);width:8px;height:8px"></i>Investment required</span>
+</div>
+
+<div class="ctls">
+  <div class="ctl">
+    <label for="phil">Philanthropy raised</label>
+    <div class="v" id="philV"></div>
+    <input type="range" id="phil" min="400000" max="9000000" step="100000" value="400000">
+    <p class="h">Floor is $400,000, the amount required to secure the offer to purchase. Below that the project does not proceed.</p>
+  </div>
+  <div class="ctl">
+    <label for="qard">Qard hasan raised</label>
+    <div class="v" id="qardV"></div>
+    <input type="range" id="qard" min="0" max="5000000" step="100000" value="1000000">
+    <p class="h">Variable term lengths available, set by agreement with each lender. Term has little effect on the project as a whole; the amount is what moves the numbers.</p>
+  </div>
+  <div class="ctl">
+    <label for="bch">Build Canada Homes, $4,000,000</label>
+    <div class="v" id="bchV"></div>
+    <input type="range" id="bch" min="0" max="1" step="1" value="1" aria-label="Include Build Canada Homes">
+    <p class="h">Application submitted December 2025. Not a commitment.</p>
+  </div>
+  <div id="flag" style="grid-column:1/-1"></div>
+</div>
+
+<h2 id="ledgers">The three ledgers</h2>
+<p class="lede">Grants are excluded here because they neither receive a return nor rank in the waterfall. The three parties below all put capital in.</p>
+<div class="ledgers">
+  <div class="led inv">
+    <h3>Investors</h3>
+    <p class="who">Halal equity and financing through the fund</p>
+    <dl>
+      <dt>Capital contributed</dt><dd class="big" id="iv1"></dd>
+      <dt>Target annual return</dt><dd>~3.5%</dd>
+      <dt>Year 1 claim on net operating income, if met</dt><dd id="iv2"></dd>
+      <dt>Share of NOI required, if met</dt><dd id="iv3"></dd>
+      <dt>Principal returned in full by</dt><dd id="iv4"></dd>
+      <dt>Tranches short of available surplus</dt><dd id="iv6"></dd>
+      <dt>Capital ranking below them</dt><dd id="iv5"></dd>
+    </dl>
+    <p class="rank">Last to absorb loss. Paid before charitable allocation. The 3.5% is a target within a revenue-share structure, not a fixed or promised return: distributions depend on net operating income in each period, and a Shariah-compliant structure cannot guarantee a return. Redemption tranches are a plan, not a covenant.</p>
+  </div>
+  <div class="led lend">
+    <h3>Lenders</h3>
+    <p class="who">Qard hasan, interest-free</p>
+    <dl>
+      <dt>Capital lent</dt><dd class="big" id="lv1"></dd>
+      <dt>Return</dt><dd>0%</dd>
+      <dt>Term</dt><dd>Variable</dd>
+      <dt>Principal returned</dt><dd>In full</dd>
+      <dt>Investment displaced, per dollar</dt><dd>$1.00</dd>
+      <dt>Investor claim removed, per dollar</dt><dd>~3.5% a year</dd>
+    </dl>
+    <p class="rank">Ranks ahead of investor redemption, behind operating costs. The contribution is the time value of the money, not the money itself. Early-year surplus comfortably supports around $1,000,000 on a five-year term; larger amounts want a longer term or repayment from a refinancing rather than from rent.</p>
+  </div>
+  <div class="led give">
+    <h3>Givers</h3>
+    <p class="who">Sadaqah, zakat where eligible, grants from foundations</p>
+    <dl>
+      <dt>Capital given</dt><dd class="big" id="gv1"></dd>
+      <dt>Financial return</dt><dd>None</dd>
+      <dt>The first $400,000 unlocks</dt><dd id="gv3"></dd>
+      <dt>Investment displaced, per dollar</dt><dd>$1.00</dd>
+      <dt>Investor claim removed, per dollar</dt><dd>~3.5% a year</dd>
+      <dt>Investor returns avoided, per dollar</dt><dd id="gv6"></dd>
+      <dt>Charitable surplus, chosen horizon</dt><dd id="gv2"></dd>
+      <dt>Added surplus, per extra dollar given</dt><dd id="gv5"></dd>
+      <dt>Community ownership advanced to</dt><dd id="gv4"></dd>
+    </dl>
+    <p class="rank">First to absorb loss, alongside grants. Receives nothing back. Every dollar permanently removes a dollar of investor claim and the 3.5% annual cost attached to it. The per-dollar figures are marginal, not averages: they show what one more dollar does. The first $400,000 is different in kind, since without it the offer to purchase lapses and nothing in this stack happens, which is why it is stated separately.</p>
+  </div>
+</div>
+
+<div class="match">
+  <p class="matchhead">How a donated dollar is joined by other capital</p>
+  <p class="matchsub">The first $400,000 and the dollars after it do different jobs, so they are shown separately. Neither figure weakens as the campaign succeeds.</p>
+  <div class="matchtier">
+    <div class="tierlabel"><span class="tiernum">1</span><div><b>The threshold gift</b><br>Each dollar of the first $400,000</div></div>
+    <div class="matchrow" id="matchrow"></div>
+  </div>
+  <div class="matchtier">
+    <div class="tierlabel"><span class="tiernum">2</span><div><b>Every dollar after that</b><br>Substitutes rather than attracts</div></div>
+    <div class="matchrow" id="matchrow2"></div>
+  </div>
+  <p class="matchnote" id="matchnote"></p>
+</div>
+
+<h2 id="timing">Time period to raise capital</h2>
+<p class="lede">Only the first $400,000 is urgent. Everything else is raised against a capital close at the end of 2031, and the redemption plan then runs for a quarter of a century after that. The figure that matters is not the total, it is the monthly rate.</p>
+<div class="runway">
+  <div class="rw big">
+    <div class="rwn" id="rw1"></div>
+    <div class="rwl">still to raise after philanthropy and loans</div>
+  </div>
+  <div class="rw">
+    <div class="rwn" id="rw2"></div>
+    <div class="rwl">months until capital close</div>
+  </div>
+  <div class="rw">
+    <div class="rwn" id="rw3"></div>
+    <div class="rwl">per month, average</div>
+  </div>
+  <div class="rw">
+    <div class="rwn" id="rw4"></div>
+    <div class="rwl">per year, average</div>
+  </div>
+</div>
+<div class="tl">
+  <div class="tlrow"><span class="tld">Now</span><span class="tlb urgent" style="width:6%"></span><span class="tlt"><b>$400,000 philanthropy.</b> Secures the offer to purchase. This is the only hard deadline in the project.</span></div>
+  <div class="tlrow"><span class="tld" id="tlmid"></span><span class="tlb mission" style="width:34%"></span><span class="tlt"><b id="tlphil"></b> further philanthropy and qard hasan. Raised alongside the investment, no single cliff.</span></div>
+  <div class="tlrow"><span class="tld" id="tlend"></span><span class="tlb terra" style="width:62%"></span><span class="tlt"><b id="tlinv"></b> investment. Staged to capital close, then repaid in five tranches to year 25 of operations.</span></div>
+</div>
+<p class="rwread" id="rwNote"></p>
+
+<h2 id="investors">Who the investors are</h2>
+<p class="lede">The raise is not addressed to the general market. It is addressed to four pools of capital that are already looking for exactly this: patient, Shariah-compliant, housing-focused, impact-measured. Each is large enough that Dunluce is a rounding error within it, which is the point. The constraint on this project has never been the amount of capital in the world. It is the number of investable, credible, faith-aligned housing deals.</p>
+<div class="pools">
+  <div class="pool">
+    <div class="poolsize">$160B</div>
+    <h3>Canadian philanthropic foundations</h3>
+    <p>Over 11,000 public and private foundations hold roughly $160 billion in assets and granted $10.7 billion in 2023. A growing share are deploying endowment capital as impact and mission-related investment, not only as grants.</p>
+    <p class="poolref">Philanthropic Foundations Canada, 2024 Landscape Report, T3010 2023 data</p>
+  </div>
+  <div class="pool">
+    <div class="poolsize">$755M</div>
+    <h3>Federal Social Finance Fund</h3>
+    <p>A repayable federal fund, with $400 million placed with three wholesalers (Boann Social Impact, Realize Capital Partners, Fonds de finance sociale CAP Finance) over the first five years. It is mandated to draw $2 of private capital for every public dollar, and at least 35% must go to initiatives advancing social equity.</p>
+    <p class="poolref">Employment and Social Development Canada. As of December 2024 the wholesalers had produced over $250 million of investment in at least 83 social purpose organizations</p>
+  </div>
+  <div class="pool">
+    <div class="poolsize">$350M</div>
+    <h3>Impact investing platforms</h3>
+    <p>SVX clients have mobilised about $350 million in capital, with 1,200 investors engaged and more than 500 enterprises, organisations and funds supported. Its affordable housing and community real estate practice is directly relevant, including community bond structures for housing providers.</p>
+    <p class="poolref">SVX, Our Impact page. Note that SVX's home page states $34.2 million on the same measure; the two pages disagree</p>
+  </div>
+  <div class="pool">
+    <div class="poolsize">1.8M</div>
+    <h3>Canadian Muslim households</h3>
+    <p>About 1.8 million Muslims in Canada as of the 2021 census, projected to reach 2.7 million by 2030. Only four providers offer Shariah-compliant home financing nationally, and there is no established vehicle for faith-aligned investment in affordable rental housing. This is the pool with the least competition for its capital and the strongest reason to prefer this structure.</p>
+    <p class="poolref">Statistics Canada 2021 census; global Islamic finance assets reached $5.98 trillion in 2024</p>
+  </div>
+</div>
+<h2 id="payout">The payout plan, period by period</h2>
+<p class="lede">The pro forma does not let surplus flow freely to redemption. It sets a fixed redemption tranche at the end of each period (Fund Revenue Share, rows 127 and 132), with equity bought out at the end of year 4 and refinanced through halal financing. Investors are repaid in full at the end of year 25. Where a tranche exceeds the operating surplus available in that period, the difference shows in the shortfall column: that is the gap philanthropy closes.</p>
+<table class="res">
+  <thead><tr><th>Period</th><th style="text-align:right">Net operating income</th><th style="text-align:right">Investor claim at 3.5%</th><th style="text-align:right">Surplus</th><th style="text-align:right">Tranche due</th><th style="text-align:right">Shortfall</th><th style="text-align:right">Mission</th><th style="text-align:right">Balance</th></tr></thead>
+  <tbody id="sched"></tbody>
+</table>
+<p class="src" id="schedNote" style="margin-top:14px;max-width:80ch"></p>
+
+<h2 id="outcomes">Impact in depth</h2>
+<p class="lede">These figures do not change with the amount of philanthropy raised: the building is 96 units either way. Philanthropy changes how much surplus is released for charitable allocation and how soon investors are repaid, not how many homes exist. Every row below shows its own equation. Evidence tiers: <span class="tier t1">Counted</span> from the pro forma and two occupancy assumptions, <span class="tier t2">Modelled</span> from the project's own financials, <span class="tier t3">Benchmarked</span> from published research on other populations.</p>
+
+<div class="assume">
+  <div class="a"><label for="ppb">People per bedroom</label><div class="av" id="ppbV"></div><input type="range" id="ppb" min="1" max="2" step="0.1" value="1.5"></div>
+  <div class="a"><label for="stay">Average tenancy, years</label><div class="av" id="stayV"></div><input type="range" id="stay" min="2" max="10" step="1" value="5"></div>
+  <div class="a"><label for="solo">Homes with one parent</label><div class="av" id="soloV"></div><input type="range" id="solo" min="0" max="60" step="5" value="30"></div>
+  <div class="a"><label for="gap">Completion drop from inadequate housing</label><div class="av" id="gapV"></div><input type="range" id="gap" min="5" max="20" step="1" value="13"></div>
+  <div class="a"><label for="uns">Would otherwise be inadequately housed</label><div class="av" id="unsV"></div><input type="range" id="uns" min="0" max="100" step="5" value="80"></div>
+  <div class="a"><label for="thresh">Minimum stabilising period</label><div class="av" id="threshV"></div><input type="range" id="thresh" min="1" max="6" step="1" value="1"></div>
+  <div class="a"><label for="qual">Exits where the family has the means to move up</label><div class="av" id="qualV"></div><input type="range" id="qual" min="50" max="100" step="5" value="85"></div>
+  <div class="a" style="grid-column:span 2"><label>Implied household composition, for checking against intake data</label><div class="av" style="font-size:15px;font-weight:700;line-height:1.45" id="compV"></div></div>
+  <div class="a"><label for="attr">Transfer of measured earnings effect</label><div class="av" id="attrV"></div><input type="range" id="attr" min="0" max="60" step="5" value="30"></div>
+</div>
+
+<table class="res">
+  <thead><tr><th style="width:30%">Outcome</th><th>Equation</th><th>Tier</th><th style="text-align:right">Result</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+
+<h2 id="equations">The equations behind the money</h2>
+<div class="maths">
+  <div class="m">
+    <span class="tier t2">Modelled</span>
+    <h4>Investor share of net operating income</h4>
+    <div class="eq" id="eq1"></div>
+    <p class="src">Verified against the pro forma: period 2 gives 3.5% &times; $19,227,313 &divide; $1,025,845 = 65.6%, matching the locked value in the model. Every dollar of philanthropy or qard hasan reduces capital at work by one dollar and lowers this share.</p>
+  </div>
+  <div class="m">
+    <span class="tier t2">Modelled</span>
+    <h4>Charitable surplus per dollar given</h4>
+    <div class="eq" id="eq2"></div>
+    <p class="src">Surplus is net operating income less the investor claim, less qard hasan repayment, less the redemption tranche due in that period. That surplus is what the pro forma makes available for charitable allocation, so it flows to IslamicFamily's programming: food security, housing support, family violence services. Baseline is the same building with $400,000 of philanthropy and nothing more.</p>
+  </div>
+  <div class="m">
+    <span class="tier t1">Counted</span>
+    <h4>People housed</h4>
+    <div class="eq" id="eq3"></div>
+    <p class="src">Unit mix from the pro forma: 48 two-bedroom, 16 three-bedroom, 8 four-bedroom, 24 five-bedroom. 296 bedrooms total, 222 of them in the 72 below-market units.</p>
+  </div>
+  <div class="m">
+    <span class="tier t3">Benchmarked</span>
+    <h4>Grade 12 completion: stabilise, move up, carry it forward</h4>
+    <div class="eq" id="eq4"></div>
+    <p class="src">Children are derived from the unit mix rather than assumed: 296 bedrooms at 1.5 people each is 444 residents across 96 homes, or 4.6 people per home. Subtracting the adults, at two per home less one for each single-parent home, leaves the children. Only children in the 72 below-market homes are counted for this effect, since theirs is the population with an inadequate-housing counterfactual. The mechanism assumed here is stabilisation rather than exposure: a family needs a minimum period of secure, affordable tenancy to stabilise, and once stabilised the gain travels with the child, including after the family moves on to market housing. Nothing is pro-rated by years of residency, because the thesis is that the benefit persists after exit. Two things follow. A child must arrive young enough to complete the threshold before their Grade 12 year, which is why the age factor is (18 less the threshold) divided by 18. The stabilising period is set to one year, on the reasoning that a refugee or newcomer family's first year in secure, affordable housing is where stabilisation actually happens: school enrolment settles, income begins, and the sequence of short-notice moves stops. Note the consequence: at one year almost no child is excluded on age, so the age factor stops filtering and the estimate rests more heavily on the upward-exit rate and on the 13-point figure itself. A longer period is the more conservative setting if a sceptical funder wants one. And because families do not leave affordable housing for housing they cannot afford, an exit is the success signal rather than the end of the benefit: a household that moves up after three years counts the same as one that stays ten. The 15% discount covers exits that are not upward, meaning eviction, family breakdown or leaving the city, and that share is the figure most worth replacing with IslamicFamily's own turnover records. The 13-point drop is IslamicFamily's own prior analysis of inadequate housing and Grade 12 completion. It is corroborated independently by Add Health, where adolescents with at least one move in a 12-month period showed roughly half the likelihood of holding a diploma by age 25, whether the move was to a poorer or a less-poor neighbourhood (PubMed 26188449). Converting that odds ratio against an 85% baseline yields an 11.1-point gap, close to the 13 used here. Both figures are observational associations, so treat the result as an order of magnitude.</p>
+  </div>
+  <div class="m">
+    <span class="tier t3">Benchmarked</span>
+    <h4>Lifetime earnings of children</h4>
+    <div class="eq" id="eq5"></div>
+    <p class="src">$302,000 lifetime gain per child (about $99,000 in present value at age eight, discounted at 3%) is the Moving to Opportunity estimate for children who moved from high-poverty public housing to a lower-poverty neighbourhood before age 13 (Chetty, Hendren and Katz, American Economic Review 2016). Dunluce is a different intervention in a different country, so the transfer factor is a judgment, not a finding. At 100% transfer this figure would be indefensible; the default of 30% is deliberately conservative.</p>
+  </div>
+  <div class="m">
+    <span class="tier t3">Benchmarked</span>
+    <h4>Why tenancy stability is the mechanism</h4>
+    <div class="eq">Families in assisted housing show a <span class="r">14%</span> lower rate of residential moves than comparable families in private-market rentals.<br><span class="op">Each additional housing quality problem predicts a</span> <span class="r">6%</span> <span class="op">higher rate of moves.</span></div>
+    <p class="src">Urban Institute Upward Mobility framework, drawing on Kull, Coley and Lynch. This is the link between the physical asset and the outcomes above: subsidised, well-maintained housing reduces moves, and reduced moves are what the education and earnings literature responds to.</p>
+  </div>
+</div>
+
+<footer>
+Financial figures derive from the Dunluce pro forma V29 (total capital cost $37,644,270; net operating income series and 3.5% target return taken from the model). Redemption follows the period-end tranche plan set out in the pro forma; surplus after the investor claim and the tranche due is what the pro forma makes available for charitable allocation. Grant amounts marked pending are applications, not commitments. Occupancy at 1.5 people per bedroom and a five-year average tenancy are planning assumptions supplied by IslamicFamily, not observed data. Tier 3 outcomes apply findings from studies of other populations, chiefly in the United States, to this cohort; they are estimates of plausible magnitude and should be presented as such. Capital pool figures are sourced on each card and are context for the size of the raise, not commitments or indications of interest from any of those pools. The 3.5% return is a target used to model the revenue share, not a fixed, promised or guaranteed return; actual distributions depend on net operating income, and the redemption schedule is a plan rather than a covenant. Nothing here is an offer to sell securities. Philanthropic gifts carry no financial return.
+</footer>
+</div>
+
+<script>
+const NOI=[833112,923222,968359,1015462,889629,940963,994574,1050576,1109089,1170241,1234167,1301006,1370908,1444029,1520532,1600593,1684392,1772122,1863984,1960192,2060968,2166549,2277181,2393125,2514654,2642058,2775637,2915712,3062616,3216702,3378338,3547913,3725835,3912532,4108454,4314073,4529884,4756408,4994190,5243801,5505842,5780940,6069755,6372976,6691326,7025560,7376469,7744882,8131662,8537714];
+const TOTAL=37644270, GRANT_CONF=12916957, GRANT_BCH=4000000, R=0.035;
+const BEDS=296, ABEDS=222, UNITS=96, AUNITS=72;
+const MTO_LIFETIME=302000, MTO_PV=99000;
+const S0H=30; // default horizon, also used for the no-philanthropy baseline
+const QARD_TERM=10; // modelling default only; actual terms are set per lender
+
+const m0=n=>'$'+Math.round(n).toLocaleString('en-CA');
+const mc=n=>Math.abs(n)<1000?'$'+Math.round(n).toLocaleString('en-CA'):(Math.abs(n)>=1e6?'$'+(n/1e6).toFixed(n>=1e7?1:2)+'M':'$'+Math.round(n/1e3)+'K');
+const num=n=>Math.round(n).toLocaleString('en-CA');
+const el=id=>document.getElementById(id);
+
+// Payout plan as specified in the pro forma (Fund Revenue Share, rows 127 and 132):
+// fixed period-end redemption tranches, deposit and equity handled at end of period 1.
+const PERIODS=[{s:1,e:4,cap:1500000},{s:5,e:10,cap:1400000},{s:11,e:15,cap:3700000},
+               {s:16,e:20,cap:7000000},{s:21,e:25,cap:9000000},{s:26,e:30,cap:0},
+               {s:31,e:35,cap:0},{s:36,e:50,cap:0}];
+
+function run(P,Q,term,bch,H){
+  const grants=GRANT_CONF+(bch?GRANT_BCH:0);
+  let C=Math.max(TOTAL-grants-P-Q,0); const C0=C;
+  let qOut=Q,arrears=0,peakArrears=0,cumM=0;
+  let repaid=null,qardCleared=null,surplusOverTerm=0,totalShortfall=0;
+  const schedule=[]; const qYears=[];
+  for(const p of PERIODS.filter(x=>x.s<=H).map(x=>({...x,e:Math.min(x.e,H)}))){
+    let noi=0,claim=0,qpay=0;
+    for(let y=p.s;y<=p.e;y++){
+      const yn=NOI[y-1], ret=C>0?R*C:0;
+      noi+=yn; claim+=ret;
+      if(y<=term) surplusOverTerm+=yn-ret;
+      const sched=(y<=term&&qOut>0)?Math.min(qOut,Q/term):0;
+      const due=Math.min(sched+arrears,qOut);
+      const pay=Math.min(Math.max(yn-ret,0),due);
+      arrears=due-pay; peakArrears=Math.max(peakArrears,arrears);
+      qOut-=pay; qpay+=pay;
+      if(Q>0&&y<=Math.max(term,15)) qYears.push({y,due,pay,arrears,bal:qOut});
+      if(qOut<=0.5&&qardCleared===null&&Q>0) qardCleared=y;
+    }
+    const surplus=noi-claim-qpay;
+    const scheduled=Math.min(p.cap,C);
+    const red=Math.min(scheduled,Math.max(surplus,0));
+    const shortfall=Math.max(scheduled-red,0);
+    totalShortfall+=shortfall;
+    const mission=Math.max(surplus,0)-red;
+    C=Math.max(C-red,0); cumM+=mission;
+    if(C<=0&&repaid===null) repaid=p.e;
+    schedule.push({label:`${p.s}\u2013${p.e}`,noi,claim,surplus,cap:p.cap,scheduled,red,shortfall,mission,bal:C});
+  }
+  const onTime = Q===0 || (qardCleared!==null && qardCleared<=term);
+  return {C0,grants,cumM,repaid,qardCleared,peakArrears,surplusOverTerm,onTime,short:!onTime,schedule,totalShortfall,qYears};
+}
+const base=run(400000,0,QARD_TERM,true,S0H);
+
+const CLOSE_YEAR=2031;                                  // capital close, fixed
+const CLOSE=new Date(CLOSE_YEAR,11,31);                 // end of that year
+const monthsToClose=()=>{const n=new Date();
+  return Math.max((CLOSE.getFullYear()-n.getFullYear())*12+(CLOSE.getMonth()-n.getMonth()),1);};
+const S={horizon:30,phil:400000,qard:1000000,bch:1,ppb:1.5,stay:5,solo:30,gap:13,uns:80,attr:30,thresh:1,qual:85};
+
+function seg(c,l,a){const p=a/TOTAL*100; if(p<=0)return'';
+  return `<div class="seg ${c}${p<7?' hide':''}" style="width:${p}%"><b>${l}</b><span>${mc(a)}</span></div>`;}
+
+function render(){
+  const P=S.phil,Q=S.qard,H=S.horizon,r=run(P,Q,QARD_TERM,S.bch,H);
+
+  el('philV').textContent=m0(P); el('qardV').textContent=m0(Q);
+  el('bchV').textContent=S.bch?'Included':'Excluded';
+  el('ppbV').textContent=S.ppb.toFixed(1); el('stayV').textContent=S.stay;
+  el('soloV').textContent=S.solo+'%'; el('threshV').textContent=S.thresh+(S.thresh===1?' year':' years'); el('qualV').textContent=S.qual+'%'; el('gapV').textContent=S.gap+' points';
+  el('unsV').textContent=S.uns+'%'; el('attrV').textContent=S.attr+'%';
+
+  el('capital').innerHTML=seg('s-g','City and Province',GRANT_CONF)
+    +seg('s-b','Build Canada Homes',S.bch?GRANT_BCH:0)
+    +seg('s-p','Philanthropy',P)+seg('s-q','Qard hasan',Q)
+    +seg('s-i','Investment required',r.C0);
+
+  // term buttons only mean something once there is a loan to repay
+
+  const f=el('flag');
+  {f.className='';
+    const qbit = Q>0 ? ` The ${m0(Q)} of qard hasan is repaid from operating surplus and can then be recycled into the next project.` : '';
+    f.innerHTML=`${m0(P+Q)} of free and patient capital reduces the investment required to ${m0(r.C0)}, lowers the year 1 investor claim on net operating income from ${(R*base.C0/NOI[0]*100).toFixed(0)}% to ${(R*r.C0/NOI[0]*100).toFixed(0)}%, and returns ${m0(r.cumM-base.cumM)} of additional charitable surplus over ${H} years.${qbit}`;}
+
+  // ledgers
+  const share=r.C0>0?R*r.C0/NOI[0]*100:0;
+  el('iv1').textContent=m0(r.C0);
+  el('iv2').textContent=m0(R*r.C0);
+  el('iv3').textContent=share.toFixed(0)+'%';
+  el('iv4').textContent=r.repaid?'Planned, end of year '+r.repaid:'Beyond year '+H;
+  el('iv6').textContent=r.totalShortfall>0.5?m0(r.totalShortfall):'none';
+  el('iv5').textContent=((r.grants+P+Q)/TOTAL*100).toFixed(0)+'% of cost';
+
+  el('sched').innerHTML=r.schedule.map(x=>{
+    const sc=x.shortfall>0.5?`<span style="color:var(--urgent);font-weight:800">${m0(x.shortfall)}</span>`:'\u2013';
+    return `<tr><td>Years ${x.label}</td>
+      <td style="text-align:right">${mc(x.noi)}</td>
+      <td style="text-align:right">${mc(x.claim)}</td>
+      <td style="text-align:right">${mc(x.surplus)}</td>
+      <td style="text-align:right">${x.scheduled>0.5?mc(x.scheduled):'\u2013'}</td>
+      <td style="text-align:right">${sc}</td>
+      <td style="text-align:right;color:var(--mission)">${x.mission>0.5?mc(x.mission):'\u2013'}</td>
+      <td style="text-align:right">${mc(x.bal)}</td></tr>`;}).join('');
+
+  const shortPeriods=r.schedule.filter(x=>x.shortfall>0.5).map(x=>'years '+x.label);
+  el('schedNote').textContent = shortPeriods.length
+    ? `At ${m0(P)} of philanthropy, ${shortPeriods.length===1?'one tranche is':shortPeriods.length+' tranches are'} not fully fundable from operating surplus (${shortPeriods.join(', ')}), totalling ${m0(r.totalShortfall)}. Raising philanthropy lowers the 3.5% claim and closes these gaps. The caps are not the binding constraint here, cash flow is.`
+    : `At ${m0(P)} of philanthropy, every redemption tranche in the plan is fully fundable from operating surplus in its own period.`;
+
+  el('lv1').textContent=m0(Q);
+
+
+  const per=(r.cumM-base.cumM)/Math.max(P-400000,1);
+  el('gv1').textContent=m0(P);
+  el('gv2').textContent=mc(r.cumM);
+  // Marginal, not average: hold qard hasan constant and vary only philanthropy, so the
+  // figure a donor sees is what THEIR dollar adds rather than a project-wide average that
+  // shrinks as the campaign succeeds.
+  const mbase=run(400000,Q,QARD_TERM,S.bch,H);
+  const extra=Math.max(P-400000,0);
+  const marginal=extra>0?(r.cumM-mbase.cumM)/extra:(run(500000,Q,QARD_TERM,S.bch,H).cumM-mbase.cumM)/100000;
+  el('gv3').textContent=mc(TOTAL)+' of build';
+  el('gv5').textContent='$'+marginal.toFixed(2);
+  el('gv6').textContent='$'+(R*(r.repaid||H)).toFixed(2);
+  el('gv4').textContent=r.repaid?'Year '+r.repaid:'After year 35';
+
+  // How a donated dollar is joined by other capital.
+  // Tier 1 uses a FIXED $400,000 denominator, so the ratios never shrink as the campaign
+  // grows. Tier 2 is marginal. Neither is total-project-over-total-gift, which would fall
+  // every time a donor gave more.
+  const CITY=3600000, PROV=GRANT_CONF-CITY, THRESH=400000;
+  const invAtThresh=TOTAL-(GRANT_CONF+(S.bch?GRANT_BCH:0))-THRESH;
+  const t1=[[CITY/THRESH,'from the City of Edmonton'],[PROV/THRESH,'from the Government of Alberta']]
+    .concat(S.bch?[[GRANT_BCH/THRESH,'from Build Canada Homes, pending']]:[])
+    .concat([[invAtThresh/THRESH,'from investors and lenders']]);
+  el('matchrow').innerHTML=t1.map(([v,l])=>
+      `<div class="mi"><div class="min">$${v.toFixed(2)}</div><div class="mil">${l}</div></div>`).join('')
+    +`<div class="mi"><div class="min gold">$${(TOTAL/THRESH).toFixed(2)}</div><div class="mil">of build, in total</div></div>`;
+
+  el('matchrow2').innerHTML=
+     `<div class="mi"><div class="min">$1.00</div><div class="mil">of investment retired</div></div>`
+    +`<div class="mi"><div class="min">$${(R*(r.repaid||H)).toFixed(2)}</div><div class="mil">of investor returns avoided</div></div>`
+    +`<div class="mi"><div class="min gold">$${marginal.toFixed(2)}</div><div class="mil">of charitable surplus added</div></div>`;
+
+  el('matchnote').textContent=`Being straight about the difference: the grants are fixed amounts, so a dollar `
+    +`given beyond the threshold attracts no further grant money. What it does instead is retire investor `
+    +`capital permanently, converting a repayable dollar into community equity. That is why tier two is `
+    +`expressed as substitution rather than as a match. It is also cumulative in one respect: at about `
+    +`$6,000,000 of philanthropy every redemption tranche in the payout plan becomes fundable from `
+    +`operating surplus, and at about $7,500,000 investors are repaid five years early.`;
+
+  // runway: only the first $400,000 is time-critical
+  const stillToRaise=r.C0+Math.max(P-400000,0)+Q;
+  const monthsOut=monthsToClose();
+  el('rw1').textContent=mc(stillToRaise);
+  el('rw2').textContent=monthsOut;
+  el('rw3').textContent=mc(stillToRaise/monthsOut);
+  el('rw4').textContent=mc(stillToRaise/(monthsOut/12));
+  el('tlmid').textContent='2027\u2013'+CLOSE_YEAR;
+  el('tlend').textContent='by '+CLOSE_YEAR;
+  el('tlphil').textContent=mc(Math.max(P-400000,0)+Q);
+  el('tlinv').textContent=mc(r.C0);
+  el('rwNote').textContent=`${mc(r.C0)} of investment and ${mc(Math.max(P-400000,0)+Q)} of gifts and loans, spread over ${monthsOut} months, is ${mc(stillToRaise/monthsOut)} a month. Investors are then repaid over ${r.repaid?`the following ${r.repaid} years of operations`:`a period longer than the ${H}-year window shown`}.`;
+
+  // outcome chain
+  const res=BEDS*S.ppb, ares=ABEDS*S.ppb;
+  const cohorts=H/S.stay, distinct=res*cohorts, aDistinct=ares*cohorts;
+  const residentYears=res*H;
+  // children derived from the unit mix rather than assumed: residents less two adults per household
+  const apu=2-(S.solo/100);                       // two parents, less one for each solo-parent home
+  const kidsNow=Math.max(res-apu*UNITS,0), aKidsNow=Math.max(ares-apu*AUNITS,0);
+  const kids=kidsNow*cohorts, aKids=aKidsNow*cohorts;
+  // completion effect applies only to children in below-market homes, whose
+  // counterfactual is inadequate housing
+  // A family that reaches the stabilisation threshold carries the gain forward, including
+  // after moving on to market housing. So the child must arrive young enough to complete
+  // the threshold before their Grade 12 year: ages 0 to (17 - threshold), out of 0 to 17.
+  // Families do not leave affordable housing for housing they cannot afford: they leave
+  // when they have the means. So an exit is the success signal, not the end of the benefit,
+  // and a short tenancy ending upward counts as a stabilisation just as a long one does.
+  // The only bound is age: the child needs the stabilising period to fall inside childhood.
+  const ageEligible=Math.max(18-S.thresh,0)/18;
+  const stabilised=aKids*(S.qual/100)*ageEligible;
+  const addGrads=stabilised*(S.uns/100)*(S.gap/100);
+  const u13=stabilised*(S.uns/100);
+  const life=u13*MTO_LIFETIME*(S.attr/100);
+  const pv=u13*MTO_PV*(S.attr/100);
+
+  el('compV').textContent=`${apu.toFixed(2)} adults and ${(kidsNow/UNITS).toFixed(2)} children per home, `
+    +`${num(kidsNow)} children resident at any time, ${(kidsNow/res*100).toFixed(0)}% of all residents. `
+    +`A ${S.thresh}-year stabilising period means a child must arrive by age ${18-S.thresh} for it to `.replace('1-year','one-year')+``
+    +`fall inside childhood, which is ${(ageEligible*100).toFixed(0)}% of arrivals. `
+    +`The remaining ${100-S.qual}% covers exits that are not upward: eviction, family breakdown, leaving the city.`;
+
+  // hero highlights
+  el('h1').textContent=num(distinct);
+  el('h2').textContent=num(residentYears);
+  el('h3').textContent=num(kids); el('h3a').textContent=num(aKids);
+  el('h4').textContent=num(Math.round(addGrads));
+  el('h5').textContent=mc(life);
+  el('h6').textContent=mc(r.cumM);
+  el('heronote').textContent=`Over ${H} years, 96 townhomes at 365 Dunluce Road NW house ${num(distinct)} people, ${num(kids)} of them children, at an average tenancy of ${S.stay} years. ${H>35?`Years 1 to 35 come from the pro forma; years 36 to ${H} are projected on its own growth assumptions.`:`Drawn from the pro forma's ${H}-year window.`} Investors are repaid ${r.repaid?`at the end of year ${r.repaid}`:'beyond this horizon'}, after which all surplus stays with the community.`;
+
+  const rows=[
+    ['Bedrooms',`48&times;2 + 16&times;3 + 8&times;4 + 24&times;5`,'t1','Counted',num(BEDS)+' ('+num(ABEDS)+' below market)'],
+    ['Residents at any one time',`${BEDS} bedrooms &times; ${S.ppb.toFixed(1)}`,'t1','Counted',num(res)+' ('+num(ares)+' below market)'],
+    [`Resident-years over ${H} years`,`${num(res)} &times; ${H}`,'t1','Counted',num(residentYears)],
+    [`Distinct people housed over ${H} years`,`${num(res)} &times; (${H} &divide; ${S.stay})`,'t1','Counted',num(distinct)],
+    [`Children housed over ${H} years`,`(${num(res)} residents &minus; ${apu.toFixed(2)} adults &times; ${UNITS} homes) &times; ${cohorts}`,'t1','Counted',num(kids)],
+    [`Children in below-market homes over ${H} years`,`(${num(ares)} &minus; ${apu.toFixed(2)} &times; ${AUNITS}) &times; ${cohorts}`,'t1','Counted',num(aKids)],
+    
+    ['Completion drop caused by inadequate housing',`prior IslamicFamily analysis`,'t3','Benchmarked',S.gap+' points'],
+    [`Additional Grade 12 completions over ${H} years`,`${num(aKids)} &times; ${S.qual}% upward &times; ${(ageEligible*100).toFixed(0)}% in time &times; ${S.uns}% &times; ${S.gap}%`,'t3','Benchmarked',num(Math.round(addGrads))],
+    [`Children stabilised, below-market homes`,`${num(aKids)} &times; ${S.qual}% &times; ${(ageEligible*100).toFixed(0)}% &times; ${S.uns}%`,'t3','Benchmarked',num(u13)],
+    ['Additional lifetime earnings, those children',`${num(u13)} &times; $302,000 &times; ${S.attr}%`,'t3','Benchmarked',mc(life)],
+    ['Same, present value at age 8 (3% discount)',`${num(u13)} &times; $99,000 &times; ${S.attr}%`,'t3','Benchmarked',mc(pv)],
+    [`Surplus available for charitable allocation, ${H} years`,`&Sigma; (NOI &minus; investor claim &minus; redemption tranche)`,'t2','Modelled',mc(r.cumM)]
+  ];
+  el('rows').innerHTML=rows.map(([a,b,t,tl,c])=>
+    `<tr><td>${a}</td><td class="eqcell">${b}</td><td><span class="tier ${t}" style="margin:0">${tl}</span></td><td>${c}</td></tr>`).join('');
+
+  el('eq1').innerHTML=`share <span class="op">=</span> (3.5% <span class="op">&times;</span> capital at work) <span class="op">&divide;</span> average NOI for the period<br>
+    <span class="op">=</span> (0.035 <span class="op">&times;</span> ${m0(r.C0)}) <span class="op">&divide;</span> ${m0(NOI[0])} <span class="op">=</span> <span class="r">${share.toFixed(1)}%</span> <span class="op">in year 1</span>`;
+  el('eq2').innerHTML=`per dollar <span class="op">=</span> (mission&nbsp;dollars <span class="op">&minus;</span> baseline) <span class="op">&divide;</span> philanthropy above $400,000<br>
+    <span class="op">=</span> (${mc(r.cumM)} <span class="op">&minus;</span> ${mc(base.cumM)}) <span class="op">&divide;</span> ${m0(Math.max(P-400000,0))} <span class="op">=</span> <span class="rm">${P>400000?'$'+per.toFixed(2):'baseline'}</span>`;
+  el('eq3').innerHTML=`${BEDS} <span class="op">bedrooms &times;</span> ${S.ppb.toFixed(1)} <span class="op">people &times;</span> (${H} <span class="op">&divide;</span> ${S.stay}) <span class="op">tenancies</span><br>
+    <span class="op">=</span> <span class="r">${num(distinct)}</span> <span class="op">people, or</span> <span class="r">${num(residentYears)}</span> <span class="op">resident-years</span>`;
+  el('eq4').innerHTML=`${num(aKids)} <span class="op">children in below-market homes &times;</span> ${S.qual}% <span class="op">move up &times;</span> ${(ageEligible*100).toFixed(0)}% <span class="op">arrive in time</span><br>
+    <span class="op">&times;</span> ${S.uns}% <span class="op">otherwise inadequately housed &times;</span> ${S.gap} <span class="op">points =</span> <span class="r">${num(Math.round(addGrads))}</span> <span class="op">more completions</span>`;
+  el('eq5').innerHTML=`${num(Math.round(u13))} <span class="op">children stabilised &times;</span> $302,000 <span class="op">&times;</span> ${S.attr}% <span class="op">transfer</span><br>
+    <span class="op">=</span> <span class="r">${mc(life)}</span> <span class="op">lifetime, or</span> <span class="r">${mc(pv)}</span> <span class="op">in present value</span>`;
+}
+
+['phil','qard','bch','ppb','stay','solo','gap','uns','attr','thresh','qual'].forEach(id=>
+  el(id).addEventListener('input',e=>{S[id]=+e.target.value;render();}));
+
+document.querySelectorAll('.hz button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.hz button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true'); S.horizon=+b.dataset.hz; render();}));
+render();
+
+// section menu
+(function(){
+  const btn=el('navbtn'), panel=el('navpanel');
+  const setOpen=on=>{btn.setAttribute('aria-expanded',String(on)); panel.hidden=!on;};
+  btn.addEventListener('click',e=>{e.stopPropagation(); setOpen(panel.hidden);});
+  panel.addEventListener('click',e=>{if(e.target.tagName==='A') setOpen(false);});
+  document.addEventListener('click',e=>{
+    if(!panel.hidden && !panel.contains(e.target) && e.target!==btn) setOpen(false);});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape' && !panel.hidden){setOpen(false); btn.focus();}});
+})();
+</script>
+</body>
+</html>
