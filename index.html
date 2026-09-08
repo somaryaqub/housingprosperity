@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Housing Prosperity Fund · IslamicFamily</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <script async src="https://tally.so/widgets/embed.js"></script>
 <!-- Fundraise Up: the new standard for online giving -->
 <script>(function(w,d,s,n,a){if(!w[n]){var l='call,catch,on,once,set,then,track,openCheckout'
@@ -2017,6 +2017,140 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
   height: 0 !important;
   overflow: hidden !important;
 }
+
+/* ─────────────────────────────────────────
+   IMPACT SEGMENT
+   Scoped under .imp so nothing leaks into
+   the rest of the page. Metrics are the
+   compact ones from the standalone segment;
+   colours are remapped to the brand tokens.
+   ───────────────────────────────────────── */
+.imp {
+  --imp-ink:   #E1E7DD;                  /* moon mist over nabawi */
+  --imp-quiet: #A9B697;                  /* arabica over nabawi */
+  --imp-rule:  rgba(220,217,184,0.26);
+  --imp-yaqoot:#BB2D37;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--imp-ink);
+}
+
+.imp-top { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; margin-bottom: .85rem; }
+.imp h2 {
+  font-family: 'Alegreya Sans', sans-serif; font-weight: 800;
+  font-size: clamp(1.3rem, 3.2vw, 1.6rem); line-height: 1; margin: 0;
+  color: var(--moon-mist); letter-spacing: 0;
+}
+.imp h2 em { font-style: normal; }
+.imp-over { font-size: .85rem; color: var(--imp-quiet); }
+
+.imp-horizon { display: inline-flex; gap: .35rem; }
+.imp-horizon input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.imp-horizon label {
+  font-size: .82rem; font-weight: 500; line-height: 1; padding: .42em .75em;
+  cursor: pointer; color: var(--warm-sand); border: 1px solid var(--imp-rule);
+  border-radius: 5px;
+  transition: background .16s ease, color .16s ease, border-color .16s ease;
+}
+.imp-horizon label:hover { border-color: var(--warm-sand); }
+.imp-horizon input:checked + label {
+  background: var(--warm-sand); border-color: var(--warm-sand);
+  color: var(--nabawi-dark); font-weight: 700;
+}
+.imp-horizon input:focus-visible + label { outline: 2px solid var(--sun); outline-offset: 2px; }
+
+/* six figures, three across */
+.imp-figs {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem 1.5rem;
+  background: var(--nabawi-dark); border-radius: 10px;
+  padding: clamp(1rem, 2.5vw, 1.4rem); margin: 0; list-style: none;
+}
+.imp-figs .v {
+  display: block; font-family: 'Alegreya Sans', sans-serif; font-weight: 800;
+  line-height: 1; font-size: clamp(1.55rem, 4.2vw, 2.15rem);
+  font-variant-numeric: tabular-nums lining-nums; color: var(--pinecone);
+}
+.imp-figs li.mission .v { color: var(--sun); }
+.imp-figs .k {
+  display: block; margin-top: .3rem; font-size: .84rem; font-weight: 400;
+  line-height: 1.35; color: var(--imp-quiet); max-width: 13rem;
+}
+.imp-narr {
+  margin: .85rem 0 0; font-size: .95rem; font-weight: 400; line-height: 1.5;
+  color: var(--imp-quiet); max-width: 44rem;
+}
+
+/* Matching Impact */
+.imp-roi { margin-top: 1.35rem; padding-top: .95rem; border-top: 1px solid var(--imp-rule); }
+.imp-roi h3 {
+  font-family: 'Alegreya Sans', sans-serif; font-weight: 800; font-size: 1.05rem;
+  margin: 0; color: var(--moon-mist);
+}
+.imp-lead { margin: .3rem 0 .7rem; font-size: .95rem; font-weight: 400; color: var(--imp-quiet); }
+.imp-bar {
+  display: flex; height: 1.4rem; border-radius: 4px; overflow: hidden;
+  margin-bottom: .85rem; background: #16241D;
+}
+.imp-bar__seg { width: 0; transition: width .8s cubic-bezier(.22,.8,.26,1); }
+.imp-bar.is-ready .imp-bar__seg { width: var(--w); }
+.imp-s-seed { background: var(--imp-yaqoot); }
+.imp-s-city { background: var(--warm-sand); }
+.imp-s-prov { background: var(--pinecone); }
+.imp-s-fed  { background: repeating-linear-gradient(135deg, var(--pinecone) 0 5px, #616244 5px 10px); }
+.imp-s-priv { background: repeating-linear-gradient(135deg, #86967C 0 5px, #375946 5px 10px); }
+
+/* two phases, each a labelled row of per-dollar figures */
+.imp-phases { margin: 0; padding: 0; list-style: none; }
+.imp-phase {
+  display: grid; grid-template-columns: 1.4rem 11rem 1fr; gap: 0 .7rem;
+  align-items: start; padding: .8rem 0; border-top: 1px solid var(--imp-rule);
+}
+.imp-phase:last-child { border-bottom: 1px solid var(--imp-rule); }
+.imp-badge {
+  width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--pinecone);
+  color: var(--nabawi-dark); font-family: 'Alegreya Sans', sans-serif; font-weight: 800;
+  font-size: .82rem; display: flex; align-items: center; justify-content: center; line-height: 1;
+}
+.imp-phase h4 {
+  margin: 0; font-family: 'Alegreya Sans', sans-serif; font-weight: 800; font-size: .95rem;
+  color: var(--moon-mist); line-height: 1.2;
+}
+.imp-phase h4 span {
+  display: block; font-weight: 400; font-size: .79rem; line-height: 1.35;
+  color: var(--imp-quiet); margin-top: .15rem;
+}
+.imp-cells { display: flex; flex-wrap: wrap; gap: .7rem 1.1rem; margin: 0; padding: 0; list-style: none; }
+.imp-cells li { font-size: .76rem; font-weight: 400; line-height: 1.25; color: var(--imp-quiet); max-width: 7.5rem; }
+.imp-cells .a {
+  display: flex; align-items: center; gap: .3rem; font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 800; font-size: 1.15rem; color: var(--warm-sand);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.imp-cells li.sum .a { color: var(--sun); }
+.imp-dot { width: .55rem; height: .55rem; border-radius: 2px; flex: 0 0 auto; }
+.imp-d-city { background: var(--warm-sand); }
+.imp-d-prov { background: var(--pinecone); }
+.imp-d-fed  { background: transparent; border: 1.5px dashed var(--pinecone); }
+.imp-d-priv { background: transparent; border: 1.5px dashed var(--arabica); }
+
+/* method note */
+.imp details { margin-top: 1rem; font-size: .78rem; font-weight: 400; color: var(--imp-quiet); }
+.imp summary { cursor: pointer; color: var(--warm-sand); font-weight: 500; }
+.imp summary:focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
+.imp details > div { padding-top: .5rem; line-height: 1.55; max-width: 45rem; }
+.imp details p { margin: 0 0 .45rem; }
+.imp details p:last-child { margin: 0; }
+
+@media (max-width: 860px) {
+  .imp-figs { grid-template-columns: repeat(2, 1fr); }
+  .imp-phase { grid-template-columns: 1.4rem 1fr; row-gap: .6rem; }
+  .imp-phase .imp-cells { grid-column: 2; }
+}
+@media (max-width: 440px) { .imp-figs { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .imp-bar__seg { transition: none; } }
+
 </style>
 </head>
 <body>
@@ -2066,6 +2200,7 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
       <a href="#edmonton" class="drawer-link">Edmonton & Canada</a>
       <a href="#halal-finance" class="drawer-link">A New Capital Model</a>
       <a href="#mechanics" class="drawer-link">Fund Mechanics</a>
+      <a href="#impact" class="drawer-link">Impact</a>
       <a href="#participate" class="drawer-link">Ways to Participate</a>
       <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="drawer-link drawer-link--cta">Sign-on →</a>
       <button onclick="FundraiseUp.openCheckout({campaignId:'XMQRJPQY'})" class="drawer-link drawer-link--donate">Donate →</button>
@@ -2091,7 +2226,7 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
 
     <div class="hero-deadline">
       <span class="deadline-icon">⚑</span>
-      <span>Key milestone: secure an initial <strong>$400K commitment</strong> by August 15, 2026, or lose the option to purchase</span>
+      <span>Key milestone: secure an initial <strong>$400K commitment</strong> by September 30, 2026, or lose the option to purchase</span>
     </div>
 
     <h1 class="hero-headline">A new fund for<br><em><span class="hero-headline" style="font-style: normal;">housing&nbsp;</span>families.</em>
@@ -2583,6 +2718,211 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
 
   </div>
 </section>
+
+
+<!-- ══════════════ IMPACT ══════════════ -->
+<section class="section-mechanics on-green" id="impact" aria-labelledby="imp-t">
+  <div class="container">
+    <div class="imp">
+
+      <div class="imp-top reveal">
+        <h2 id="imp-t">Impact</h2>
+        <span class="imp-over">over</span>
+        <span class="imp-horizon" role="radiogroup" aria-label="Time horizon">
+          <input type="radio" name="imp-h" id="imp-h20" value="20" checked><label for="imp-h20">20 years</label>
+          <input type="radio" name="imp-h" id="imp-h30" value="30"><label for="imp-h30">30 years</label>
+          <input type="radio" name="imp-h" id="imp-h50" value="50"><label for="imp-h50">50 years</label>
+        </span>
+      </div>
+
+      <ul class="imp-figs reveal" id="imp-figs"></ul>
+      <p class="imp-narr reveal" id="imp-narr"></p>
+
+      <div class="imp-roi reveal">
+        <h3>Matching Impact</h3>
+        <p class="imp-lead" id="imp-lead"></p>
+        <div class="imp-bar" id="imp-bar" role="img" aria-label="How each dollar of the first 400,000 dollars sits alongside the public and private capital it is matched by."></div>
+        <ul class="imp-phases" id="imp-phases"></ul>
+      </div>
+
+      <details class="reveal">
+        <summary>How this is calculated</summary>
+        <div id="imp-note"></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<script>
+/* ══════════════ IMPACT SECTION ══════════════
+   EDIT HERE. Parameters match the Dunluce capital and outcomes model.
+   ═══════════════════════════════════════════ */
+(function(){
+const DATA = {
+
+  address: "365 Dunluce Road NW",
+  totalCost: 37644270,
+  threshold:   400000,          // the offer to purchase threshold: a binary gift
+
+  /* Return on Impact, per dollar of the threshold gift */
+  rows: [
+    { key:"seed", label:"of philanthropy, to begin",       v:  1.00 },
+    { key:"city", label:"from the City of Edmonton",       v:  9.00 },
+    { key:"prov", label:"from the Government of Alberta",  v: 23.29 },
+    { key:"fed",  label:"from Build Canada Homes",         v: 10.00, note:"pending" },
+    { key:"priv", label:"from investors and lenders",      v: 50.82, note:"pending" }
+  ],
+  total: 94.11,
+
+  /* Phase two: every dollar past the threshold substitutes rather than attracts */
+  phase2: [
+    { v: 1.00, k:"of investment retired" },
+    { v: 0.88, k:"of investor returns avoided" },
+    { v: 2.01, k:"of charitable surplus added", sum:true }
+  ],
+
+  /* The building, from V29's bedroom mix */
+  mix:  [[2,48],[3,16],[4,8],[5,24]],
+  aMix: [[2,36],[3,12],[4,6],[5,18]],
+
+  occ: { peoplePerBedroom:1.5, averageStayYears:5, soloParentShare:0.30 },
+
+  model: {
+    stabiliseYears: 1,            // a family stabilises inside its first year
+    reachThreshold: 0.85,         // tenancies reaching it, exits being upward
+    otherwiseInadequate: 0.80,
+    graduationGap: 0.13,          // IslamicFamily's prior analysis
+    lifetimePerChild: 302000,     // Chetty, Hendren and Katz (2016)
+    attribution: 0.30
+  },
+
+  /* Surplus to charitable programming, read off the pro forma at each
+     horizon. Back loaded, so it cannot be annualised: investors are
+     repaid first and the surplus follows. Set 30 and 50 from the model. */
+  surplus: { 20: 374000, 30: 18100000, 50: 129800000 }
+};
+
+/* ---------------- helpers ---------------- */
+const whole = n => Math.round(n).toLocaleString("en-CA");
+const per   = n => "$" + n.toFixed(2);
+const big   = n => n >= 1e6 ? "$" + (n/1e6).toFixed(1) + "M"
+                 : n >= 1e3 ? "$" + Math.round(n/1e3) + "K" : "$" + whole(n);
+
+/* ---------------- Matching Impact ---------------- */
+const bar = document.getElementById("imp-bar");
+DATA.rows.forEach(r => {
+  const el = document.createElement("span");
+  el.className = "imp-bar__seg imp-s-" + r.key;
+  // Minimum width so the single donated dollar stays visible at 1% of the whole.
+  el.style.setProperty("--w", Math.max(r.v / DATA.total * 100, 0.9) + "%");
+  el.title = per(r.v) + " " + r.label;
+  bar.appendChild(el);
+});
+
+document.getElementById("imp-lead").textContent =
+  "Every dollar in phase 1 is matched by $" + Math.round(DATA.total) + ".";
+
+const cell = (v, k, cls, dot) =>
+  '<li' + (cls ? ' class="' + cls + '"' : '') + '><span class="a">' +
+  (dot ? '<span class="imp-dot imp-d-' + dot + '"></span>' : '') + per(v) + '</span>' + k + '</li>';
+
+const phase1 = DATA.rows.filter(r => r.key !== "seed")
+  .map(r => cell(r.v, r.label + (r.note ? ", " + r.note : ""), "", r.key))
+  .join("") + cell(DATA.total, "of build, in total", "sum");
+
+const phase2 = DATA.phase2.map(m => cell(m.v, m.k, m.sum ? "sum" : "")).join("");
+
+document.getElementById("imp-phases").innerHTML =
+  '<li class="imp-phase"><span class="imp-badge">1</span>' +
+    '<h4>The threshold gift<span>Each dollar of the first $' + whole(DATA.threshold) +
+    ', which is what the offer to purchase turns on</span></h4>' +
+    '<ul class="imp-cells">' + phase1 + '</ul></li>' +
+  '<li class="imp-phase"><span class="imp-badge">2</span>' +
+    '<h4>Every dollar after that<span>Substitutes rather than attracts</span></h4>' +
+    '<ul class="imp-cells">' + phase2 + '</ul></li>';
+
+/* ---------------- Impact ---------------- */
+const O = DATA.occ, M = DATA.model;
+const beds   = DATA.mix.reduce((t,[b,u]) => t + b*u, 0);
+const units  = DATA.mix.reduce((t,[,u]) => t + u, 0);
+const aBeds  = DATA.aMix.reduce((t,[b,u]) => t + b*u, 0);
+const aUnits = DATA.aMix.reduce((t,[,u]) => t + u, 0);
+
+const residents     = beds * O.peoplePerBedroom;
+const adultsPerHome = 2 - O.soloParentShare;
+const childrenNow   = Math.max(residents - adultsPerHome * units, 0);
+const aChildrenNow  = Math.max(aBeds * O.peoplePerBedroom - adultsPerHome * aUnits, 0);
+const ageEligible   = Math.max(18 - M.stabiliseYears, 0) / 18;
+
+function render(years){
+  const cohorts    = years / O.averageStayYears;
+  const housed     = residents * cohorts;
+  const stableYrs  = residents * years;
+  const children   = childrenNow * cohorts;
+  const aChildren  = aChildrenNow * cohorts;
+  const stabilised = aChildren * M.reachThreshold * ageEligible * M.otherwiseInadequate;
+  const graduates  = stabilised * M.graduationGap;
+  const earnings   = stabilised * M.lifetimePerChild * M.attribution;
+  const surplus    = DATA.surplus[years];
+
+  const figs = [
+    ["", whole(housed),    "people housed"],
+    ["", whole(stableYrs), "years of stable housing provided"],
+    ["", whole(children),  "children housed, " + whole(aChildren) + " of them in below-market homes"],
+    ["", whole(graduates), "more youth finishing Grade 12"],
+    ["", big(earnings),    "added lifetime earnings for those children"],
+    ["mission", surplus == null ? "&mdash;" : big(surplus),
+                           "surplus returned to charitable programming"]
+  ];
+
+  document.getElementById("imp-figs").innerHTML = figs.map(([cls,v,k]) =>
+    '<li' + (cls ? ' class="' + cls + '"' : '') + '><span class="v">' + v + '</span>' +
+    '<span class="k">' + k + '</span></li>').join("");
+
+  document.getElementById("imp-narr").textContent =
+    "Over " + years + " years, " + units + " townhomes at " + DATA.address + " house " +
+    whole(housed) + " people, " + whole(children) + " of them children, at an average tenancy of " +
+    O.averageStayYears + " years. Drawn from the pro forma's " + years + " year window. " +
+    "Investors are repaid beyond this horizon, after which all surplus stays with the community.";
+}
+
+document.querySelectorAll('input[name="imp-h"]').forEach(i =>
+  i.addEventListener("change", () => render(Number(i.value))));
+render(20);
+
+/* ---------------- method note ---------------- */
+document.getElementById("imp-note").innerHTML =
+  "<p>" + DATA.address + ", Edmonton: " + units + " townhomes, " + beds + " bedrooms, " +
+  aUnits + " of them below market, against a total cost of " + big(DATA.totalCost) + ". " +
+  "The Build Canada Homes contribution and the investor and lender commitments are pending.</p>" +
+  "<p>The first $" + whole(DATA.threshold) + " and the dollars after it do different jobs, so they " +
+  "are shown separately. Phase one is binary: without it there is no project, and the whole " +
+  "build divides by it. Phase two substitutes for investment rather than attracting grants. " +
+  "Neither figure weakens as the campaign succeeds.</p>" +
+  "<p>People and children come from the unit mix rather than an assumed share: " + beds +
+  " bedrooms at " + O.peoplePerBedroom + " people each, less two adults per home and one for " +
+  "each solo parent home, across tenancies averaging " + O.averageStayYears + " years.</p>" +
+  "<p>Grade 12 completion: a family needs " + M.stabiliseYears + " year of secure tenancy to " +
+  "stabilise, and the gain then travels with the child, including after the family moves on to " +
+  "market housing. Nothing is pro-rated by years of residency, and families leave when they " +
+  "have the means rather than because the tenancy failed. " + (ageEligible*100).toFixed(0) +
+  "% of children arrive young enough to stabilise before Grade 12. Applied to the " +
+  (M.graduationGap*100).toFixed(0) + " point graduation gap that housing instability opens.</p>" +
+  "<p>Earnings: $" + whole(M.lifetimePerChild) + " per child moved young into a low poverty " +
+  "neighbourhood (Chetty, Hendren and Katz, 2016), with " + (M.attribution*100).toFixed(0) +
+  "% credited to housing. Surplus to charitable programming is read off the pro forma at each " +
+  "horizon rather than annualised, since investors are repaid first and the surplus follows.</p>";
+
+/* Fill the bar when the section scrolls into view rather than on load. */
+const barIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { bar.classList.add("is-ready"); barIO.unobserve(e.target); }
+  });
+}, { threshold: 0.25 });
+barIO.observe(bar);
+})();
+</script>
 
 
 <!-- ══════════════ WAYS TO PARTICIPATE ══════════════ -->
