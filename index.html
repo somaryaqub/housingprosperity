@@ -2018,6 +2018,7 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
   overflow: hidden !important;
 }
 
+
 /* ─────────────────────────────────────────
    IMPACT SEGMENT
    Scoped under .imp so nothing leaks into
@@ -2088,18 +2089,38 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
   font-family: 'Alegreya Sans', sans-serif; font-weight: 800; font-size: 1.05rem;
   margin: 0; color: var(--moon-mist);
 }
-.imp-lead { margin: .3rem 0 .7rem; font-size: .95rem; font-weight: 400; color: var(--imp-quiet); }
-.imp-bar {
-  display: flex; height: 1.4rem; border-radius: 4px; overflow: hidden;
-  margin-bottom: .85rem; background: #16241D;
+.imp-becomes {
+  font-family: 'Alegreya Sans', sans-serif; font-weight: 800;
+  font-size: clamp(1.5rem, 4.6vw, 2.15rem); line-height: 1;
+  letter-spacing: -.015em; margin: .15rem 0 .35rem; color: var(--moon-mist);
 }
-.imp-bar__seg { width: 0; transition: width .8s cubic-bezier(.22,.8,.26,1); }
-.imp-bar.is-ready .imp-bar__seg { width: var(--w); }
-.imp-s-seed { background: var(--imp-yaqoot); }
-.imp-s-city { background: var(--warm-sand); }
-.imp-s-prov { background: var(--pinecone); }
-.imp-s-fed  { background: repeating-linear-gradient(135deg, var(--pinecone) 0 5px, #616244 5px 10px); }
-.imp-s-priv { background: repeating-linear-gradient(135deg, #86967C 0 5px, #375946 5px 10px); }
+.imp-becomes em { font-style: normal; color: var(--sun); }
+.imp-lead { margin: .3rem 0 .7rem; font-size: .95rem; font-weight: 400; color: var(--imp-quiet); }
+
+/* the donated dollar, beside the capital it draws in */
+.imp-field { display: flex; align-items: flex-start; gap: clamp(.7rem, 2.5vw, 1.2rem); margin-bottom: 1rem; }
+.imp-one { flex: 0 0 auto; text-align: center; }
+.imp-one .imp-sq {
+  width: 1.2rem; height: 1.2rem; border-radius: 3px; background: var(--imp-yaqoot);
+  box-shadow: 0 0 0 3px rgba(187,45,55,0.26);
+}
+.imp-one b, .imp-rest b {
+  display: block; margin-top: .45rem; font-weight: 800; font-size: .88rem; color: var(--moon-mist);
+}
+.imp-rest { flex: 1 1 auto; min-width: 0; }
+.imp-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, 1.2rem); gap: .26rem;
+  justify-content: start; margin: 0; padding: 0; list-style: none;
+}
+.imp-grid li {
+  width: 1.2rem; height: 1.2rem; border-radius: 3px; opacity: 0; transform: scale(.6);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.imp-grid.on li { opacity: 1; transform: none; }
+.imp-c-city { background: var(--warm-sand); }
+.imp-c-prov { background: var(--pinecone); }
+.imp-c-fed  { background: repeating-linear-gradient(135deg, var(--pinecone) 0 4px, #575E42 4px 8px); }
+.imp-c-priv { background: #335643; border: 1.5px dashed #99A589; }
 
 /* two phases, each a labelled row of per-dollar figures */
 .imp-phases { margin: 0; padding: 0; list-style: none; }
@@ -2149,8 +2170,9 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
   .imp-phase .imp-cells { grid-column: 2; }
 }
 @media (max-width: 440px) { .imp-figs { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { .imp-bar__seg { transition: none; } }
-
+@media (prefers-reduced-motion: reduce) {
+  .imp-grid li { opacity: 1; transform: none; transition: none; }
+}
 </style>
 </head>
 <body>
@@ -2740,8 +2762,12 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
 
       <div class="imp-roi reveal">
         <h3>Matching Impact</h3>
+        <p class="imp-becomes">$1 becomes <em>$94</em></p>
         <p class="imp-lead" id="imp-lead"></p>
-        <div class="imp-bar" id="imp-bar" role="img" aria-label="How each dollar of the first 400,000 dollars sits alongside the public and private capital it is matched by."></div>
+        <div class="imp-field" role="img" aria-label="One dollar of philanthropy shown beside 93 squares: 9 from the City of Edmonton, 23 from the Government of Alberta, 10 from Build Canada Homes pending, and 51 from investors and lenders pending.">
+          <div class="imp-one"><div class="imp-sq"></div><b>$1</b></div>
+          <div class="imp-rest"><ul class="imp-grid" id="imp-grid" aria-hidden="true"></ul><b>$93 more</b></div>
+        </div>
         <ul class="imp-phases" id="imp-phases"></ul>
       </div>
 
@@ -2810,18 +2836,23 @@ const big   = n => n >= 1e6 ? "$" + (n/1e6).toFixed(1) + "M"
                  : n >= 1e3 ? "$" + Math.round(n/1e3) + "K" : "$" + whole(n);
 
 /* ---------------- Matching Impact ---------------- */
-const bar = document.getElementById("imp-bar");
-DATA.rows.forEach(r => {
-  const el = document.createElement("span");
-  el.className = "imp-bar__seg imp-s-" + r.key;
-  // Minimum width so the single donated dollar stays visible at 1% of the whole.
-  el.style.setProperty("--w", Math.max(r.v / DATA.total * 100, 0.9) + "%");
-  el.title = per(r.v) + " " + r.label;
-  bar.appendChild(el);
+// 93 squares: the capital that joins the donated dollar, in stack order.
+// Rounded to whole squares, since $23.29 cannot be drawn as one. The exact
+// figures stay in the phase one row below, where the chips match these colours.
+const grid = document.getElementById("imp-grid");
+let n = 0;
+DATA.rows.filter(r => r.key !== "seed").forEach(r => {
+  for (let k = 0; k < Math.round(r.v); k++, n++){
+    const li = document.createElement("li");
+    li.className = "imp-c-" + r.key;
+    li.style.transitionDelay = (n * 7) + "ms";
+    grid.appendChild(li);
+  }
 });
 
 document.getElementById("imp-lead").textContent =
-  "Every dollar in phase 1 is matched by $" + Math.round(DATA.total) + ".";
+  "Every dollar of the first $" + whole(DATA.threshold) + " is matched by another " +
+  Math.round(DATA.total - 1) + ", because that gift is what the offer to purchase turns on.";
 
 const cell = (v, k, cls, dot) =>
   '<li' + (cls ? ' class="' + cls + '"' : '') + '><span class="a">' +
@@ -2914,13 +2945,13 @@ document.getElementById("imp-note").innerHTML =
   "% credited to housing. Surplus to charitable programming is read off the pro forma at each " +
   "horizon rather than annualised, since investors are repaid first and the surplus follows.</p>";
 
-/* Fill the bar when the section scrolls into view rather than on load. */
-const barIO = new IntersectionObserver(entries => {
+/* Fill the field when the section scrolls into view rather than on load. */
+const gridIO = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { bar.classList.add("is-ready"); barIO.unobserve(e.target); }
+    if (e.isIntersecting) { grid.classList.add("on"); gridIO.unobserve(e.target); }
   });
-}, { threshold: 0.25 });
-barIO.observe(bar);
+}, { threshold: 0.2 });
+gridIO.observe(grid);
 })();
 </script>
 
