@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Year 1 Report, Part 2 | Housing Prosperity Fund | IslamicFamily</title>
+<meta name="description" content="IslamicFamily's Year 1 report to the Definity Foundation on building the Housing Prosperity Fund.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#275D43; --green-dark:#1C4433; --green-mid:#326B50;
+  --pine:#E09964; --mist:#FAFAF2; --ink:#353535; --sand:#EECBAF; --arabica:#DCD9B8;
+  --muted:#5d625c; --line:#dcd9b8;
+  --display:'Alegreya', Georgia, 'Times New Roman', serif;
+  --body:'Alegreya Sans', 'Segoe UI', system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--body);font-size:1.125rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--green);text-underline-offset:3px}
+a:hover{color:var(--green-dark)}
+:focus-visible{outline:3px solid var(--pine);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--green);color:#fff;padding:.6rem 1rem;z-index:100}
+.skip:focus{left:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.12;margin:0 0 .5em;color:var(--green-dark)}
+h1{font-size:clamp(2.4rem,5.4vw,4.1rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,3.8vw,2.9rem);letter-spacing:-.005em}
+h3{font-size:1.4rem}
+em{font-style:italic;color:var(--green-mid)}
+p{margin:0 0 1em;max-width:68ch}
+.eyebrow{font-weight:700;font-size:1rem;color:var(--green-mid);margin:0 0 .75rem;display:flex;align-items:center;gap:.5rem}
+.eyebrow::before{content:"\2738";color:var(--pine)}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:rgba(250,250,242,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:1.5rem;min-height:64px}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--green-dark);font-family:var(--display);font-weight:700;font-size:1.15rem;white-space:nowrap}
+.brand img{height:34px;width:auto}
+nav.main{margin-left:auto;display:flex;gap:1.25rem;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a{text-decoration:none;color:var(--ink);font-weight:500;font-size:1rem;white-space:nowrap;padding:.3rem 0;border-bottom:2px solid transparent}
+nav.main a:hover{border-bottom-color:var(--pine);color:var(--green-dark)}
+
+/* hero */
+.hero{position:relative;background:var(--green-dark);color:#fff;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:560px}
+.hero-copy{padding:4.5rem 3rem 4rem max(1.5rem,calc((100vw - 1120px)/2 + 1.5rem));display:flex;flex-direction:column;justify-content:center}
+.hero h1{color:#fff}
+.hero h1 em{color:var(--sand)}
+.hero .eyebrow{color:var(--sand)}
+.hero p{font-size:1.25rem;color:#e8efe9}
+.hero-img{position:relative;min-height:320px;background:var(--green-mid)}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--green-dark) 0,rgba(28,68,51,0) 28%)}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;font-size:1.05rem;border:2px solid transparent}
+.btn.solid{background:var(--pine);color:var(--green-dark)}
+.btn.solid:hover{background:var(--sand);color:var(--green-dark)}
+.btn.ghost{border-color:rgba(255,255,255,.6);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+
+/* stats */
+.stats{background:var(--green);color:#fff}
+.stats ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr)}
+.stats li{padding:1.6rem 1.2rem;border-left:1px solid rgba(255,255,255,.18)}
+.stats li:first-child{border-left:0}
+.stats b{display:block;font-family:var(--display);font-size:2.5rem;line-height:1;font-weight:500;font-variant-numeric:lining-nums}
+.stats span{display:block;margin-top:.4rem;font-size:.98rem;color:#dbe7df;line-height:1.3}
+
+/* sections */
+section{padding:5rem 0}
+section.alt{background:#f2f1e4}
+.lead{font-size:1.3rem;color:#41453f}
+.cols{display:grid;gap:2.5rem}
+.two{grid-template-columns:1fr 1fr}
+.callout{background:var(--green);color:#fff;border-radius:6px;padding:1.6rem 1.8rem;margin:2rem 0}
+.callout p{margin:0;max-width:none;font-size:1.2rem}
+.callout strong{color:var(--sand)}
+
+/* map table */
+.map{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:1.05rem}
+.map th{text-align:left;font-family:var(--display);font-size:1.05rem;color:var(--green-mid);padding:.6rem 1rem .6rem 0;border-bottom:2px solid var(--green)}
+.map td{padding:1rem 1rem 1rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+.map td:first-child{font-family:var(--display);font-weight:700;color:var(--green-dark);width:24%;font-size:1.15rem}
+
+/* workstreams */
+.rows{display:grid;gap:0;margin-top:2rem}
+.row{display:grid;grid-template-columns:230px 1fr 170px;gap:1.5rem;padding:1.4rem 0;border-top:1px solid var(--line);align-items:start}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row h3{margin:0;font-size:1.3rem}
+.row p{margin:0;max-width:none}
+.tag{justify-self:start;font-size:.95rem;font-weight:700;padding:.25rem .75rem;border-radius:999px;background:#e3eee6;color:var(--green-dark)}
+.tag.open{background:var(--sand);color:#6a3b17}
+
+/* pilot */
+.pilot-img{border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--green-mid)}
+.pilot-img img{width:100%;height:100%;object-fit:cover}
+.facts{list-style:none;padding:0;margin:1rem 0 0}
+.facts li{padding-left:1.6rem;position:relative;margin-bottom:.55rem}
+.facts li::before{content:"\2738";position:absolute;left:0;color:var(--pine)}
+.stack{margin-top:3rem}
+.bar{display:flex;height:64px;border-radius:6px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.bar div{height:100%}
+.s-city{background:var(--green-dark)} .s-ab{background:var(--green)} .s-bch{background:repeating-linear-gradient(45deg,var(--arabica) 0 8px,#ece9cf 8px 16px)}
+.s-otp{background:var(--pine)} .s-inv{background:repeating-linear-gradient(45deg,var(--sand) 0 8px,#f4dcc8 8px 16px)}
+.legend{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:1rem;font-size:1rem;line-height:1.35}
+.legend b{display:block;font-family:var(--display);font-size:1.5rem;font-weight:500;color:var(--green-dark)}
+.legend span{color:var(--muted)}
+.note{font-size:.98rem;color:var(--muted);margin-top:1rem}
+
+/* engagement */
+.groups{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
+.group{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1.6rem}
+.group h3{margin-bottom:.4rem}
+.group .who{font-weight:700;color:var(--green-mid);font-size:1rem;margin-bottom:.6rem}
+.group p{margin:0;font-size:1.05rem}
+.banner{position:relative;margin-top:3rem;border-radius:6px;overflow:hidden;min-height:260px;background:var(--green-mid)}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.banner div{position:relative;background:linear-gradient(90deg,rgba(28,68,51,.92) 0,rgba(28,68,51,.55) 60%,rgba(28,68,51,0) 100%);color:#fff;padding:2.5rem;min-height:260px;display:flex;align-items:flex-end}
+.banner p{font-family:var(--display);font-size:1.7rem;line-height:1.25;max-width:22em;margin:0}
+
+/* policy */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+.level{border-top:4px solid var(--green);padding-top:1rem}
+.level.p{border-color:var(--pine)} .level.m{border-color:var(--arabica)}
+.level ul{list-style:none;padding:0;margin:0}
+.level li{padding-left:1.5rem;position:relative;margin-bottom:.8rem;font-size:1.05rem}
+.level li::before{content:"\2738";position:absolute;left:0;color:var(--pine);font-size:.9rem}
+
+/* presence */
+.tbl{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:1.05rem}
+.tbl th{text-align:left;font-family:var(--display);color:var(--green-mid);padding:.6rem 1rem .6rem 0;border-bottom:2px solid var(--green)}
+.tbl td{padding:.85rem 1rem .85rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td:first-child{white-space:nowrap;font-variant-numeric:lining-nums;color:var(--green-dark);font-weight:700}
+.tbl tr.up td{background:#f4ecdd}
+.scroll{overflow-x:auto}
+
+/* assets */
+.assets{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.asset{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1.3rem 1.4rem}
+.asset h3{font-size:1.2rem;margin-bottom:.35rem}
+.asset p{font-size:1rem;margin:0 0 .6rem;color:#41453f}
+.asset a{font-weight:700;font-size:1rem}
+.asset .st{font-size:.95rem;color:var(--muted)}
+
+/* lessons + next */
+.lessons{list-style:none;padding:0;margin:2rem 0 0;display:grid;gap:1.4rem}
+.lessons li{padding-left:2rem;position:relative;max-width:70ch}
+.lessons li::before{content:"\2738";position:absolute;left:0;color:var(--pine)}
+.lessons strong{font-family:var(--display);font-size:1.25rem;color:var(--green-dark);font-weight:700}
+ol.next{list-style:none;counter-reset:n;margin:2rem 0 0;padding:0;border-left:3px solid var(--green);}
+ol.next li{counter-increment:n;padding:0 0 1.4rem 1.6rem;position:relative}
+ol.next li::before{content:"";position:absolute;left:-9px;top:.5rem;width:15px;height:15px;border-radius:50%;background:var(--mist);border:3px solid var(--green)}
+ol.next b{display:block;font-family:var(--display);font-size:1.3rem;color:var(--green-dark)}
+
+/* footer */
+footer{background:var(--green-dark);color:#dbe7df;padding:3.5rem 0 3rem}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:start}
+footer h3{color:#fff;font-size:1.25rem;margin-bottom:.4rem}
+footer a{color:var(--sand)}
+footer p{margin:0 0 .4rem;font-size:1rem}
+
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-copy{padding:3rem 1.5rem}
+  .hero-img{min-height:300px;order:-1}
+  .hero-img::after{background:linear-gradient(0deg,var(--green-dark) 0,rgba(28,68,51,0) 35%)}
+  .stats ul{grid-template-columns:repeat(2,1fr)}
+  .stats li{border-left:0;border-top:1px solid rgba(255,255,255,.18)}
+  .two,.groups,.levels,.assets{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:.5rem}
+  .legend{grid-template-columns:1fr 1fr}
+  footer .wrap{grid-template-columns:1fr}
+  .brand span{display:none}
+  section{padding:3.5rem 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{header.top,.btns{display:none}section{padding:2rem 0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="https://housingprosperity.ca/islamicfamily.png" alt="IslamicFamily"><span>Housing Prosperity Fund</span></a>
+    <nav class="main" aria-label="Report sections">
+      <a href="#overview">Overview</a>
+      <a href="#fund">The fund</a>
+      <a href="#pilot">Dunluce</a>
+      <a href="#engagement">Engagement</a>
+      <a href="#policy">Policy</a>
+      <a href="#presence">Presence</a>
+      <a href="#assets">Assets</a>
+      <a href="#next">Next</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Definity Foundation, Year 1 report, Part 2</p>
+      <h1>Year 1: <em>building the fund</em> that builds homes for larger families.</h1>
+      <p>With Definity's support, IslamicFamily has turned a thesis about equitable finance and serving barriered communities into reality. The Housing Prosperity Fund is doing its first raise. Here is what we built, who we brought in, and what is next.</p>
+      <div class="btns">
+        <a class="btn solid" href="#overview">Read the report</a>
+        <a class="btn ghost" href="/">Visit the fund site</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://housingprosperity.ca/fam1.png" alt="A multi-generational family moving into their new home together">
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <ul>
+      <li><b>96 units</b><span>290 bedrooms for larger and extended families</span></li>
+      <li><b>$37.6M</b><span>total project cost, Diamond at Dunluce</span></li>
+      <li><b>$12.9M</b><span>public funding confirmed by the City of Edmonton and the Government of Alberta</span></li>
+      <li><b>30+</b><span>organizations engaged outside government</span></li>
+      <li><b>10</b><span>presentations across Ottawa, Winnipeg, Toronto and Victoria</span></li>
+    </ul>
+  </div>
+</div>
+
+<section id="overview">
+  <div class="wrap">
+    <p class="eyebrow">Overview</p>
+    <h2>Two pieces of one grant, <em>one shared goal.</em></h2>
+    <p class="lead">The Definity grant has two pieces. IslamicFamily is fiscal agent for SETSI's Islamic Finance Community of Practice, reported in Part 1. IslamicFamily also leads the fund development work, reported here.</p>
+    <p>Part 2 covers the Shariah-certified fund structure, the Dunluce pilot project, the funders and partners we engaged, our policy work, and the presentations, travel and assets that carried the work forward.</p>
+
+    <h3 style="margin-top:2.5rem">How this maps to our Definity budget</h3>
+    <div class="scroll">
+    <table class="map">
+      <thead><tr><th scope="col">Budget line</th><th scope="col">What this report shows</th></tr></thead>
+      <tbody>
+        <tr><td>Shariah compliance</td><td>Mufti Mirza Zain Baig certified the structure, and a Shariah primer is published for investors. The final review follows the Offer to Purchase.</td></tr>
+        <tr><td>Fund manager</td><td>SVX, Canada's impact investment institution, structures, develops and manages the fund.</td></tr>
+        <tr><td>Fund launch</td><td>The investor site, deck, FAQ and data room are live, and a first close is targeted for October 2026.</td></tr>
+        <tr><td>Sector education and lead development</td><td>Ten presentations, funder events across Toronto, and more than 30 organizations engaged.</td></tr>
+        <tr><td>Government relations and policy</td><td>A federal pre-budget submission, a Finance Canada follow-up, a Build Canada Homes application, and Alberta and Edmonton commitments.</td></tr>
+        <tr><td>Pilot pre-development</td><td>Engineering, geotechnical and design work are complete and preceded the Offer to Purchase. The pro forma and owner representative RFP are done.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="fund" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Build-out of the fund</p>
+    <h2>A Shariah-certified vehicle, <em>backed by counsel</em> and ready for investors.</h2>
+    <p class="lead">The fund grew out of the Halal Housing Lab, a CMHC-funded research project that won the Alberta Professional Planners Institute Award in 2024 and the Canadian Institute of Planners Planning Excellence Award in 2025.</p>
+
+    <div class="rows">
+      <div class="row">
+        <h3>Structure and legal</h3>
+        <p>Developed with SVX and Pallett Valo LLP as fund counsel, with MLT Aikins advising IslamicFamily. We settled a GP/LP model and moved the ownership mechanism to a Declaration of Trust after a counsel review.</p>
+        <span class="tag open">Final documents follow the Offer to Purchase</span>
+      </div>
+      <div class="row">
+        <h3>Shariah compliance</h3>
+        <p>Mufti Mirza Zain Baig certified the structure and reviewed the Musharakah model. A plain-language <a href="https://halalfund.ca/shariah">Shariah compliance primer</a> explains it for investors.</p>
+        <span class="tag open">Final review follows the Offer to Purchase</span>
+      </div>
+      <div class="row">
+        <h3>Investor materials</h3>
+        <p>We built the investor site, an investor deck, a data room, and an Investor FAQ and due diligence questionnaire dated September 1, 2026.</p>
+        <span class="tag">Live</span>
+      </div>
+      <div class="row">
+        <h3>Governance</h3>
+        <p>A board package built on milestone-gated commitments with off-ramps led to board authorization of a conditional Offer to Purchase at 365 Dunluce Road.</p>
+        <span class="tag">Complete</span>
+      </div>
+      <div class="row">
+        <h3>Project delivery</h3>
+        <p>An owner representative RFP and selection rubric are done, and terms with our design-build partner, Vivid Homes (Build Edmonton Homes), are being negotiated.</p>
+        <span class="tag open">Terms in negotiation</span>
+      </div>
+      <div class="row">
+        <h3>Capital raise</h3>
+        <p>We moved the first close to October 2026 so the Offer to Purchase could be properly drafted and commitments firmed up first. The open items are a philanthropic deposit for the Offer to Purchase and the investment target.</p>
+        <span class="tag open">Open</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pilot">
+  <div class="wrap">
+    <p class="eyebrow">Pilot project</p>
+    <div class="cols two" style="align-items:center">
+      <div>
+        <h2>The Diamond at Dunluce, <em>designed for families</em> who need to stay together.</h2>
+        <p>A 96-unit, 290-bedroom development at 365 Dunluce Road NW in Edmonton, purpose-built for larger and extended families, with occupancy expected in early 2028.</p>
+        <ul class="facts">
+          <li>The bedroom count rose from 264 as the design developed.</li>
+          <li>Three quarters of the units are affordable, in three equal bands at 50%, 40% and 20% below market. The remaining quarter is at market rents.</li>
+          <li>A 40-year caveat sets the affordable share at no less than half of the units.</li>
+          <li>A community-based rent supplement model supports the deepest affordability.</li>
+          <li>Every grant dollar obtained reduces IslamicFamily's purchase price by the same amount.</li>
+        </ul>
+      </div>
+      <div class="pilot-img"><img src="https://housingprosperity.ca/fam2.png" alt="A family moving into their new affordable home" loading="lazy"></div>
+    </div>
+
+    <div class="stack">
+      <h3>The capital stack</h3>
+      <div class="bar" role="img" aria-label="Capital stack: City of Edmonton 3.6 million, Government of Alberta 9.3 million, Build Canada Homes 4 million, deposit 0.4 million, investment target 20 million">
+        <div class="s-city" style="width:9.65%"></div>
+        <div class="s-ab" style="width:24.93%"></div>
+        <div class="s-bch" style="width:10.72%"></div>
+        <div class="s-otp" style="width:1.07%"></div>
+        <div class="s-inv" style="width:53.63%"></div>
+      </div>
+      <div class="legend">
+        <div><b>$3.6M</b>City of Edmonton<br><span>Confirmed</span></div>
+        <div><b>$9.3M</b>Government of Alberta<br><span>Confirmed, public</span></div>
+        <div><b>$4M</b>Build Canada Homes<br><span>Moved to next steps</span></div>
+        <div><b>$400K</b>Offer to Purchase deposit<br><span>Philanthropic, being raised</span></div>
+        <div><b>$20M</b>Investment target<br><span>Investors and lenders, open</span></div>
+      </div>
+      <p class="note">Figures are rounded and the bar is drawn to scale. Total project cost is about $37.6M. Solid colours are confirmed or in hand, hatched colours are pending.</p>
+    </div>
+
+    <div class="callout">
+      <p><strong>Groundbreaking is being planned.</strong> Invitations to government and community partners went out in October, and the date will be set with the Minister's office.</p>
+    </div>
+  </div>
+</section>
+
+<section id="engagement" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Who we engaged</p>
+    <h2>More than 30 organizations <em>at the table</em> in five groups.</h2>
+    <p class="lead">Engagement with public offices follows in the policy section.</p>
+    <div class="groups">
+      <div class="group">
+        <h3>Foundations and impact investors</h3>
+        <p class="who">Private, community and faith-based funders</p>
+        <p>We presented the fund at funder evenings in Toronto in June and July, met a family foundation in person, and shared our deck through foundation networks. Public commitments have been the strongest signal: once provincial funding was confirmed, a national impact investor told us the project sits inside its return threshold.</p>
+      </div>
+      <div class="group">
+        <h3>Community foundations and financial institutions</h3>
+        <p class="who">Edmonton Community Foundation, Vancity, SVX</p>
+        <p>We pursued community capital, including a grant round at Edmonton Community Foundation that invites a resubmission in October. Vancity has offered a back-up loan, and the Islamic Development Bank is in due diligence. SVX is our fund development partner.</p>
+      </div>
+      <div class="group">
+        <h3>Muslim community and faith partners</h3>
+        <p class="who">Muslim Association of Canada, Islamic Relief Canada, Yaqeen Institute, NASIMCO</p>
+        <p>We presented to the Muslim Association of Canada, briefed Islamic Relief Canada on a possible national campaign, and reconnected with NASIMCO on shared local priorities. Partners have shown interest in investing or providing qard hasan, and the Yaqeen Institute is running due diligence.</p>
+      </div>
+      <div class="group">
+        <h3>Sector and knowledge partners</h3>
+        <p class="who">University of Victoria, Philanthropic Foundations Canada, New Power Labs, Reimagine Labs, Alberta Ecotrust</p>
+        <p>The University of Victoria put the work on the Victoria Forum stage. New Power Labs worked with us on inclusive investment framing, and Alberta Ecotrust opened a conversation on EV charger and ride share grants for housing.</p>
+      </div>
+      <div class="group" style="grid-column:1/-1">
+        <h3>Delivery and advisory</h3>
+        <p class="who">Vivid Homes (Build Edmonton Homes), Pallett Valo LLP, MLT Aikins, Mufti Mirza Zain Baig</p>
+        <p>Design-build, fund counsel, IslamicFamily counsel and Shariah advice for the fund and the Dunluce project.</p>
+      </div>
+    </div>
+    <div class="banner">
+      <img src="https://housingprosperity.ca/fam3.png" alt="Families celebrating at the Diamond at Dunluce" loading="lazy">
+      <div><p>Four kinds of capital, one integrated team: public, private, philanthropic, and the people this housing serves.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="policy">
+  <div class="wrap">
+    <p class="eyebrow">Policy and government relations</p>
+    <h2>Public money is already in the project. <em>Next, the rules.</em></h2>
+    <p class="lead">Our policy work aims to make federal capital, tax and program rules work for faith-rooted housing finance, and to bring the next level of government in.</p>
+    <div class="levels">
+      <div class="level">
+        <h3>Federal</h3>
+        <ul>
+          <li>Drafted a pre-budget submission on values-aligned housing finance, developed with the Islamic Finance Community of Practice.</li>
+          <li>Met Finance Canada in early July and followed up on four areas where clarity on federal capital, tax and program treatment would speed the work.</li>
+          <li>Submitted a Build Canada Homes application. The $4M request has moved to next steps.</li>
+          <li>Contributed to the federal briefing note on the financial exclusion of Muslims, and briefed a senior policy analyst at Employment and Social Development Canada.</li>
+        </ul>
+      </div>
+      <div class="level p">
+        <h3>Provincial</h3>
+        <ul>
+          <li>The Government of Alberta confirmed $9.3M through the Affordable Housing Partnership Program.</li>
+          <li>A 2024 meeting with the Assistant Deputy Minister of Housing opened the door to CMHC.</li>
+          <li>We wrote to the Minister of Assisted Living and Social Services on equity investment, received a reply, and invited him to the groundbreaking.</li>
+          <li>We are raising the project with the Premier's office.</li>
+        </ul>
+      </div>
+      <div class="level m">
+        <h3>Municipal and sector</h3>
+        <ul>
+          <li>The City of Edmonton confirmed $3.6M, and the Mayor and a City Councillor are invited to the groundbreaking.</li>
+          <li>We raised the project with community funders in the context of the City's four-year budget.</li>
+          <li>We are drafting a white paper, "Islamic finance isn't about mortgages. It never was.", for policymakers and economists.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:2rem">Due diligence has surfaced policy gaps we are tracking for the next stage of advocacy, including the tax treatment of project income sponsored by a charity and withholding tax on repayments to a foreign lender.</p>
+  </div>
+</section>
+
+<section id="presence" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Presentations and travel</p>
+    <h2>Ten presentations, <em>six trips,</em> four cities.</h2>
+    <p class="lead">Several trips paired a speaking slot with funder or partner meetings. A seventh trip is planned for November.</p>
+    <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th scope="col">Date</th><th scope="col">Event</th><th scope="col">Place</th><th scope="col">Focus</th></tr></thead>
+      <tbody>
+        <tr class="up"><td>Nov 5, 2026</td><td>Capital Unlocked 2026 Summit, hosted by New Power Labs (upcoming)</td><td>Toronto</td><td>Housing and Islamic finance</td></tr>
+        <tr><td>Sep 22-24, 2026</td><td>Philanthropic Foundations Canada national conference, "Reciprocity"</td><td>Winnipeg</td><td>Philanthropic sector</td></tr>
+        <tr><td>Aug 23-25, 2026</td><td>Victoria Forum 2026</td><td>Victoria</td><td>Halal finance</td></tr>
+        <tr><td>Jul 23, 2026</td><td>Funder event</td><td>Toronto</td><td>Housing Prosperity Fund</td></tr>
+        <tr><td>Jul 2026</td><td>Muslim Association of Canada</td><td>Toronto</td><td>Muslim community</td></tr>
+        <tr><td>Jun 2026</td><td>Funder evening</td><td>Toronto</td><td>Halal Affordable Housing Fund</td></tr>
+        <tr><td>Jun 14, 2026</td><td>Charitable Foundations of Canada session, organized by Laidlaw Foundation</td><td>Toronto</td><td>Philanthropic sector</td></tr>
+        <tr><td>May 27-28, 2026</td><td>Catalyst Summit (two sessions)</td><td>Winnipeg</td><td>Housing and Transform</td></tr>
+        <tr><td>May 2026</td><td>Halal finance presentation for social impact investors</td><td>To be confirmed</td><td>Islamic finance for impact</td></tr>
+        <tr><td>Mar 23, 2026</td><td>Charity Resilience Conference: Solidarity in Action</td><td>Ottawa</td><td>Philanthropic sector</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="wrap">
+    <p class="eyebrow">Assets and tools</p>
+    <h2>A toolkit investors, funders and public offices <em>can use without us in the room.</em></h2>
+    <div class="assets">
+      <div class="asset"><h3>Investor site</h3><p>Fund mechanics, the structural barriers we address, a halal finance explainer and a sign-up survey.</p><a href="https://halalfund.ca">halalfund.ca</a></div>
+      <div class="asset"><h3>Shariah compliance primer</h3><p>A plain-language explanation of how the structure meets Shariah requirements.</p><a href="https://halalfund.ca/shariah">halalfund.ca/shariah</a></div>
+      <div class="asset"><h3>Housing Prosperity Fund site</h3><p>The public case for the fund, the pilot project and the three ways to participate.</p><a href="/">housingprosperity.ca</a></div>
+      <div class="asset"><h3>Investor data room</h3><p>Project, fund and due diligence documents for investors.</p><span class="st">Available on request</span></div>
+      <div class="asset"><h3>Investor FAQ and due diligence questionnaire</h3><p>Answers to investor and lender questions, dated September 1, 2026, being turned into a navigable website.</p><span class="st">Website in progress</span></div>
+      <div class="asset"><h3>Fund deck, overview and brochure</h3><p>Investor and community versions of the case for the fund.</p><span class="st">Shared with funders and partners</span></div>
+      <div class="asset"><h3>Capital stack calculator and return models</h3><p>Interactive tools showing how philanthropic, public and investor capital stack up.</p><span class="st">Investor materials</span></div>
+      <div class="asset"><h3>Impact model</h3><p>Modelled impact over 20, 30 and 50 years: people housed, years of stable housing, children housed, added lifetime earnings, and surplus returned to charitable programming.</p><span class="st">Embedding on both investor sites</span></div>
+      <div class="asset"><h3>Board governance package</h3><p>Milestone-gated commitments with off-ramps, plus the package seeking authorization for the Offer to Purchase.</p><span class="st">Board</span></div>
+      <div class="asset"><h3>Owner representative RFP and rubric</h3><p>Procurement documents for the Dunluce project.</p><span class="st">Project team</span></div>
+      <div class="asset"><h3>Community-based rent supplement model</h3><p>A report on a rent supplement model for deeper affordability, with a companion website.</p><span class="st">Final report sent, website being updated</span></div>
+      <div class="asset"><h3>Policy submissions</h3><p>The federal pre-budget submission and the Build Canada Homes application.</p><span class="st">Federal government</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="lessons" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Lessons and pivots</p>
+    <h2>What Year 1 <em>taught us.</em></h2>
+    <ul class="lessons">
+      <li><strong>People aren't ready to hear the word 'sharia' or 'halal'</strong><br>For many prospective investors fair finance, that is accessible by more Canadians, including Muslims, is seen as a niche issue.</li>
+      <li><strong>Foundation calendars rarely match project deadlines.</strong><br>Decision cycles at foundations ran past our August timeline. We moved the first close to October 2026 and staged the capital: a back-up loan, and a deposit split into two instalments.</li>
+      <li><strong>Philanthropy is the lever.</strong><br>Because every grant dollar reduces the purchase price, we reframed our donor message as return on philanthropy. Our model puts about $94 of total build behind each philanthropic dollar, including $9.00 from the City of Edmonton and $23.29 from the Government of Alberta. Federal and investor amounts are still pending.</li>
+      <li><strong>Making Referrals and Opening Doors for Others has High Impact</strong><br>Laidlaw Foundation organized the Charitable Foundations of Canada session, and the University of Victoria put the work on the Victoria Forum stage.</li>
+      <li><strong>Questions cluster around structure, returns and tax.</strong><br>Funders and lenders ask about the Shariah structure, returns, tax treatment and public commitments, which is why we built the Shariah primer and the investor FAQ.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="next">
+  <div class="wrap">
+    <p class="eyebrow">What comes next</p>
+    <h2>The road from <em>first close</em> to first residents.</h2>
+    <ol class="next">
+      <li><b>October 2026</b>First close target, and the Edmonton Community Foundation Round 2 resubmission.</li>
+      <li><b>Late October or early November</b>Groundbreaking, with the date to be set with the Minister's office.</li>
+      <li><b>November 2026</b>A foundation investment committee review, and the Capital Unlocked Summit on November 5.</li>
+      <li><b>January or March 2027</b>National Islamic finance conference in Mississauga and Ottawa, with SETSI.</li>
+      <li><b>Early 2028</b>Expected occupancy at the Diamond at Dunluce.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Housing Prosperity Fund</h3>
+      <p>IslamicFamily, in partnership with SVX and Build Edmonton Homes. With thanks to the Definity Foundation for its support.</p>
+    </div>
+    <div>
+      <h3>Omar Yaqub</h3>
+      <p>Servant of Servants, IslamicFamily</p>
+      <p><a href="mailto:omary@islamicfamily.ca">omary@islamicfamily.ca</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
