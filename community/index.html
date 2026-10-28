@@ -282,27 +282,47 @@ dialog::backdrop{background:rgba(28,68,51,.62);backdrop-filter:blur(3px)}
 .imp summary::after{display:none}
 .imp details p{padding:0;max-width:none}
 
-/* recognition */
-.recog{position:relative;background:var(--nabawi-dark);color:var(--moon);overflow:hidden}
-.recog-bg{position:absolute;inset:0}
-.recog-bg img{width:100%;height:100%;object-fit:cover}
-.recog-bg::after{content:"";position:absolute;inset:0;background:rgba(28,68,51,.88)}
-.recog .wrap{position:relative}
-.recog h2{color:var(--moon);text-align:center;margin:0 auto;max-width:12em}
-.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
-.rec-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:28px 26px}
-.rec-card b{display:block;font-family:var(--serif);font-size:1.35rem;color:var(--pinecone);line-height:1.2}
-.rec-title{margin-top:6px;font-weight:700;color:var(--moon)}
-.rec-card p{margin-top:12px;font-size:1rem;color:rgba(250,250,242,.84)}
 
-@media (max-width:960px){
-  .need-grid{grid-template-columns:1fr;gap:36px}
-  .stories-grid,.rec-grid,.major-partners-grid{grid-template-columns:1fr}
-  .major-partners{padding:64px 0}
-  .stat-row{grid-template-columns:110px 1fr;gap:18px}
+/* recognition (as on Housing Prosperity site) */
+.recognition{background:var(--nabawi);border-top:1px solid rgba(255,255,255,.1);padding:64px 0;position:relative;overflow:hidden;color:var(--moon)}
+.rec-bg{position:absolute;inset:0;z-index:0}
+.rec-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block}
+.rec-bg::after{content:"";position:absolute;inset:0;background:rgba(20,52,34,.82)}
+.recognition .wrap{position:relative;z-index:1}
+.rec-eyebrow{text-align:center;margin-bottom:6px}
+.rec-headline{text-align:center;max-width:460px;margin:0 auto}
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);margin-top:48px}
+.rec-card{background:rgba(255,255,255,.06);padding:36px 32px}
+.rec-year{font-family:var(--serif);font-size:36px;font-weight:400;color:var(--pinecone);line-height:1;margin-bottom:10px;letter-spacing:-.02em}
+.rec-title{font-size:15px;font-weight:500;color:var(--moon);margin-bottom:8px}
+.rec-body{font-size:14px;font-weight:300;color:rgba(250,250,242,.72);line-height:1.65;max-width:none}
+
+/* quote */
+.testimonial{background:var(--pinecone);overflow:hidden}
+.testimonial-inner{display:grid;grid-template-columns:1fr 320px;align-items:end;gap:0}
+.testimonial-inner.no-portrait{grid-template-columns:1fr}
+.testimonial-portrait{align-self:end;line-height:0}
+.testimonial-portrait img{display:block;width:100%;height:auto}
+.testimonial-quote{padding:56px 8px 56px 0}
+.quote-mark{font-family:var(--serif);font-size:88px;line-height:.65;color:var(--kiswah);opacity:.35;display:block;margin-bottom:24px;font-weight:700}
+.quote-text{font-family:var(--serif);font-size:20px;font-style:italic;font-weight:400;color:var(--kiswah);line-height:1.68;margin-bottom:28px;max-width:none}
+.quote-name{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--kiswah);opacity:.75}
+
+/* capital model */
+.capital-model{background:var(--nabawi);border-top:1px solid rgba(255,255,255,.1);padding:96px 0;color:var(--moon)}
+.cap-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.cap-head .mp-headline{margin-bottom:0}
+.halal-badge{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:var(--pinecone);font-family:var(--serif);font-size:14px;opacity:.8}
+.cap-body{font-size:16px;font-weight:300;line-height:1.8;color:rgba(250,250,242,.72);max-width:720px}
+.cap-body+.cap-body{margin-top:24px}
+.hf-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.hf-tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--moon);border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);padding:5px 12px}
+@media (max-width:860px){
+  .testimonial-inner{grid-template-columns:1fr}
+  .testimonial-portrait{max-width:220px;margin:0 auto}
+  .testimonial-quote{padding:48px 0 8px;text-align:center}
+  .capital-model{padding:64px 0}
 }
-@media (prefers-reduced-motion:reduce){.imp-grid li{opacity:1;transform:none}}
-
 
 /* partners (as on Housing Prosperity site) */
 .major-partners{background:var(--nabawi);border-top:1px solid rgba(255,255,255,.1);padding:96px 0;position:relative;overflow:hidden;color:var(--moon)}
@@ -327,6 +347,22 @@ dialog::backdrop{background:rgba(28,68,51,.62);backdrop-filter:blur(3px)}
 .partners-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .partner-chip{font-family:var(--serif);font-size:14px;font-weight:400;color:rgba(250,250,242,.72);padding:10px 22px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.06);transition:all .2s}
 .partner-chip:hover{background:rgba(255,255,255,.1);color:var(--moon);border-color:rgba(255,255,255,.3)}
+
+
+/* closing call to action */
+.section-cta{background:var(--moon);padding:104px 0;text-align:center;border-top:1px solid var(--border)}
+.cta-eyebrow{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--pinecone-dark);margin-bottom:20px}
+.cta-headline{font-family:var(--serif);font-size:clamp(34px,5vw,64px);font-weight:400;color:var(--kiswah);line-height:1.1;letter-spacing:-.01em;max-width:700px;margin:0 auto 24px}
+.cta-headline em{font-style:italic;color:var(--nabawi)}
+.cta-body{font-size:17px;font-weight:300;color:var(--muted);max-width:480px;margin:0 auto 44px;line-height:1.75}
+.cta-btn-row{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap}
+.btn-warm{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.04em;color:#fff;background:var(--nabawi);border:0;padding:15px 36px;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-warm:hover{background:var(--nabawi-dark);transform:translateY(-2px)}
+.cta-contacts{display:flex;justify-content:center;margin-top:40px;padding-top:32px;border-top:1px solid var(--border);max-width:520px;margin-left:auto;margin-right:auto}
+.cta-contact-title{font-size:13px;font-weight:300;color:var(--muted);margin-bottom:6px}
+.cta-contact-email{font-size:16px;color:var(--nabawi);border-bottom:1px solid rgba(39,93,67,.25);padding-bottom:1px;text-decoration:none;transition:border-color .2s,color .2s}
+.cta-contact-email:hover{color:var(--nabawi-dark);border-color:var(--nabawi)}
+@media (max-width:620px){.section-cta{padding:72px 0}}
 
 /* impact segment */
 .imp {
@@ -477,6 +513,15 @@ dialog::backdrop{background:rgba(28,68,51,.62);backdrop-filter:blur(3px)}
   .imp-grid li { opacity: 1; transform: none; transition: none; }
 }
 
+
+/* responsive, last so it wins */
+@media (max-width:960px){
+  .need-grid{grid-template-columns:1fr;gap:36px}
+  .stories-grid,.rec-grid,.major-partners-grid{grid-template-columns:1fr}
+  .major-partners{padding:64px 0}
+  .stat-row{grid-template-columns:110px 1fr;gap:18px}
+}
+@media (prefers-reduced-motion:reduce){.imp-grid li{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -514,6 +559,7 @@ dialog::backdrop{background:rgba(28,68,51,.62);backdrop-filter:blur(3px)}
       <a href="#impact" class="drawer-link">Impact</a>
       <a href="#homes" class="drawer-link">The homes</a>
       <a href="#where" class="drawer-link">Where we are</a>
+      <a href="#halal-finance" class="drawer-link">A New Capital Model</a>
       <a href="#partners" class="drawer-link">Partners</a>
       <a href="#recognition" class="drawer-link">Recognition</a>
       <a href="#involve" class="drawer-link">Get involved</a>
@@ -839,13 +885,31 @@ gridIO.observe(grid);
   </div>
 </section>
 
-<div class="break break--right">
-  <img src="https://housingprosperity.ca/fam1.png" alt="A multigenerational family together at home" onerror="this.remove()">
-  <div class="wrap break-text">
-    <h3>Together under one roof.</h3>
-    <p>Because every family deserves room for everyone they love.</p>
+<section class="testimonial" id="quote">
+  <div class="wrap testimonial-inner" id="quoteInner">
+    <div class="testimonial-quote">
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="quote-text">I came to this country with nothing and found a city that invested in me. Now it's time for community, impact investors and government to invest in the families waiting the longest for affordable housing. IslamicFamily &amp; Vivid Homes are leading that charge, innovating on how we build while never losing sight of the community we build for.</p>
+      <div class="quote-name">Amarjeet Sohi, Former Mayor of Edmonton</div>
+    </div>
+    <div class="testimonial-portrait" id="quotePortrait">
+      <img src="https://housingprosperity.ca/amarjeet.png" alt="Amarjeet Sohi, Former Mayor of Edmonton" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='/amarjeet.png';}else{document.getElementById('quotePortrait').style.display='none';document.getElementById('quoteInner').classList.add('no-portrait');}">
+    </div>
   </div>
-</div>
+</section>
+
+<section class="capital-model" id="halal-finance">
+  <div class="wrap">
+    <div class="mp-eyebrow">A New Capital Model</div>
+    <div class="cap-head">
+      <h2 class="mp-headline">A source of capital<br><em>no one else has unlocked.</em></h2>
+      <span class="halal-badge" title="Halal" lang="ar">&#1581;&#1604;&#1575;&#1604;</span>
+    </div>
+    <p class="cap-body">Most affordable housing financing in Canada runs on interest-bearing debt, a structure that quietly locks out some of the most motivated capital in the country. Institutions and communities that collectively hold hundreds of millions in restricted, values-driven capital have been structurally excluded from building the housing they care about most.</p>
+    <p class="cap-body">This is also an invitation. Institutions locked out of Canada's debt-based housing system can do two things at once here: help build affordable housing today, and help fund an ongoing, community-based rent supplement, a source of operating capital that doesn't exist elsewhere in Canada.</p>
+    <div class="hf-tags"><span class="hf-tag">Certified Shariah-compliant &middot; Mufti Zain Baig</span></div>
+  </div>
+</section>
 
 <section class="major-partners" id="partners">
   <div class="partners-bg-text" aria-hidden="true">4P</div>
@@ -899,14 +963,15 @@ gridIO.observe(grid);
   </div>
 </section>
 
-<section class="section recog" id="recognition">
-  <div class="recog-bg"><img src="https://housingprosperity.ca/fam3.png" alt="" onerror="this.remove()"></div>
+<section class="recognition" id="recognition">
+  <div class="rec-bg"><img src="https://housingprosperity.ca/fam3.png" alt="" onerror="this.remove()"></div>
   <div class="wrap">
-    <h2>Award-winning research. National credibility.</h2>
+    <div class="mp-eyebrow rec-eyebrow">Recognition &amp; Research</div>
+    <h2 class="mp-headline rec-headline"><em>Award-winning</em> research.<br>National credibility.</h2>
     <div class="rec-grid">
-      <div class="rec-card"><b>CIP: Planning Excellence</b><div class="rec-title">Canadian Institute of Planners (2025)</div><p>National recognition for the Halal Housing Lab research initiative, producing Canada's first open-source guide to halal affordable housing development.</p></div>
-      <div class="rec-card"><b>APPI: Merit Award</b><div class="rec-title">Alberta Professional Planners Institute (2024)</div><p>The Alberta Professional Planners Institute recognized the Halal Housing Lab as the province's outstanding planning project.</p></div>
-      <div class="rec-card"><b>CMHC: Innovation Lab</b><div class="rec-title">Innovation Lab Funded Initiative</div><p>The Halal Housing Lab was funded by CMHC as a national innovation project, resulting in a published open-source guide and presentations to the CMHC Board of Directors.</p></div>
+      <div class="rec-card"><div class="rec-year">CIP: Planning Excellence</div><div class="rec-title">Canadian Institute of Planners (2025)</div><p class="rec-body">National recognition for the Halal Housing Lab research initiative, producing Canada's first open-source guide to halal affordable housing development.</p></div>
+      <div class="rec-card"><div class="rec-year">APPI: Merit Award</div><div class="rec-title">Alberta Professional Planners Institute (2024)</div><p class="rec-body">Alberta Professional Planners Institute recognized the Halal Housing Lab as the province's outstanding planning project.</p></div>
+      <div class="rec-card"><div class="rec-year">CMHC: Innovation Lab</div><div class="rec-title">Innovation Lab Funded Initiative</div><p class="rec-body">The Halal Housing Lab was funded by CMHC as a national innovation project, resulting in a published open-source guide and presentations to the CMHC Board of Directors.</p></div>
     </div>
   </div>
 </section>
@@ -997,6 +1062,22 @@ gridIO.observe(grid);
     </div>
   </div>
 </section>
+<section class="section-cta" id="join">
+  <div class="wrap">
+    <div class="cta-eyebrow">Help us build</div>
+    <h2 class="cta-headline">Break barriers<br><em>Uplift communities.</em></h2>
+    <p class="cta-body">Housing breaks cycles of poverty. Help us build for the future of the community.</p>
+    <div class="cta-btn-row">
+      <button type="button" class="btn-warm" data-form="stay">Sign up to make it happen</button>
+    </div>
+    <div class="cta-contacts">
+      <div class="cta-contact">
+        <div class="cta-contact-title">Questions? Write to us</div>
+        <a href="mailto:housing@islamicfamily.ca" class="cta-contact-email">housing@islamicfamily.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <dialog id="helpDialog" aria-labelledby="helpTitle">
@@ -1033,7 +1114,7 @@ gridIO.observe(grid);
 var HOUSING_FORM_ID = 'RWWVXK';
 var PARTNER_FORM_ID = '7R4Q5A';   /* existing Halal Fund form, unchanged */
 var FUNDRAISEUP_CAMPAIGN = 'XMQRJPQY';
-var FALLBACK_EMAIL = 'omary@islamicfamily.ca';
+var FALLBACK_EMAIL = 'housing@islamicfamily.ca';
 
 function openTally(id, hidden){
   if (window.Tally && typeof window.Tally.openPopup === 'function'){
