@@ -364,6 +364,30 @@ dialog::backdrop{background:rgba(28,68,51,.62);backdrop-filter:blur(3px)}
 .cta-contact-email:hover{color:var(--nabawi-dark);border-color:var(--nabawi)}
 @media (max-width:620px){.section-cta{padding:72px 0}}
 
+
+/* funding thermometer */
+.funding{margin-top:64px;padding-top:48px;border-top:1px solid var(--border)}
+.funding-title{margin-bottom:24px;font-size:1.2rem}
+.funding-figures{display:flex;flex-wrap:wrap;gap:12px 72px;margin-bottom:22px}
+.fig-num{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,2.8rem);line-height:1;color:var(--kiswah);letter-spacing:-.01em}
+.fig-num--raised{color:var(--nabawi)}
+.fig-label{margin-top:6px;font-size:.95rem;color:var(--muted)}
+.thermo{display:block}
+.thermo-track{display:flex;height:8px;background:var(--arabica);overflow:hidden}
+.thermo-seg{height:100%;width:0;min-width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.thermo-track.on .thermo-seg{width:var(--w)}
+.thermo-track.on .seg-com{min-width:3px}
+.seg-ab{background:var(--nabawi)}
+.seg-city{background:#4a8467;border-left:2px solid var(--moon)}
+.seg-com{background:var(--pinecone);border-left:2px solid var(--moon)}
+.thermo-legend{list-style:none;display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:14px}
+.thermo-legend li{display:flex;align-items:center;gap:8px;font-size:.95rem;color:var(--muted)}
+.thermo-legend b{color:var(--kiswah);font-weight:700}
+.dot{width:10px;height:3px;display:inline-block}
+.dot-ab{background:var(--nabawi)}.dot-city{background:#4a8467}.dot-com{background:var(--pinecone)}
+.thermo-cta{margin-top:24px}
+@media (prefers-reduced-motion:reduce){.thermo-seg{transition:none}}
+
 /* impact segment */
 .imp {
   --imp-ink:   #E1E7DD;                  /* moon mist over nabawi */
@@ -569,7 +593,7 @@ dialog::backdrop{background:rgba(28,68,51,.62);backdrop-filter:blur(3px)}
       <button type="button" class="drawer-link drawer-link--donate" data-donate>Donate</button>
     </nav>
     <div class="drawer-contact">
-      <div class="drawer-contact-line">Housing helpline: 780 900 2777</div>
+      <div class="drawer-contact-line">IslamicFamily Helpline: 780 900 2777</div>
       <div class="drawer-contact-line">Open 10 am to 5 pm</div>
     </div>
   </div>
@@ -883,6 +907,27 @@ gridIO.observe(grid);
       </ul>
     </div>
   </div>
+
+  <div class="wrap funding" id="funding">
+    <h3 class="funding-title">Funding progress</h3>
+    <div class="funding-figures">
+      <div><div class="fig-num">$37.6M</div><div class="fig-label">Total project costs</div></div>
+      <div><div class="fig-num fig-num--raised">$13.3M</div><div class="fig-label">Raised to date, 35% of the total</div></div>
+    </div>
+    <div class="thermo" role="img" aria-label="Raised to date: $9.3 million from the Government of Alberta, $3.6 million from the City of Edmonton and $400 thousand in community giving, out of $37.6 million in total project costs.">
+      <div class="thermo-track" id="thermoTrack">
+        <div class="thermo-seg seg-ab" style="--w:24.73%"></div>
+        <div class="thermo-seg seg-city" style="--w:9.57%"></div>
+        <div class="thermo-seg seg-com" style="--w:1.06%"></div>
+      </div>
+    </div>
+    <ul class="thermo-legend">
+      <li><span class="dot dot-ab"></span><b>$9.3M</b> Government of Alberta</li>
+      <li><span class="dot dot-city"></span><b>$3.6M</b> City of Edmonton</li>
+      <li><span class="dot dot-com"></span><b>$400K</b> Community giving</li>
+    </ul>
+    <div class="thermo-cta"><button type="button" class="btn btn--ghost" data-donate>Help us close the gap</button></div>
+  </div>
 </section>
 
 <section class="testimonial" id="quote">
@@ -990,7 +1035,7 @@ gridIO.observe(grid);
     </div>
 
     <div class="panel" id="p-housing" hidden>
-      <p>Speak with our team by phone. We will talk through what is available now and what is coming.</p>
+      <p>We do not provide housing yet, but our team can assist with housing navigation. Call us and we will talk through your options.</p>
       <div class="panel-actions"><a class="btn btn--green" href="tel:+17809002777">Call 780 900 2777</a></div>
     </div>
     <div class="panel" id="p-stay" hidden>
@@ -1049,7 +1094,7 @@ gridIO.observe(grid);
       </details>
       <details>
         <summary>When can I apply?</summary>
-        <p>Applications are not open yet. Families are targeted to move in during early 2028. Call 780 900 2777 or sign up to be told first when applications open.</p>
+        <p>Applications are not open yet, and IslamicFamily does not provide housing yet. Families are targeted to move in during early 2028. Sign up to be told first when applications open. If you need housing now, call the IslamicFamily Helpline at 780 900 2777: our team can assist with housing navigation.</p>
       </details>
       <details>
         <summary>What is halal finance?</summary>
@@ -1084,8 +1129,8 @@ gridIO.observe(grid);
   <div class="dlg">
     <button type="button" class="dlg-close" aria-label="Close" data-close>&times;</button>
     <h2 id="helpTitle">Need housing now?</h2>
-    <p>Call our helpline and talk with someone today about your options. This building is not taking applications yet, and we will tell you as soon as that changes.</p>
-    <small>IslamicFamily housing helpline</small>
+    <p>IslamicFamily does not provide housing yet, but our team can assist with housing navigation. Call the IslamicFamily Helpline to talk through your options today. This building is not taking applications yet, and we will tell you as soon as that changes.</p>
+    <small>IslamicFamily Helpline</small>
     <a class="phone" href="tel:+17809002777">780 900 2777</a>
     <small>Open 10 am to 5 pm</small>
     <a class="btn btn--green" href="tel:+17809002777">Call now</a>
@@ -1101,7 +1146,7 @@ gridIO.observe(grid);
       <p><a href="https://www.islamicfamily.ca">islamicfamily.ca</a></p>
     </div>
     <div>
-      <b>Housing helpline</b>
+      <b>IslamicFamily Helpline</b>
       <a class="foot-call" href="tel:+17809002777">780 900 2777</a>
       <p>Open 10 am to 5 pm</p>
     </div>
@@ -1162,6 +1207,12 @@ document.querySelectorAll('.choice').forEach(function(c){
     if (!open){ c.setAttribute('aria-expanded','true'); document.getElementById(c.getAttribute('data-panel')).hidden = false; }
   });
 });
+(function(){
+  var t=document.getElementById('thermoTrack'); if(!t) return;
+  if (!('IntersectionObserver' in window)){ t.classList.add('on'); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ t.classList.add('on'); io.disconnect(); } }); },{threshold:.4});
+  io.observe(t);
+})();
 var helpDlg = document.getElementById('helpDialog');
 document.querySelectorAll('[data-help]').forEach(function(b){
   b.addEventListener('click', function(){
