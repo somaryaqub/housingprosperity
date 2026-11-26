@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impact · Housing Prosperity Fund · IslamicFamily</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Alegreya+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<script async src="https://tally.so/widgets/embed.js"></script>
+<!-- Fundraise Up: the new standard for online giving -->
+<script>(function(w,d,s,n,a){if(!w[n]){var l='call,catch,on,once,set,then,track,openCheckout'
+.split(','),i,o=function(n){return'function'==typeof n?o.l.push([arguments])&&o
+:function(){return o.l.push([n,arguments])&&o}},t=d.getElementsByTagName(s)[0],
+j=d.createElement(s);j.async=!0;j.src='https://cdn.fundraiseup.com/widget/'+a+'';
+t.parentNode.insertBefore(j,t);o.s=Date.now();o.v=5;o.h=w.location.href;o.l=[];
+for(i=0;i<8;i++)o[l[i]]=o(l[i]);w[n]=o}
+})(window,document,'script','FundraiseUp','ACVHFTCR');</script>
+<!-- End Fundraise Up -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand-link" aria-label="Housing Prosperity Fund home"><div class="nav-brand">
+      <!-- IslamicFamily pinecone-star logomark (SVG inline) -->
+      <img src="islamicfamily.png" width="34" height="34" viewBox="0 0 34 34">
+              <div>
+        <div class="nav-logo-text">Housing Prosperity Fund</div>
+        <span class="nav-logo-sub">IslamicFamily: Prosperity Starts at Home</span>
+      </div>
+    </div></a>
+    <div class="nav-right">
+      <div class="construction-badge">
+        <span class="construction-emoji">🏗️</span>
+        Construction Underway
+      </div>
+
+      <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="nav-cta">Sign-on →</a>
+
+      <!-- Donate -->
+      <a href="#XMQRJPQY" class="nav-donate">Donate</a>
+
+      <!-- Hamburger -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Slide-out navigation drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-inner">
+    <div class="nav-drawer-header">
+      <span class="nav-drawer-label">Navigation</span>
+      <button class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="drawer-links">
+      <a href="index.html" class="drawer-link">Home</a>
+      <a href="problem-and-need.html" class="drawer-link">The Problem &amp; Need</a>
+      <a href="team.html" class="drawer-link">Team</a>
+      <a href="dunluce.html" class="drawer-link">Project: Diamond at Dunluce</a>
+      <a href="impact.html" class="drawer-link" aria-current="page">Impact</a>
+      <a href="capital-model.html" class="drawer-link">The Capital Model</a>
+      <a href="build-with-us.html" class="drawer-link">Build with Us</a>
+      <a href="#tally-open=7R4Q5A&tally-emoji-text=👋&tally-emoji-animation=wave" class="drawer-link drawer-link--cta">Sign-on →</a>
+      <button onclick="FundraiseUp.openCheckout({campaignId:'XMQRJPQY'})" class="drawer-link drawer-link--donate">Donate →</button>
+    </nav>
+    <div class="drawer-contact">
+      <div class="drawer-contact-line">omary@islamicfamily.ca</div>
+      <div class="drawer-contact-line">adam.spence@svx.ca</div>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="navOverlay"></div>
+
+
+
+
+<!-- ══════════════ PAGE HERO ══════════════ -->
+<section class="page-hero">
+  <div class="page-hero-bg" aria-hidden="true" style="background-image:url('fam2.png'); background-position:center 30%;"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">04 · Impact</div>
+    <h1 class="page-hero-title">What a home makes possible.<br><em>Counted, modelled, benchmarked.</em></h1>
+    <p class="page-hero-sub">People housed, years of stable housing, youth finishing Grade 12 and surplus returned to the community, over 20, 30 and 50 years, with every figure's equation shown.</p>
+    <div class="page-hero-jump" role="navigation" aria-label="On this page">
+      <a href="#impact">Impact figures</a>
+      <a href="#impact-in-depth">Impact in depth</a>
+      <a href="#scale">Scale</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ IMPACT ══════════════ -->
+<section class="section-mechanics on-green" id="impact" aria-labelledby="imp-t">
+  <div class="container">
+    <div class="imp">
+
+      <div class="imp-top reveal">
+        <h2 id="imp-t">Impact</h2>
+        <span class="imp-over">over</span>
+        <span class="imp-horizon" role="radiogroup" aria-label="Time horizon">
+          <input type="radio" name="imp-h" id="imp-h20" value="20" checked><label for="imp-h20">20 years</label>
+          <input type="radio" name="imp-h" id="imp-h30" value="30"><label for="imp-h30">30 years</label>
+          <input type="radio" name="imp-h" id="imp-h50" value="50"><label for="imp-h50">50 years</label>
+        </span>
+      </div>
+
+      <ul class="imp-figs reveal" id="imp-figs"></ul>
+      <p class="imp-narr reveal" id="imp-narr"></p>
+
+      <div class="imp-depth reveal" id="impact-in-depth">
+        <h3>Impact in depth</h3>
+        <p>These figures do not change with the amount of philanthropy raised: the building is 96 units either way. Philanthropy changes how much surplus is released for charitable allocation and how soon investors are repaid, not how many homes exist. Every outcome shows its own equation and carries an evidence tier.</p>
+        <p>
+          <span class="imp-tier">Counted</span>from the pro forma and two occupancy assumptions.<br>
+          <span class="imp-tier">Modelled</span>from the project's own financials.<br>
+          <span class="imp-tier">Benchmarked</span>from published research on other populations.
+        </p>
+        <ul class="imp-assume" id="imp-assume" aria-label="Model assumptions"></ul>
+        <div class="inv-table-wrap" role="region" aria-label="Outcomes and their equations" tabindex="0">
+          <table class="inv-table">
+            <thead><tr><th scope="col">Outcome</th><th scope="col">Equation</th><th scope="col">Tier</th><th scope="col">Result</th></tr></thead>
+            <tbody id="imp-rows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <details class="reveal">
+        <summary>How each figure is calculated</summary>
+        <div id="imp-note"></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<script>
+/* ══════════════ IMPACT SECTION ══════════════
+   EDIT HERE. Parameters match the Dunluce capital and outcomes model.
+   ═══════════════════════════════════════════ */
+(function(){
+const DATA = {
+
+  address: "365 Dunluce Road NW",
+  totalCost: 37644270,
+
+  /* Total bedrooms, stated by IslamicFamily. The mix below sums to 296, so it
+     needs correcting to V29: it still drives the unit count (96) and the
+     below-market share. */
+  bedrooms: 290,
+
+  mix:  [[2,48],[3,16],[4,8],[5,24]],
+  aMix: [[2,36],[3,12],[4,6],[5,18]],
+
+  occ: { peoplePerBedroom:1.5, averageStayYears:5, soloParentShare:0.30 },
+
+  model: {
+    stabiliseYears: 1,            // a family stabilises inside its first year
+    reachThreshold: 0.85,         // tenancies reaching it, exits being upward
+    otherwiseInadequate: 0.80,
+    graduationGap: 0.13,          // IslamicFamily's prior analysis
+    lifetimePerChild: 302000,     // Chetty, Hendren and Katz (2016)
+    attribution: 0.30
+  },
+
+  /* Surplus to charitable programming, read off the pro forma at each
+     horizon. Back loaded, so it cannot be annualised: investors are
+     repaid first and the surplus follows. Set 30 and 50 from the model. */
+  surplus: { 20: 374000, 30: 18100000, 50: 129800000 }
+};
+
+/* ---------------- helpers ---------------- */
+const whole = n => Math.round(n).toLocaleString("en-CA");
+const per   = n => "$" + n.toFixed(2);
+const pct   = x => Math.round(x * 100) + "%";
+const big   = n => n >= 1e6 ? "$" + (n/1e6).toFixed(1) + "M"
+                 : n >= 1e3 ? "$" + Math.round(n/1e3) + "K" : "$" + whole(n);
+
+/* ---------------- Impact ---------------- */
+const O = DATA.occ, M = DATA.model;
+const beds   = DATA.bedrooms;
+const units  = DATA.mix.reduce((t,[,u]) => t + u, 0);
+const aBeds  = DATA.aMix.reduce((t,[b,u]) => t + b*u, 0);
+const aUnits = DATA.aMix.reduce((t,[,u]) => t + u, 0);
+
+const residents     = beds * O.peoplePerBedroom;
+const adultsPerHome = 2 - O.soloParentShare;
+const childrenNow   = Math.max(residents - adultsPerHome * units, 0);
+const aChildrenNow  = Math.max(aBeds * O.peoplePerBedroom - adultsPerHome * aUnits, 0);
+const ageEligible   = Math.max(18 - M.stabiliseYears, 0) / 18;
+
+function render(years){
+  const cohorts    = years / O.averageStayYears;
+  const housed     = residents * cohorts;
+  const stableYrs  = residents * years;
+  const children   = childrenNow * cohorts;
+  const aChildren  = aChildrenNow * cohorts;
+  const stabilised = aChildren * M.reachThreshold * ageEligible * M.otherwiseInadequate;
+  const graduates  = stabilised * M.graduationGap;
+  const earnings   = stabilised * M.lifetimePerChild * M.attribution;
+  const surplus    = DATA.surplus[years];
+
+  const figs = [
+    ["", whole(housed),    "people housed"],
+    ["", whole(stableYrs), "years of stable housing provided"],
+    ["", whole(children),  "children housed, " + whole(aChildren) + " of them in below-market homes"],
+    ["", whole(graduates), "more youth finishing Grade 12"],
+    ["", big(earnings),    "added lifetime earnings for those children"],
+    ["mission", surplus == null ? "&mdash;" : big(surplus),
+                           "surplus returned to charitable programming"]
+  ];
+
+  document.getElementById("imp-figs").innerHTML = figs.map(([cls,v,k]) =>
+    '<li' + (cls ? ' class="' + cls + '"' : '') + '><span class="v">' + v + '</span>' +
+    '<span class="k">' + k + '</span></li>').join("");
+
+  document.getElementById("imp-narr").textContent =
+    "Over " + years + " years, " + units + " townhomes at " + DATA.address + " house " +
+    whole(housed) + " people, " + whole(children) + " of them children, at an average tenancy of " +
+    O.averageStayYears + " years. Drawn from the pro forma's " + years + " year window. " +
+    "Investors are repaid beyond this horizon, after which all surplus stays with the community.";
+
+  const tier = t => '<span class="imp-tier">' + t + '</span>';
+  const row = (name, eq, t, res) =>
+    '<tr><th scope="row">' + name + '</th><td>' + eq + '</td><td>' + tier(t) + '</td><td class="res">' + res + '</td></tr>';
+  document.getElementById("imp-rows").innerHTML =
+    row("People housed",
+        beds + " bedrooms &times; " + O.peoplePerBedroom + " people &times; (" + years + " &divide; " + O.averageStayYears + " year tenancy)",
+        "Counted", whole(housed)) +
+    row("Years of stable housing",
+        whole(residents) + " residents &times; " + years + " years",
+        "Counted", whole(stableYrs)) +
+    row("Children housed",
+        whole(residents) + " residents, less " + adultsPerHome.toFixed(1) + " adults across " + units + " homes, &times; " + cohorts.toFixed(1) + " tenancy cycles. Below market: " + aUnits + " homes",
+        "Counted", whole(children) + " <span style=\"font-weight:400;font-size:13px;color:var(--imp-quiet)\">(" + whole(aChildren) + " below market)</span>") +
+    row("More youth finishing Grade 12",
+        whole(aChildren) + " below-market children &times; " + pct(M.reachThreshold) + " reaching the threshold &times; " + pct(ageEligible) + " arriving young enough &times; " + pct(M.otherwiseInadequate) + " otherwise inadequately housed &times; " + Math.round(M.graduationGap*100) + " point gap",
+        "Benchmarked", whole(graduates)) +
+    row("Added lifetime earnings",
+        whole(stabilised) + " stabilised children &times; $" + whole(M.lifetimePerChild) + " &times; " + pct(M.attribution) + " credited to housing",
+        "Benchmarked", big(earnings)) +
+    row("Surplus returned to charitable programming",
+        "Net operating income, less the investor claim and the redemption tranche due, read off the pro forma at " + years + " years. Back loaded: investors are repaid first",
+        "Modelled", surplus == null ? "&mdash;" : big(surplus));
+}
+
+document.querySelectorAll('input[name="imp-h"]').forEach(i =>
+  i.addEventListener("change", () => render(Number(i.value))));
+render(20);
+
+/* ---------------- method note ---------------- */
+document.getElementById("imp-note").innerHTML =
+  "<p>" + DATA.address + ", Edmonton: " + units + " townhomes, " + beds + " bedrooms, " +
+  aUnits + " of them below market, against a total cost of " + big(DATA.totalCost) + ". " +
+  "The Build Canada Homes contribution and the investor and lender commitments are pending.</p>" +
+  "<p>People and children come from the unit mix rather than an assumed share: " + beds +
+  " bedrooms at " + O.peoplePerBedroom + " people each, less two adults per home and one for " +
+  "each solo parent home, across tenancies averaging " + O.averageStayYears + " years.</p>" +
+  "<p>Grade 12 completion: a family needs " + M.stabiliseYears + " year of secure tenancy to " +
+  "stabilise, and the gain then travels with the child, including after the family moves on to " +
+  "market housing. Nothing is pro-rated by years of residency, and families leave when they " +
+  "have the means rather than because the tenancy failed. " + (ageEligible*100).toFixed(0) +
+  "% of children arrive young enough to stabilise before Grade 12. Applied to the " +
+  (M.graduationGap*100).toFixed(0) + " point graduation gap that housing instability opens. " +
+  "The gap is IslamicFamily's own analysis, and independent research on residential moves and " +
+  "diploma completion points the same way. Both are observational associations, so treat the " +
+  "result as an order of magnitude.</p>" +
+  "<p>Earnings: $" + whole(M.lifetimePerChild) + " per child moved young into a low poverty " +
+  "neighbourhood (Chetty, Hendren and Katz, 2016), with " + (M.attribution*100).toFixed(0) +
+  "% credited to housing. Dunluce is a different intervention in a different country, so the " +
+  "transfer factor is a judgment, not a finding.</p>" +
+  "<p>Why tenancy stability is the mechanism: families in assisted housing move about 14% less " +
+  "often than comparable families in private rentals, and each additional housing quality " +
+  "problem predicts a 6% higher rate of moves (Urban Institute Upward Mobility framework).</p>" +
+  "<p>Surplus to charitable programming is read off the pro forma at each horizon rather than " +
+  "annualised, since investors are repaid first and the surplus follows.</p>" +
+  "<p>Financial figures derive from the Dunluce pro forma (V29). " + O.peoplePerBedroom +
+  " people per bedroom and a " + O.averageStayYears + " year average tenancy are planning " +
+  "assumptions supplied by IslamicFamily, not observed data. Benchmarked outcomes apply findings " +
+  "from studies of other populations, chiefly in the United States, and are estimates of " +
+  "plausible magnitude. Nothing here is an offer to sell securities.</p>";
+
+/* ---------------- assumptions grid ---------------- */
+document.getElementById("imp-assume").innerHTML = [
+  [O.peoplePerBedroom, "people per bedroom"],
+  [O.averageStayYears + " years", "average tenancy"],
+  [pct(O.soloParentShare), "homes with one parent"],
+  [Math.round(M.graduationGap*100) + " points", "completion drop from inadequate housing"],
+  [pct(M.otherwiseInadequate), "would otherwise be inadequately housed"],
+  [M.stabiliseYears + " year", "minimum stabilising period"],
+  [pct(M.reachThreshold), "of exits where the family has the means to move up"],
+  [pct(M.attribution), "transfer of the measured earnings effect"],
+  ["$" + whole(M.lifetimePerChild), "lifetime earnings gain per child, before transfer"]
+].map(([v,k]) => "<li><b>" + v + "</b><span>" + k + "</span></li>").join("");
+})();
+</script>
+
+
+<!-- ══════════════ SCALE ══════════════ -->
+<section class="section section-need on-green" id="scale" style="padding: 56px 0;">
+  <div class="container">
+    <div class="need-grid" style="align-items: center; gap: 56px;">
+      <div>
+        <div class="eyebrow reveal">Scale</div>
+        <h2 class="section-headline reveal" style="margin-bottom: 0;">
+          Born in Edmonton.<br><em>Made for Canada.</em>
+        </h2>
+      </div>
+
+      <div class="stats-stack reveal">
+        <div class="stat-row" style="border-left-color: var(--nabawi); background: rgba(255,255,255,0.1); padding: 12px 18px;">
+          <div class="stat-row-num" style="font-size:26px;">$100M</div>
+          <div class="stat-row-desc"><strong>National fund target</strong>Edmonton is Phase 1 of a structure built to travel.</div>
+        </div>
+        <div class="province-list reveal">
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">Alberta <span class="province-sub">· Diamond at Dunluce</span></span>
+            <span class="province-status province-status--underway">Underway</span>
+          </div>
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">Nova Scotia</span>
+            <span class="province-status">Confirmed partner</span>
+          </div>
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">British Columbia</span>
+            <span class="province-status">Confirmed partner</span>
+          </div>
+          <div class="province-row" style="padding: 8px 18px;">
+            <span class="province-name">Ontario</span>
+            <span class="province-status">Confirmed partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════ PREVIOUS / NEXT ══════════════ -->
+<section class="next-band">
+  <div class="container">
+    <a class="next-band-back" href="dunluce.html"><span aria-hidden="true">←</span> Previous: <strong>Project: Diamond at Dunluce</strong></a>
+    <a class="next-band-link" href="capital-model.html">
+      <span>
+        <span class="next-band-label">Next</span>
+        <span class="next-band-title">The Capital Model</span>
+        <span class="next-band-desc">How the fund is structured, and what to weigh on risk, return and exit.</span>
+      </span>
+      <span class="next-band-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Housing Prosperity Fund</div>
+        <div class="footer-contact">IslamicFamily · islamicfamily.ca &nbsp;·&nbsp; SVX · svx.ca</div>
+      </div>
+      <div class="footer-tagline">✸</div>
+    </div>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
