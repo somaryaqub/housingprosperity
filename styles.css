@@ -2342,11 +2342,38 @@ body > div[id^="tally-"]:not([style*="display: block"]) {
 .next-band-title { display: block; font-family: 'Alegreya', serif; font-size: clamp(28px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.01em; }
 .next-band-desc { display: block; margin-top: 8px; font-family: 'Alegreya Sans', sans-serif; font-size: 16px; font-weight: 300; color: var(--text-muted); max-width: 520px; }
 .next-band-arrow {
-  flex: none; width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%;
-  border: 1px solid var(--nabawi); color: var(--nabawi); font-size: 28px; line-height: 1;
-  transition: background .2s ease, color .2s ease, transform .2s ease;
+  position: relative; flex: none; width: 64px; height: 64px; display: grid; place-items: center;
+  border-radius: 50%; border: 1px solid var(--nabawi); color: var(--nabawi); font-size: 28px; line-height: 1;
+  overflow: hidden; isolation: isolate;
+  transition: background .35s ease, color .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
 }
-.next-band-link:hover .next-band-arrow, .next-band-link:focus-visible .next-band-arrow { background: var(--nabawi); color: var(--moon-mist); transform: translateX(4px); }
+/* a soft ring that breathes outward, in step with the arrow */
+.next-band-arrow::after {
+  content: ''; position: absolute; inset: -1px; border-radius: 50%;
+  border: 1px solid var(--pinecone); opacity: 0; z-index: -1;
+  animation: nextRing 3.2s ease-out infinite;
+}
+/* the arrow glides out to the right, then re-enters from the left */
+.next-band-glyph { display: block; animation: nextGlide 3.2s infinite; will-change: transform, opacity; }
+@keyframes nextGlide {
+  0%, 38%  { transform: translateX(0); opacity: 1; animation-timing-function: cubic-bezier(.5,0,.75,0); }
+  52%      { transform: translateX(150%); opacity: 0; }
+  52.01%   { transform: translateX(-150%); opacity: 0; animation-timing-function: cubic-bezier(.2,.8,.2,1); }
+  70%, 100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes nextRing {
+  0%, 38% { opacity: 0; transform: scale(1); }
+  45%     { opacity: .55; }
+  80%, 100% { opacity: 0; transform: scale(1.35); }
+}
+.next-band-link:hover .next-band-arrow, .next-band-link:focus-visible .next-band-arrow {
+  background: var(--nabawi); color: var(--moon-mist); transform: scale(1.06);
+}
+.next-band-link:hover .next-band-glyph, .next-band-link:focus-visible .next-band-glyph { animation-duration: 1.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .next-band-glyph, .next-band-arrow::after { animation: none; }
+  .next-band-arrow { transition: none; }
+}
 .next-band-link:focus-visible { outline: 3px solid var(--pinecone); outline-offset: 6px; }
 
 /* Where we are */
